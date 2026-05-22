@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krishi-Sanjeevini (ಕೃಷಿ ಸಂಜೀವಿನಿ) - Farmer Friendly AI Assistant</title>
+  <meta name="description" content="An intelligent, accessible dual-language web application for crop disease analysis, Mandi prices, agricultural marketplace, weather, and Soil NPK recommendations. Powered by Krishi AI.">
+  <meta name="referrer" content="no-referrer">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Floating Voice Assistant Microphone Pulse Trigger -->
+  <button id="floating-mic" class="floating-mic-trigger" title="Voice Assistant / ಧ್ವನಿ ಸಹಾಯ" aria-label="Start Voice Control">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+    </svg>
+  </button>
+
+  <!-- Voice Assistant Active Fullscreen Listening Overlay -->
+  <div id="voice-overlay" class="voice-wave-overlay">
+    <div class="voice-status-box">
+      <div class="voice-wave-mic">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+        </svg>
+      </div>
+      <h2 id="txt-voiceActive" class="voice-status-title">Voice Assistant Active</h2>
+      <div class="voice-waveforms">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+      <p id="txt-voiceCommandList" class="voice-command-subtext">Try saying: "Scan crop" or "ಮಂಡಿ ಬೆಲೆ"</p>
+      <button id="btn-closeVoiceBtn" class="btn btn-secondary mt-4 w-full">Cancel</button>
+    </div>
+  </div>
+
+  <div class="app-container">
+
+    <!-- SLEEK HEADER SHELL -->
+    <header>
+      <div class="brand" id="brand-home-link" style="cursor: pointer;">
+        <div class="logo-container">
+          <svg viewBox="0 0 24 24">
+            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L7.54,17.5C11.53,16.7 15.67,13.2 18.5,9.5C19.78,7.82 21,5.32 21,3C21,3 18.9,3.5 17,8M15.5,12C18,12 20,10 20,7.5C20,5 18,3 15.5,3C13,3 11,5 11,7.5C11,10 13,12 15.5,12Z" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 id="txt-appName">Krishi-Sanjeevini</h1>
+          <p id="txt-appSubtitle">Your Intelligent Farming Companion</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Language Switcher button -->
+        <button id="lang-btn" class="btn btn-primary" aria-label="Toggle Language">ಕನ್ನಡ</button>
+        <!-- Dark Mode Selector -->
+        <button id="theme-btn" class="icon-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Mode">
+          <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
+        </button>
+        <!-- Settings cog -->
+        <button id="settings-btn" class="icon-btn" aria-label="Open Settings" title="Configure App Settings">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- FARMER QUICK STATISTICS & ADVISORY PANEL -->
+    <div class="top-advisory-bar">
+      <!-- Weather Stat -->
+      <div class="advisory-card">
+        <div class="advisory-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M6.75 2.25A.75.75 0 017.5 3v1.5a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zm10.5 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM3.75 6h16.5c.966 0 1.75.784 1.75 1.75v12.5A1.75 1.75 0 0120.25 22H3.75A1.75 1.75 0 012 20.25V7.75C2 6.784 2.784 6 3.75 6zm0 4.25v10h16.5v-10H3.75zm3.5 2.5a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75zm6 0a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75zm5.25.75a.75.75 0 00-1.5 0v3a.75.75 0 001.5 0v-3z"/>
+          </svg>
+        </div>
+        <div class="advisory-info">
+          <h4 id="stat-weatherLabel">Weather Advisory</h4>
+          <p id="stat-weather-val">Rain warning: 85% probability</p>
+        </div>
+      </div>
+      <!-- Season Stat -->
+      <div class="advisory-card">
+        <div class="advisory-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 3a9 9 0 00-9 9 9 9 0 009 9 9 9 0 009-9A9 9 0 0012 3zm1 14.5h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+          </svg>
+        </div>
+        <div class="advisory-info">
+          <h4 id="stat-sowingSeasonLabel">Sowing Season</h4>
+          <p id="stat-season-val">Kharif: Sow Ragi & Rice</p>
+        </div>
+      </div>
+      <!-- Live Ticker Average -->
+      <div class="advisory-card">
+        <div class="advisory-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+          </svg>
+        </div>
+        <div class="advisory-info">
+          <h4 id="stat-mandiLabel">Fair Ragi Avg</h4>
+          <p id="stat-mandi-val">₹3,450 / Quintal</p>
+        </div>
+      </div>
+      <!-- Voice Assist Pill -->
+      <div class="advisory-card" id="voice-pill" style="cursor:pointer;">
+        <div class="advisory-icon" style="background:#ffebee; color:#d32f2f;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+          </svg>
+        </div>
+        <div class="advisory-info">
+          <h4 id="stat-voiceAssistantLabel">Voice Assistant</h4>
+          <p id="stat-voice-val">Click Mic to talk</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN SINGLE PAGE APPLICATION (SPA) PANELS -->
+
+    <!-- PANEL 1: DASHBOARD (HOME) -->
+    <div id="panel-home" class="nav-panel active">
+      <div class="section-heading-box">
+        <h2 id="txt-dashboardHeader">Farmer Friendly Dashboard</h2>
+        <p id="txt-dashboardSubtitle">Select any feature below to get started immediately. Supports full voice commands.</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Crop Disease Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('disease')">
+          <div class="card-icon-container">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z"/>
+            </svg>
+          </div>
+          <h3 id="card-diag-title">Crop Disease Analyser</h3>
+          <p id="card-diag-desc">Upload a photo of a leaf or crop problem to diagnose issues instantly and get organic treatments.</p>
+          <span class="card-link"><span id="card-diag-link">Scan Crop Now</span> &rarr;</span>
+        </div>
+
+        <!-- Mandi Price Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('mandi')">
+          <div class="card-icon-container">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+            </svg>
+          </div>
+          <h3 id="card-mandi-title">Live Mandi Prices</h3>
+          <p id="card-mandi-desc">Monitor live prices of crops across Karnataka APMCs. View historical 7-day average trends.</p>
+          <span class="card-link"><span id="card-mandi-link">Check Market Rates</span> &rarr;</span>
+        </div>
+
+        <!-- Marketplace Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('marketplace')">
+          <div class="card-icon-container">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+          </div>
+          <h3 id="card-market-title">Direct Marketplace</h3>
+          <p id="card-market-desc">Sell your crop yield directly to buyers at verified fair prices, completely eliminating brokers.</p>
+          <span class="card-link"><span id="card-market-link">Buy or Sell Crops</span> &rarr;</span>
+        </div>
+
+        <!-- Weather Calendar Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('weather')">
+          <div class="card-icon-container">
+            <svg viewBox="0 0 24 24">
+              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/>
+            </svg>
+          </div>
+          <h3 id="card-weather-title">Weather & Calendar</h3>
+          <p id="card-weather-desc">Get localized daily rainfall advisories and follow South India's optimal seasonal sowing calendar.</p>
+          <span class="card-link"><span id="card-weather-link">View Sowing Plan</span> &rarr;</span>
+        </div>
+
+        <!-- Soil NPK Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('soil')">
+          <div class="card-icon-container">
+            <svg viewBox="0 0 24 24">
+              <path d="M12.01 21.49L2.39 11.88a10.007 10.007 0 010-14.14c3.9-3.9 10.24-3.9 14.14 0s3.9 10.24 0 14.14l-4.52 4.52c-.39.39-1.02.39-1.4-.01zm-7.07-8.49c-1.56 1.56-1.56 4.09 0 5.66l6.36 6.36 6.36-6.36c1.56-1.56 1.56-4.09 0-5.66s-4.09-1.56-5.66 0l-.71.71-.71-.71c-1.56-1.57-4.08-1.57-5.64-.01z"/>
+            </svg>
+          </div>
+          <h3 id="card-soil-title">Soil Health Advisor</h3>
+          <p id="card-soil-desc">Input Nitrogen, Phosphorus, Potassium and pH levels to get customized biological fertilizing guides.</p>
+          <span class="card-link"><span id="card-soil-link">Check Soil Health</span> &rarr;</span>
+        </div>
+
+        <!-- Gov Schemes Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('schemes')">
+          <div class="card-icon-container">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+          </div>
+          <h3 id="card-schemes-title">Government Schemes</h3>
+          <p id="card-schemes-desc">Browse local subsidies and agricultural programs (e.g. PM-KISAN, Krishi Bhagya) with application paths.</p>
+          <span class="card-link"><span id="card-schemes-link">Search Subsidies</span> &rarr;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 2: CROP DISEASE ANALYSER -->
+    <div id="panel-disease" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-uploadTitle">Diagnose Crop Disease</h2>
+        <p id="txt-uploadSubtitle">Take a photo of the diseased leaf or plant using your camera, or upload a clear crop picture.</p>
+      </div>
+
+      <div class="analyser-layout">
+        <!-- Upload & View Card -->
+        <div class="card-wrapper">
+          <!-- Premium Crop Selector Chips -->
+          <div class="crop-select-container">
+            <label id="lbl-selectCropHint" class="crop-select-label">Select Crop (for 100% accurate diagnosis):</label>
+            <div class="crop-chips-grid">
+              <button class="crop-chip active" data-crop="auto" id="btn-crop-auto">Auto-Detect</button>
+              <button class="crop-chip" data-crop="tomato" id="btn-crop-tomato">Tomato</button>
+              <button class="crop-chip" data-crop="rice" id="btn-crop-paddy">Paddy</button>
+              <button class="crop-chip" data-crop="ragi" id="btn-crop-ragi">Ragi</button>
+              <button class="crop-chip" data-crop="onion" id="btn-crop-onion">Onion</button>
+              <button class="crop-chip" data-crop="corn" id="btn-crop-corn">Corn</button>
+            </div>
+          </div>
+
+          <!-- Upload Drag Drop area -->
+          <div id="drop-zone" class="upload-zone">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+            </svg>
+            <p id="txt-dragDropText">Drag & drop crop image here, or</p>
+            <button id="btn-browseFiles" class="btn btn-secondary">Browse Files</button>
+            <input type="file" id="file-input" accept="image/*" style="display:none;">
+          </div>
+
+          <!-- Camera Stream Area -->
+          <div id="camera-container" class="preview-container" style="display:none;">
+            <video id="camera-stream" autoplay playsinline></video>
+            <!-- Scan Sweep Laser lines -->
+            <div id="laser" class="scanner-laser"></div>
+          </div>
+
+          <!-- Image Preview Area -->
+          <div id="preview-container" class="preview-container">
+            <img id="image-preview" src="#" alt="Uploaded Crop Image">
+            <div id="laser-preview" class="scanner-laser"></div>
+          </div>
+
+          <div class="mt-4" style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button id="camera-btn" class="btn btn-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 12c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm9-8h-3.17L16 2H8L6.17 4H3C1.9 4 1 4.9 1 6v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+              <span id="btn-cameraBtn">Use Camera</span>
+            </button>
+            <button id="btn-captureBtn" class="btn btn-accent" style="display:none;">Capture Photo</button>
+            <button id="btn-cancelCamBtn" class="btn btn-danger" style="display:none;">Close Camera</button>
+            <button id="btn-scanStartBtn" class="btn btn-primary" style="display:none;">Analyse Crop with Krishi AI</button>
+          </div>
+
+          <!-- Progress hud when diagnosing -->
+          <div id="diagnosis-hud" class="diagnosis-hud">
+            <div class="hud-title">
+              <div class="hud-spinner"></div>
+              <span id="txt-diagnosing">Krishi AI is examining your crop...</span>
+            </div>
+            <div class="progress-steps">
+              <div id="step-1" class="step-item"><span class="step-bullet"></span><span id="txt-scanStep1">Scanning image features...</span></div>
+              <div id="step-2" class="step-item"><span class="step-bullet"></span><span id="txt-scanStep2">Detecting crop variety...</span></div>
+              <div id="step-3" class="step-item"><span class="step-bullet"></span><span id="txt-scanStep3">Analysing pest & pathogen spots...</span></div>
+              <div id="step-4" class="step-item"><span class="step-bullet"></span><span id="txt-scanStep4">Consulting Krishi AI knowledge base...</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solutions & Results Display Card -->
+        <div class="card-wrapper">
+          <!-- Empty state instruction -->
+          <div id="result-placeholder" class="text-center py-8">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="70" height="70" fill="currentColor" style="color:var(--border-color); margin: 0 auto 20px auto;">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v4z"/>
+            </svg>
+            <h3 id="txt-noImageTitle" style="margin-bottom:10px;">Ready for Diagnostics</h3>
+            <p id="txt-noImageDesc">Once you select or capture a crop photo, the deep learning analysis will render here.</p>
+          </div>
+
+          <!-- Dynamic Analysis Output Panel -->
+          <div id="result-box" class="result-box">
+            <div class="result-header">
+              <div class="disease-info-title">
+                <h2 id="res-crop-name">Tomato</h2>
+                <h3 id="res-disease-name">Early Blight (Alternaria solani)</h3>
+              </div>
+              <div id="res-severity" class="severity-gauge medium">Medium</div>
+            </div>
+
+            <!-- Voice Readout Controls -->
+            <div class="mb-4" style="display: flex; gap: 10px;">
+              <button id="voice-readout-btn" class="btn btn-accent w-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                <span id="txt-voiceReadout">Read Aloud (Voice)</span>
+              </button>
+              <button id="btn-stopVoice" class="btn btn-danger" style="display:none;">Stop Audio</button>
+            </div>
+
+            <!-- Detailed diagnosis grids -->
+            <div class="remedy-grid">
+              <div class="remedy-card-block">
+                <h4 id="lbl-diseaseCauses">Root Cause & Symptoms</h4>
+                <p id="res-causes">Fungal pathogen attacking tomato leaves in warm humid climates.</p>
+              </div>
+ 
+              <div class="remedy-card-block" style="border-left: 4px solid var(--primary-glow); background: rgba(82, 183, 136, 0.05);">
+                <h4 id="lbl-biologicalTreatment" style="color:var(--primary);">Organic / Natural Solutions</h4>
+                <p id="res-organic">Apply Neem oil spray.</p>
+              </div>
+ 
+              <div class="remedy-card-block" style="border-left: 4px solid var(--accent-clay);">
+                <h4 id="lbl-chemicalTreatment" style="color:var(--accent-clay);">Chemical Control</h4>
+                <p id="res-chemical">Apply Copper Oxychloride.</p>
+              </div>
+ 
+              <div class="remedy-card-block">
+                <h4 id="lbl-preventiveMeasures">Future Prevention Advisory</h4>
+                <p id="res-prevention">Keep crop rows spaced nicely.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 3: MANDI PRICE SYSTEM -->
+    <div id="panel-mandi" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-mandiHeader">Live Mandi Prices</h2>
+        <p id="txt-mandiSubtitle">Real-time daily rates across Karnataka APMC markets. Tickers simulate active price movements.</p>
+      </div>
+
+      <!-- Ticker tape ribbon -->
+      <div class="alert-banner" style="background:#e8f5e9; border-left-color:var(--primary); padding:10px 20px;">
+        <span class="trend-badge up" style="font-size:11px; margin-right:10px;" id="lbl-liveTicker">LIVE TICKER</span>
+        <marquee id="mandi-ticker-tape" scrollamount="4" style="font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--primary-dark);">
+          Ragi (Finger Millet) Bengaluru &uarr; ₹3,452 (+0.1%) ... Paddy (Rice) Mysore &darr; ₹2,802 (-0.3%) ... Tomato Kolar &uarr; ₹1,504 (+0.2%)
+        </marquee>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="mandi-filter-bar">
+        <input type="text" id="txt-searchPlaceholder" class="mandi-search-input" placeholder="Search crops or markets...">
+        
+        <select id="mandi-market-filter" class="mandi-select">
+          <option value="" id="opt-filterMarket">All Markets</option>
+        </select>
+
+        <select id="mandi-crop-filter" class="mandi-select">
+          <option value="" id="opt-filterCrop">All Crops</option>
+        </select>
+      </div>
+
+      <div class="mandi-grid-layout">
+        <!-- Price Table -->
+        <div class="table-wrapper">
+          <table id="mandi-table">
+            <thead>
+              <tr>
+                <th id="th-tableCrop">Crop</th>
+                <th id="th-tableMarket">Market</th>
+                <th id="th-tablePrice">Price (Per Quintal)</th>
+                <th id="th-tableTrend">Trend (24h)</th>
+              </tr>
+            </thead>
+            <tbody id="mandi-table-body">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 7 Day Price Trend Visual SVG Chart -->
+        <div class="chart-container-box">
+          <h3 id="lbl-priceHistoryHeader">7-Day Price Trend</h3>
+          <p id="lbl-selectCropToView" style="font-size:13px;">Select any crop row to view price fluctuation history.</p>
+          
+          <div id="chart-panel" style="position: relative;">
+            <svg id="mandi-svg-chart" class="chart-svg" viewBox="0 0 400 200">
+              <!-- Rendered dynamically -->
+              <path d="M 50 150 L 100 130 L 150 140 L 200 100 L 250 80 L 300 110 L 350 70" fill="none" stroke="var(--primary)" stroke-width="3"></path>
+            </svg>
+          </div>
+          
+          <div id="mandi-avg-stat-box" class="remedy-card-block" style="text-align: center; background:var(--primary-pale);">
+            <h4 id="lbl-fairListingAdvice" style="justify-content:center; color:var(--primary-dark);">Fair Listing Average</h4>
+            <p id="mandi-avg-price-val" style="font-size: 24px; font-weight: 800; font-family: var(--font-display); color:var(--primary-dark);">₹3,450 / Quintal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 4: DIRECT MARKETPLACE -->
+    <div id="panel-marketplace" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-marketHeader">Direct Farmer Marketplace</h2>
+        <p id="txt-marketSubtitle">Ditch the middlemen! Sell harvest directly to buyers at fair, verified market rates.</p>
+      </div>
+
+      <!-- Tab selection -->
+      <div class="tabs-navigation">
+        <button id="btn-buyHarvest" class="tab-btn active">Browse Active Listings (For Buyers)</button>
+        <button id="btn-sellHarvest" class="tab-btn">List Your Harvest (For Farmers)</button>
+      </div>
+
+      <!-- VIEW 1: BROWSE CROP LISTINGS -->
+      <div id="market-buy-section">
+        <div class="marketplace-listing-grid" id="listings-grid">
+          <!-- Listing Cards generated dynamically -->
+        </div>
+      </div>
+
+      <!-- VIEW 2: SELL harvest listing form -->
+      <div id="market-sell-section" style="display:none;">
+        <div class="card-wrapper" style="max-width: 800px; margin: 0 auto;">
+          <form id="sell-harvest-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="sell-crop-select" id="lbl-formCropName">Crop Name</label>
+                <select id="sell-crop-select" class="form-input" required>
+                  <!-- Populated from cropsList -->
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-variety" id="lbl-formVariety">Crop Variety</label>
+                <input type="text" id="sell-variety" class="form-input" placeholder="e.g. Sona Masuri, Local Ragi" required>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-qty" id="lbl-formQuantity">Quantity (Quintals)</label>
+                <input type="number" id="sell-qty" min="1" step="0.1" class="form-input" placeholder="e.g. 5, 20" required>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-price" id="lbl-formPrice">Expected Price (₹ per Quintal)</label>
+                <input type="number" id="sell-price" min="100" class="form-input" placeholder="e.g. 3400" required>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-location" id="lbl-formLocation">Market Location</label>
+                <input type="text" id="sell-location" class="form-input" placeholder="e.g. Davanagere, Kolar" required>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-phone" id="lbl-formContact">Phone / Contact Number</label>
+                <input type="tel" id="sell-phone" class="form-input" placeholder="e.g. 9876543210" required>
+              </div>
+            </div>
+
+            <!-- Dynamic Price Advisor HUD -->
+            <div id="marketplace-fair-advisor" class="price-advisor-alert good mt-4" style="display:none;">
+              <span id="fair-advisor-text">Fair price aligned with Mandi averages!</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full mt-4" id="btn-formSubmit">Submit Sale Listing</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 5: WEATHER & CROP SOWING CALENDAR -->
+    <div id="panel-weather" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-weatherHeader">Weather & Crop Calendar</h2>
+        <p id="txt-weatherSubtitle">Check localized rainfall advisories and monthly South Indian sowing cycles.</p>
+      </div>
+
+      <div class="grid-cols-2">
+        <!-- Creative Weather Dashboard Widget -->
+        <div class="creative-weather-widget" id="weather-hero-bg">
+          <div class="weather-glass-layer">
+            
+             <div class="weather-header-row">
+                <div class="pulse-live"></div> 
+                <span id="weather-location-name">Fetching Location...</span>
+             </div>
+
+             <div class="weather-main-row">
+                <div class="weather-icon-box" id="dynamic-weather-icon">
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotating"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </div>
+                <div class="weather-temp-box">
+                   <h1 id="val-temperature">--°C</h1>
+                   <p id="val-condition-text">Loading Data...</p>
+                </div>
+             </div>
+
+             <!-- The smooth CSS alert ticker -->
+             <div class="weather-ticker-box">
+                <div class="ticker-label-badge" id="lbl-weatherAdvisoryAlert">Farming Alert</div>
+                <div class="weather-alert-text-container">
+                   <div class="weather-marquee-smooth" id="txt-weather-alert">Initializing live weather radar and gathering local advisories...</div>
+                </div>
+             </div>
+
+             <div class="weather-metrics-row">
+                <div class="weather-metric-item">
+                   <div class="w-icon">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                   </div>
+                   <div class="w-details">
+                     <span class="w-label" id="lbl-rainfallProb">Temperature</span>
+                     <span class="w-val" id="val-humidity">--%</span>
+                   </div>
+                </div>
+                <div class="weather-metric-item">
+                   <div class="w-icon">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+                   </div>
+                   <div class="w-details">
+                     <span class="w-label" id="lbl-windSpeed">Wind Speed</span>
+                     <span class="w-val" id="val-windSpeed">-- km/h</span>
+                   </div>
+                </div>
+             </div>
+
+          </div>
+        </div>
+
+        <!-- Crop Calendar Card -->
+        <div class="card-wrapper">
+          <h3 id="lbl-cropCalendarHeader">Karnataka Sowing Calendar</h3>
+          <p id="lbl-cropCalendarSub" class="mb-4">Optimal crops and schedules based on regional soil types.</p>
+
+          <div class="remedy-grid">
+            <div class="crop-cal-card" id="card-kharif">
+              <h4 id="lbl-kharifSeason">Kharif Season (June - October)</h4>
+              <p id="txt-descKharif">Ideal for rain-fed crops. Sowing starts right after first monsoon rains.</p>
+              <div class="calendar-chips">
+                <span class="cal-chip" id="txt-chipRagi">Ragi (Finger Millet)</span>
+                <span class="cal-chip" id="txt-chipPaddy">Paddy (Rice)</span>
+                <span class="cal-chip" id="txt-chipGroundnut">Groundnut</span>
+                <span class="cal-chip" id="txt-chipTurmeric">Turmeric</span>
+              </div>
+            </div>
+
+            <div class="crop-cal-card" id="card-rabi">
+              <h4 id="lbl-rabiSeason">Rabi Season (October - March)</h4>
+              <p id="txt-descRabi">Thrives on residual soil moisture and cool dew mornings.</p>
+              <div class="calendar-chips">
+                <span class="cal-chip" id="txt-chipJowar">Jowar (Sorghum)</span>
+                <span class="cal-chip" id="txt-chipChickpea">Chickpea (Bengal Gram)</span>
+                <span class="cal-chip" id="txt-chipMustard">Mustard</span>
+                <span class="cal-chip" id="txt-chipSunflower">Sunflower</span>
+              </div>
+            </div>
+
+            <div class="crop-cal-card" id="card-zaid">
+              <h4 id="lbl-zaidSeason">Zaid Summer (March - June)</h4>
+              <p id="txt-descZaid">Short crops requiring consistent sunshine and warm climates under irrigation.</p>
+              <div class="calendar-chips">
+                <span class="cal-chip" id="txt-chipWatermelon">Watermelon</span>
+                <span class="cal-chip" id="txt-chipCucumber">Cucumber</span>
+                <span class="cal-chip" id="txt-chipPulses">Pulses (Moong/Urad)</span>
+                <span class="cal-chip" id="txt-chipFodder">Green Fodder</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 6: SOIL HEALTH ADVISOR -->
+    <div id="panel-soil" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-soilHeader">Soil Health & Fertilizer Advisor</h2>
+        <p id="txt-soilSubtitle">Slide parameters to configure your soil composition and evaluate crop suitability and organic NPK fertilization needs.</p>
+      </div>
+
+      <div class="grid-cols-2">
+        <!-- Sliders config card -->
+        <div class="card-wrapper">
+          <div class="soil-sliders-container">
+            <!-- Soil Texture Type -->
+            <div class="form-group">
+              <label for="soil-type-select" id="lbl-soilTypeLabel">Soil Texture Type</label>
+              <select id="soil-type-select" class="form-input">
+                <option value="red">Red Soil (ಕೆಂಪು ಮಣ್ಣು)</option>
+                <option value="black">Black Soil (ಕರಿ ಮಣ್ಣು)</option>
+                <option value="sandy">Sandy Loam (ಮರಳು ಮಣ್ಣು)</option>
+                <option value="clayey">Clayey Soil (ಜೇಡಿ ಮಣ್ಣು)</option>
+              </select>
+            </div>
+
+            <!-- Nitrogen slider -->
+            <div class="soil-slider-group">
+              <div class="slider-labels-row">
+                <span id="lbl-soilNitrogen">Nitrogen (N) - Target 140</span>
+                <span id="soil-n-val" style="color:var(--primary);">80 kg/ha</span>
+              </div>
+              <input type="range" id="soil-n" min="10" max="300" value="80" class="soil-slider">
+            </div>
+
+            <!-- Phosphorus slider -->
+            <div class="soil-slider-group">
+              <div class="slider-labels-row">
+                <span id="lbl-soilPhosphorus">Phosphorus (P) - Target 60</span>
+                <span id="soil-p-val" style="color:var(--primary);">35 kg/ha</span>
+              </div>
+              <input type="range" id="soil-p" min="5" max="150" value="35" class="soil-slider">
+            </div>
+
+            <!-- Potassium slider -->
+            <div class="soil-slider-group">
+              <div class="slider-labels-row">
+                <span id="lbl-soilPotassium">Potassium (K) - Target 100</span>
+                <span id="soil-k-val" style="color:var(--primary);">120 kg/ha</span>
+              </div>
+              <input type="range" id="soil-k" min="10" max="250" value="120" class="soil-slider">
+            </div>
+
+            <!-- pH Slider -->
+            <div class="soil-slider-group">
+              <div class="slider-labels-row">
+                <span id="lbl-soilPH">Soil pH (Acidity)</span>
+                <span id="soil-ph-val" style="color:var(--accent-clay);">6.2 (Slightly Acidic)</span>
+              </div>
+              <input type="range" id="soil-ph" min="4.0" max="9.0" step="0.1" value="6.2" class="soil-slider">
+            </div>
+          </div>
+
+          <button id="btn-calcSoilBtn" class="btn btn-primary w-full">Get Soil Health Recommendations</button>
+        </div>
+
+        <!-- Soil advisory report display card -->
+        <div class="card-wrapper">
+          <!-- Empty state -->
+          <div id="soil-placeholder" class="text-center py-8">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="70" height="70" fill="currentColor" style="color:var(--border-color); margin:0 auto 20px auto;">
+              <path d="M12.01 21.49L2.39 11.88a10.007 10.007 0 010-14.14c3.9-3.9 10.24-3.9 14.14 0s3.9 10.24 0 14.14l-4.52 4.52c-.39.39-1.02.39-1.4-.01z"/>
+            </svg>
+            <h3 id="txt-soilRepPlaceholderH" style="margin-bottom:10px;">Configure Parameters</h3>
+            <p id="txt-soilRepPlaceholderP">Slide the nutrients above to match your recent soil card values, then generate details.</p>
+          </div>
+
+          <!-- Dynamic Report Panel -->
+          <div id="soil-report" class="remedy-grid" style="display:none;">
+            <div class="result-header" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
+              <div>
+                <h2 id="lbl-soilReportTitle" style="font-size:22px;">Soil Diagnostics & Action Plan</h2>
+              </div>
+              <div id="soil-status-badge" class="advisor-status-badge balanced">Balanced</div>
+            </div>
+
+            <div class="remedy-card-block" style="border-left:4px solid var(--accent-gold-light);">
+              <h4 id="lbl-soilCropsHeading">Highly Suitable Crops</h4>
+              <p id="soil-rec-crops" style="font-weight: 700; color:var(--primary-dark);">Ragi, Groundnut, Red Gram</p>
+            </div>
+
+            <div class="remedy-card-block">
+              <h4 id="lbl-soilNPKAdvice">Fertilization Strategy</h4>
+              <p id="soil-rec-fertilizers">Add Nitrogen fertilizers.</p>
+            </div>
+
+            <div class="remedy-card-block" style="background: rgba(82, 183, 136, 0.05); border:1px dashed var(--primary-glow);">
+              <h4 id="lbl-soilOrganicBoost" style="color:var(--primary-dark);">Organic Matter Enhancement</h4>
+              <p id="soil-rec-organic">Incorporate farmyard manure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 7: GOVERNMENT SCHEMES DIRECTORY -->
+    <div id="panel-schemes" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-schemesHeader">Government Schemes Portal</h2>
+        <p id="txt-schemesSubtitle">Direct, simplified guides on active financial benefits and tube well borewell schemes.</p>
+      </div>
+
+      <div class="mb-4">
+        <input type="text" id="txt-searchSchemes" class="mandi-search-input w-full" placeholder="Search schemes by keywords...">
+      </div>
+
+      <div id="schemes-accordion-container" class="mt-4">
+        <!-- Accordion items loaded dynamically based on selected language -->
+      </div>
+    </div>
+
+    <!-- PANEL 8: SETTINGS CONFIGURATION PANEL -->
+    <div id="panel-settings" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-settingsHeader">Configuration Panel</h2>
+        <p id="txt-settingsSubtitle">Manage your local settings, change the display theme, and save your AI Developer Key safely.</p>
+      </div>
+
+      <div class="card-wrapper" style="max-width: 700px; margin: 0 auto;">
+        <div class="settings-box">
+          <!-- API KEY CONFIG -->
+          <div class="form-group">
+            <label for="txt-apiPlaceholder" id="lbl-apiLabel" style="font-size: 15px;">AI Developer Key</label>
+            <input type="password" id="txt-apiPlaceholder" class="form-input" placeholder="Enter your AI Developer Key here...">
+            <small id="settings-api-status" style="color:var(--accent-clay); font-weight:700; margin-top:5px; font-size:12px;">
+              DEMO MODE ACTIVE (Using high-fidelity diagnostic simulation. Add an API Key above for live AI diagnostics.)
+            </small>
+          </div>
+
+          <!-- THEME TOGLE -->
+          <div class="form-group">
+            <label id="lbl-themeMode">Display Theme</label>
+            <div class="form-grid">
+              <button id="btn-lightMode" class="btn btn-secondary w-full active">Light Earthy</button>
+              <button id="btn-darkMode" class="btn btn-secondary w-full">Deep Charcoal</button>
+            </div>
+          </div>
+
+          <button id="btn-apiSaveBtn" class="btn btn-primary w-full">Save Settings</button>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End App Container -->
+
+
+  <!-- FLOATING AI CHATBOT (KRISHI AI) -->
+  <div id="chatbot-trigger" class="chatbot-bubble-trigger" title="Krishi AI / ಕೃಷಿ AI">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30">
+      <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12c0 2.02.6 3.9 1.63 5.48L2.05 22.2c-.37.9.55 1.8 1.45 1.45l4.72-1.58C9.8 22.7 10.88 23 12 23c5.52 0 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+    </svg>
+  </div>
+
+  <div id="chatbot-window" class="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-status-indicator"></div>
+        <h3 id="txt-botName">Krishi AI Assistant</h3>
+      </div>
+      <!-- Close button -->
+      <button id="close-chat" class="icon-btn" style="width:30px; height:30px; background:none; border:none; color:var(--text-light); cursor:pointer;">
+        &times;
+      </button>
+    </div>
+
+    <!-- Scrollable chat body -->
+    <div id="chat-body" class="chatbot-body">
+      <!-- Default Intro -->
+      <div class="chat-bubble bot" id="txt-botIntro">
+        Hello! I am Krishi AI. I can answer any questions related to crop health, diseases, Mandi rates, and soil. How can I help you today?
+      </div>
+    </div>
+
+    <!-- Quick replies tags -->
+    <div id="chat-quick-tags" class="chat-quick-replies">
+      <!-- Generated Dynamically -->
+    </div>
+
+    <!-- Footer Input -->
+    <div class="chatbot-footer">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Ask me anything about crops, pests, or Mandi...">
+      <button id="send-chat-btn" class="btn btn-primary" style="padding:10px 18px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- CORE SCRIPTS -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
