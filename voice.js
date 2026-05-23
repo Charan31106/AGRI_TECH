@@ -88,7 +88,7 @@ export function transliterateKannada(text) {
     .replace(/\bbele\b/gi, 'bele')
     .replace(/\bmannu\b/gi, 'mannu')
     .replace(/\bkrushi\b/gi, 'krushi')
-    .replace(/\bsanjeevini\b/gi, 'sanjeevini');
+    .replace(/\bsethu\b/gi, 'sethu');
 }
 
 let audioQueue = [];
@@ -409,7 +409,9 @@ function parseVoiceCommand(text, lang = "en") {
     soil: ["soil", "npk", "fertilizer", "mud"],
     schemes: ["scheme", "government", "subsidy", "benefit", "pm kisan"],
     chat: ["chat", "bot", "assistant", "ask ai", "krishi ai"],
-    language: ["switch to kannada", "kannada language", "kannada please"]
+    language: ["switch to kannada", "kannada language", "kannada please"],
+    recycler: ["recycler", "waste", "recycle", "upcycle", "biogas"],
+    hub: ["hub", "labor", "rental", "employment", "exchange", "machinery", "rent", "equipment"]
   };
 
   // Kannada Navigation Command Map
@@ -422,7 +424,9 @@ function parseVoiceCommand(text, lang = "en") {
     soil: ["ಮಣ್ಣು", "ಗೊಬ್ಬರ", "ತಪಾಸಣೆ"],
     schemes: ["ಯೋಜನೆ", "ಸರ್ಕಾರ", "ಸಹಾಯಧನ"],
     chat: ["ಚಾಟ್", "ಬಾಟ್", "ಸಹಾಯ", "ಪ್ರಶ್ನೆ"],
-    language: ["ಇಂಗ್ಲಿಷ್", "ಸ್ವಿಚ್ ಟು ಇಂಗ್ಲಿಷ್", "english please"]
+    language: ["ಇಂಗ್ಲಿಷ್", "ಸ್ವಿಚ್ ಟು ಇಂಗ್ಲಿಷ್", "english please"],
+    recycler: ["ಮರುಬಳಕೆ", "ರಿಸೈಕ್ಲರ್", "ತ್ಯಾಜ್ಯ", "ಕಸ"],
+    hub: ["ಕೂಲಿ", "ಬಾಡಿಗೆ", "ಹಬ್", "ಯಂತ್ರಗಳು", "ಬಾಡಿಗೆಗೆ"]
   };
 
   const commandMap = lang === "kn" ? knCommands : enCommands;

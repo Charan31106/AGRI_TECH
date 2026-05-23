@@ -1,9 +1,2059 @@
+// Krishi-Sanjeevini High-Performance Unified Bundle
+// Generated automatically to support double-click (file:// protocol) and local servers.
+
+
+// ==========================================
+// SECTION: translations.js
+// ==========================================
+
+// Krishi-Sethu Localization Database
+const translations = {
+  en: {
+    appName: "Krishi Sethu",
+    appSubtitle: "Farmer's Comprehensive Companion",
+    dashboardHeader: "Farmer Friendly Dashboard",
+    dashboardSubtitle: "Select any feature below to get started immediately. Supports full voice commands.",
+    langToggle: "ಕನ್ನಡ",
+    home: "Home",
+    diseaseAnalyser: "Disease Analyser",
+    mandiPrices: "Mandi Prices",
+    marketplace: "Marketplace",
+    weatherCalendar: "Weather & Calendar",
+    soilAdvisor: "Soil Advisor",
+    govSchemes: "Govt Schemes",
+    settings: "Settings",
+    agriRecycler: "Agri Recycler",
+    recyclerHeader: "Agri Recycler Portal",
+    recyclerSubtitle: "Upcycle agricultural waste directly with local biogas plants and composters.",
+    postWaste: "Post Recyclable Waste",
+    wasteListings: "Available Nearby",
+    cardRecyclerTitle: "Agri Recycler",
+    cardRecyclerDesc: "Upcycle agricultural waste (e.g. cow dung, husks, straw) directly with local bio-energy facilities.",
+    cardRecyclerLink: "Upcycle Waste Now",
+    recyclerTitle: "Agri Recycler",
+    recyclerDesc: "Upcycle agricultural waste (e.g. cow dung, husks, straw) directly with local bio-energy facilities.",
+    recyclerLink: "Upcycle Waste Now",
+    searchWastePlaceholder: "Search recyclable items...",
+    wasteTypeLabel: "Predefined Waste Item",
+    formWasteQty: "Quantity",
+    formWastePrice: "Expected Price (₹ per unit)",
+    formWastePriceUnit: "Unit",
+    formWasteSubmit: "Post Recycle Listing",
+    selectWasteHint: "Select predefined recyclable agricultural waste item:",
+    wastePostedSuccess: "Agri waste posted successfully! Buyers can now contact you directly.",
+    waste_cow_dung: "Cow dung",
+    waste_cow_urine: "Cow urine",
+    waste_cocopeat: "Cocopeat",
+    waste_sugarcane_bagasse: "Sugarcane bagasse",
+    waste_rice_husk: "Rice husk",
+    waste_paddy_straw: "Paddy straw",
+    waste_coconut_shells: "Coconut shells",
+    waste_banana_stems: "Banana stems",
+    waste_groundnut_shells: "Groundnut shells",
+    waste_dry_leaves: "Dry leaves",
+    waste_vegetable_waste: "Vegetable waste",
+    waste_fruit_peels: "Fruit peels",
+    waste_poultry_litter: "Poultry litter",
+    waste_sawdust: "Sawdust",
+    waste_arecanut_sheath: "Arecanut sheath",
+    waste_neem_seeds: "Neem seeds",
+    waste_corn_cobs: "Corn cobs",
+    waste_cotton_stalks: "Cotton stalks",
+    waste_coffee_husk: "Coffee husk",
+    
+    
+    // Stats & Header labels
+    weatherLabel: "Weather Advisory",
+    sowingSeasonLabel: "Current Sowing Season",
+    mandiLabel: "Fair Ragi Avg",
+    voiceAssistantLabel: "Voice Assistant",
+
+    // Dashboard Cards
+    diagTitle: "Crop Disease Analyser",
+    diagDesc: "Upload a photo of a leaf or crop problem to diagnose issues instantly and get organic treatments.",
+    diagLink: "Scan Crop Now",
+    mandiTitle: "Live Mandi Prices",
+    mandiDesc: "Monitor live prices of crops across Karnataka APMCs. View historical 7-day average trends.",
+    mandiLink: "Check Market Rates",
+    marketTitle: "Direct Marketplace",
+    marketDesc: "Sell your crop yield directly to buyers at verified fair prices, completely eliminating brokers.",
+    marketLink: "Buy or Sell Crops",
+    weatherTitle: "Weather & Calendar",
+    weatherDesc: "Get localized daily rainfall advisories and follow South India's optimal seasonal sowing calendar.",
+    weatherLink: "View Sowing Plan",
+    soilTitle: "Soil Health Advisor",
+    soilDesc: "Input Nitrogen, Phosphorus, Potassium and pH levels to get customized biological fertilizing guides.",
+    soilLink: "Check Soil Health",
+    schemesTitle: "Government Schemes",
+    schemesDesc: "Browse local subsidies and agricultural programs (e.g. PM-KISAN, Krishi Bhagya) with application paths.",
+    schemesLink: "Search Subsidies",
+
+    // Voice Assistant UI
+    voiceActive: "Voice Assistant Active",
+    voiceIdle: "Click Mic for Voice Commands",
+    voiceListening: "Listening... Speak now",
+    voiceBtnHelp: "Voice Control",
+    voiceCommandList: "Try saying: 'Check Mandi', 'Scan Crop', 'Show Weather', 'ಮಾರುಕಟ್ಟೆ', 'ಹವಾಮಾನ ಸಲಹೆ'",
+    closeVoiceBtn: "Cancel",
+    
+    // Disease Analyser Panel
+    selectCropHint: "Select Crop (for 100% accurate diagnosis):",
+    "crop-auto": "Auto-Detect",
+    "crop-tomato": "Tomato",
+    "crop-paddy": "Paddy",
+    "crop-ragi": "Ragi",
+    "crop-onion": "Onion",
+    "crop-corn": "Corn",
+    uploadTitle: "Diagnose Crop Disease",
+    uploadSubtitle: "Take a photo or upload an image of the diseased crop for instant AI solutions.",
+    dragDropText: "Drag & drop crop image here, or",
+    browseFiles: "Browse Files",
+    cameraBtn: "Use Camera",
+    captureBtn: "Capture Photo",
+    cancelCamBtn: "Close Camera",
+    scanStartBtn: "Analyse Crop with Krishi AI",
+    severity: "Severity Level",
+    low: "Low",
+    medium: "Medium",
+    high: "High",
+    critical: "Critical",
+    diagnosing: "Krishi AI is examining your crop...",
+    scanStep1: "Scanning image features...",
+    scanStep2: "Detecting crop variety...",
+    scanStep3: "Analysing pest & pathogen spots...",
+    scanStep4: "Consulting Krishi AI knowledge base...",
+    scanDone: "Diagnosis completed!",
+    voiceReadout: "Read Aloud (Voice)",
+    stopVoice: "Stop Audio",
+    
+    // Analysis Result Fields
+    cropType: "Identified Crop",
+    detectedDisease: "Detected Disease",
+    diseaseCauses: "Root Cause & Symptoms",
+    biologicalTreatment: "Organic / Natural Solutions (Recommended)",
+    chemicalTreatment: "Chemical Control (Use with caution)",
+    preventiveMeasures: "Future Prevention Advisory",
+    noImageError: "Please upload or capture an image first!",
+    noImageTitle: "Ready for Diagnostics",
+    noImageDesc: "Once you select or capture a crop photo, the deep learning analysis will render here.",
+    
+    // Mandi Price Panel
+    mandiHeader: "Live Mandi Prices",
+    mandiSubtitle: "Real-time crop rates in local Karnataka markets. Prices fluctuate actively.",
+    searchPlaceholder: "Search crops or markets...",
+    filterMarket: "All Markets",
+    filterCrop: "All Crops",
+    liveTicker: "LIVE TICKER",
+    tableCrop: "Crop",
+    tableMarket: "Market",
+    tablePrice: "Price (Per Quintal)",
+    tableTrend: "Trend (24h)",
+    priceHistoryHeader: "7-Day Price Trend",
+    selectCropToView: "Select any crop in the table above to view price trend charts.",
+    rupeesPerQuintal: "₹/Quintal",
+    fairListingAdvice: "Fair Listing Average",
+    
+    // Marketplace Panel
+    marketHeader: "Direct Farmer Marketplace",
+    marketSubtitle: "Fair trade buying & selling options with no middlemen",
+    sellHarvest: "List Your Harvest (For Farmers)",
+    buyHarvest: "Browse Active Listings (For Buyers)",
+    formCropName: "Crop Name",
+    formVariety: "Crop Variety",
+    formQuantity: "Quantity (Quintals)",
+    formPrice: "Expected Price (₹ per Quintal)",
+    formLocation: "Market Location",
+    formContact: "Phone / Contact Number",
+    formSubmit: "Submit Sale Listing",
+    fairPriceIndicator: "Fair Price Advisor",
+    fairPriceGood: "Fair price aligned with Mandi averages!",
+    fairPriceHigh: "Warning: Your price is higher than current Mandi average. It might take longer to sell.",
+    fairPriceLow: "Caution: Your price is very low! Don't sell yourself short.",
+    noActiveListings: "No crop listings available in this category yet. Be the first to list!",
+    callFarmer: "Call Seller",
+    chatBuyer: "Chat on WhatsApp",
+    listingAddedSuccess: "Harvest listed successfully! Buyers can now contact you directly.",
+    
+    // Weather & Calendar Panel
+    weatherHeader: "Weather & Crop Calendar",
+    weatherSubtitle: "Localized farming advisories & rain alerts",
+    rainfallProb: "Temperature",
+    humidity: "Humidity",
+    windSpeed: "Wind Speed",
+    sowingSeason: "Current Sowing Season",
+    cropCalendarHeader: "Karnataka Sowing Calendar",
+    cropCalendarSub: "Optimal sowing times and companion plants",
+    kharifSeason: "Kharif Season (June - October)",
+    rabiSeason: "Rabi Season (October - March)",
+    zaidSeason: "Zaid Summer (March - June)",
+    weatherAdvisoryAlert: "Farming Alert",
+    descKharif: "Ideal for rain-fed crops. Sowing starts right after first monsoon rains.",
+    descRabi: "Thrives on residual soil moisture and cool dew mornings.",
+    descZaid: "Short crops requiring consistent sunshine and warm climates under irrigation.",
+    weatherCropAdvisoryHeader: "Weather Crop Advisory",
+    weatherCropAdvisoryText: "High rain probability. Please avoid applying chemical fertilizers or nitrogen today as they will wash off. Clean drain channels in sugarcane fields to avoid waterlogging.",
+    expertGuidelinesPill: "EXPERT GUIDELINES RECOMMENDED",
+    twinTitle: "Digital Twin Farm",
+    twinDesc: "Simulate and visualize your crop fields, soil parameters, and water flow in interactive 3D.",
+    twinLink: "Launch 3D Model",
+    ttAcreage: "Acreage",
+    twinHeader: "Digital Twin Farm Simulator",
+    twinSubtitle: "Bilingual interactive 3D farm model generated dynamically from your profile settings.",
+    configTitle: "Farm Profile Configurator",
+    btnUpdateTwin: "Sync & Update 3D Twin",
+    twinAcreageBadge: "Acreage Scale",
+    ttCrop: "Crop",
+    ttStatus: "Status",
+    ttYield: "Exp. Yield",
+    ttWater: "Water Flow",
+    ttProfit: "Est. Profit",
+    statYield: "Estimated Yield",
+    statWater: "Estimated Water",
+    statProfit: "Expected Profit",
+    unitAc: "ac",
+    lblExperience: "Farming Experience (Years)",
+    lblIncome: "Annual Farming Income",
+    lblMachinery: "Machinery Owned",
+    lblSoilType: "Soil Texture Type",
+    lblWaterSource: "Water / Irrigation Source",
+    btnFetchGPS: "Fetch Live GPS Coordinates",
+    lblDuration: "Cultivation Duration (Months)",
+    ttWaterFlow: "Water Flow Rate",
+    ttEfficiency: "Channel Efficiency",
+    ttDailyUsage: "Daily Usage Estimate",
+    aiYieldPredictHeader: "AI Yield & Performance Analytics",
+    aiWaterAnalyticsHeader: "AI Smart Water Irrigation Advisories",
+    aiProfitForecastHeader: "AI Profit & SaaS Cost Forecast",
+    aiLoanEligibilityHeader: "AI Dynamic Loan Eligibility",
+    aiMultiCropHeader: "AI Multi-Cropping & Companion Planting",
+    aiRiskAnalysisHeader: "AI Weather & Pest Pathogen Risk Analysis",
+    btnSyncTwin: "Sync Data & Update AI Twin",
+    unitTons: "Tons",
+    unitWater: "L/s",
+    storeLocatorHeader: "Nearest Agri-Input Retailers & Estimated Costs",
+    gpsActive: "GPS Active",
+    profileLocationFallback: "District Profile Fallback",
+    itemLabel: "Suggested Product",
+    priceLabel: "Est. Price",
+    distanceLabel: "Distance",
+    getDirections: "Get Directions",
+    noStoresFound: "No stores found nearby.",
+    
+    // Soil NPK Advisor Panel
+    soilHeader: "Soil Health & Fertilizer Advisor",
+    soilSubtitle: "Input your soil composition for tailored crop and NPK fertilizer advice",
+    soilTypeLabel: "Soil Texture Type",
+    soilNitrogen: "Nitrogen (N) - Target 140",
+    soilPhosphorus: "Phosphorus (P) - Target 60",
+    soilPotassium: "Potassium (K) - Target 100",
+    soilPH: "Soil pH (Acidity)",
+    calcSoilBtn: "Get Soil Health Recommendations",
+    soilReportTitle: "Soil Diagnostics & Action Plan",
+    soilStatusGood: "Nutrient levels are well balanced!",
+    soilStatusDeficient: "Attention: Deficiencies detected.",
+    soilRepPlaceholderH: "Configure Parameters",
+    soilRepPlaceholderP: "Slide the nutrients above to match your recent soil card values, then generate details.",
+    soilCropsHeading: "Highly Suitable Crops",
+    soilNPKAdvice: "Fertilization Strategy",
+    soilOrganicBoost: "Organic Matter Enhancement",
+    
+    // Govt Schemes Panel
+    schemesHeader: "Government Schemes Portal",
+    schemesSubtitle: "Financial assistance and subsidies for Karnataka farmers",
+    searchSchemes: "Search schemes...",
+    schemeEligibility: "Eligibility Criteria",
+    schemeBenefits: "Financial & General Benefits",
+    schemeApply: "How to Apply",
+    schemeLink: "Official Portal Link",
+    
+    // Chatbot UI
+    botName: "Krishi AI Assistant",
+    botPlaceholder: "Ask me anything about crops, pests, or Mandi...",
+    botIntro: "Hello! I am Krishi AI. I can answer any questions related to crop health, diseases, Mandi rates, and soil. How can I help you today?",
+    botGuardrailMsg: "I am designed to assist with agricultural, crop, disease, and Mandi questions only. Let's keep our focus on prosperous farming!",
+    
+    // Settings Panel
+    settingsHeader: "Configuration Panel",
+    settingsSubtitle: "Manage your local settings, change the display theme, and save your AI Developer Key safely.",
+    apiPlaceholder: "Enter your AI Developer Key here...",
+    apiSaveBtn: "Save Settings",
+    apiSavedMsg: "API settings updated successfully!",
+    demoModeActive: "DEMO MODE ACTIVE (Using high-fidelity diagnostic simulation. Add an API Key above for live AI diagnostics.)",
+    apiKeyFound: "AI Developer Key loaded successfully. Live AI analysis is ready!",
+    themeMode: "Display Theme",
+    lightMode: "Light Earthy",
+    darkMode: "Deep Charcoal",
+    apiLabel: "AI Developer Key",
+    
+    // Calendar Chips
+    chipRagi: "Ragi (Finger Millet)",
+    chipPaddy: "Paddy (Rice)",
+    chipGroundnut: "Groundnut",
+    chipTurmeric: "Turmeric",
+    chipJowar: "Jowar (Sorghum)",
+    chipChickpea: "Chickpea (Bengal Gram)",
+    chipMustard: "Mustard",
+    chipSunflower: "Sunflower",
+    chipWatermelon: "Watermelon",
+    chipCucumber: "Cucumber",
+    chipPulses: "Pulses (Moong/Urad)",
+    chipFodder: "Green Fodder",
+    
+    // Farm Labor & Equipment Hub Strings
+    hubTitle: "Labor & Rental Hub",
+    hubDesc: "Find agricultural jobs, hire nearby laborers, or rent and book farming machinery.",
+    hubLink: "Open Hub Now",
+    hubHeader: "Farm Labor & Equipment Hub",
+    hubSubtitle: "Direct Peer-to-Peer Agricultural Labor Exchange & Machinery Rentals",
+    tabLaborExchange: "Farm Labor Exchange",
+    tabEquipmentRental: "Equipment Rentals",
+    boardReadyToWork: "Ready to Work (Laborers)",
+    boardReadyToHire: "Ready to Hire (Farm Owners)",
+    postLaborAvailability: "Post Work Availability",
+    postHiringNeed: "Post Hiring Requirement",
+    postEquipment: "List Rental Equipment",
+    availableEquipment: "Available Machinery & Tools",
+    experienceLevel: "Experience Level",
+    expectedWage: "Expected Wage",
+    wageOffered: "Wage Offered",
+    laborersNeeded: "Laborers Needed",
+    urgencyLevel: "Urgency Level",
+    condition: "Condition",
+    brandModel: "Brand & Model",
+    rentalCost: "Rental Cost",
+    rentalPeriod: "Rate Period",
+    laborPostedSuccess: "Labor availability registered successfully!",
+    hirePostedSuccess: "Hiring requirement posted successfully!",
+    equipmentPostedSuccess: "Rental equipment listed successfully!",
+    filterWorkType: "Filter Work Type",
+    filterEquipmentType: "Filter Equipment",
+    filterWageRange: "Max Wage",
+    filterPriceRange: "Max Cost",
+    availStatus: "Status",
+    btnBookNow: "Book Now",
+    btnCallNow: "Call Now",
+    btnMessage: "Message",
+    
+    // Labor Droplist Work types
+    labor_harvesting: "Harvesting",
+    labor_planting: "Planting",
+    labor_irrigation: "Irrigation",
+    labor_driving: "Tractor Driving",
+    labor_spraying: "Pesticide Spraying",
+    labor_loading: "Loading/Unloading",
+    labor_weeding: "Weeding",
+    labor_fertilizer: "Fertilizer Application",
+    labor_sugarcane: "Sugarcane Cutting",
+    labor_nursery: "Nursery Work",
+    
+    // Equipment Droplist Types
+    equip_tractor: "Tractor",
+    equip_rotavator: "Rotavator",
+    equip_harvester: "Harvester",
+    equip_tiller: "Power Tiller",
+    equip_tanker: "Water Tanker",
+    equip_drill: "Seed Drill",
+    equip_sprayer: "Sprayer",
+    equip_cultivator: "Cultivator",
+    equip_plough: "Plough",
+    equip_thresher: "Thresher",
+    equip_minitruck: "Mini Truck",
+    equip_drone: "Drone Sprayer"
+  },
+  kn: {
+    appName: "ಕೃಷಿ ಸೇತು",
+    appSubtitle: "ರೈತರ ಪರಿಪೂರ್ಣ ಒಡನಾಡಿ",
+    dashboardHeader: "ರೈತ ಸ್ನೇಹಿ ಮುಖಪುಟ",
+    dashboardSubtitle: "ತಕ್ಷಣ ಪ್ರಾರಂಭಿಸಲು ಕೆಳಗಿನ ಯಾವುದೇ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ. ಸಂಪೂರ್ಣ ಧ್ವನಿ ಆದೇಶಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ.",
+    langToggle: "English",
+    home: "ಮುಖಪುಟ",
+    diseaseAnalyser: "ಸಸ್ಯ ರೋಗ ವಿಶ್ಲೇಷಣೆ",
+    mandiPrices: "ಮಂಡಿ ಬೆಲೆಗಳು",
+    marketplace: "ರೈತ ಮಾರುಕಟ್ಟೆ",
+    weatherCalendar: "ಹವಾಮಾನ ಸಲಹೆ",
+    soilAdvisor: "ಮಣ್ಣಿನ ತಪಾಸಣೆ",
+    govSchemes: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು",
+    settings: "ಸಂರಚನೆಗಳು",
+    agriRecycler: "ಕೃಷಿ ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ",
+    recyclerHeader: "ಕೃಷಿ ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ ಕೇಂದ್ರ",
+    recyclerSubtitle: "ಕೃಷಿ ತ್ಯಾಜ್ಯವನ್ನು ಸಾವಯವ ಕಾಂಪೋಸ್ಟ್ ಮತ್ತು ಜೈವಿಕ ಅನಿಲ ಪ್ಲಾಂಟ್‌ಗಳಿಗೆ ನೇರವಾಗಿ ಮಾರಿ ಲಾಭ ಗಳಿಸಿ.",
+    postWaste: "ತ್ಯಾಜ್ಯ ಮಾರಾಟ ಪಟ್ಟಿ ಮಾಡಿ",
+    wasteListings: "ಲಭ್ಯವಿರುವ ತ್ಯಾಜ್ಯಗಳು",
+    cardRecyclerTitle: "ಕೃಷಿ ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ",
+    cardRecyclerDesc: "ದಲ್ಲಾಳಿಗಳಿಲ್ಲದೆ ನಿಮ್ಮ ಕೃಷಿ ಕಸವನ್ನು (ಸಗಣಿ, ಹೊಟ್ಟು, ಒಣಹುಲ್ಲು) ಜೈವಿಕ ಇಂಧನ ಕಾರ್ಖಾನೆಗಳಿಗೆ ಮಾರಿ ಲಾಭ ಗಳಿಸಿ.",
+    cardRecyclerLink: "ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ ಮಾಡಿ",
+    recyclerTitle: "ಕೃಷಿ ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ",
+    recyclerDesc: "ದಲ್ಲಾಳಿಗಳಿಲ್ಲದೆ ನಿಮ್ಮ ಕೃಷಿ ಕಸವನ್ನು (ಸಗಣಿ, ಹೊಟ್ಟು, ಒಣಹುಲ್ಲು) ಜೈವಿಕ ಇಂಧನ ಕಾರ್ಖಾನೆಗಳಿಗೆ ಮಾರಿ ಲಾಭ ಗಳಿಸಿ.",
+    recyclerLink: "ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ ಮಾಡಿ",
+    searchWastePlaceholder: "ತ್ಯಾಜ್ಯದ ಹೆಸರು ಹುಡುಕಿ...",
+    wasteTypeLabel: "ತ್ಯಾಜ್ಯದ ವಿಧ",
+    formWasteQty: "ಪ್ರಮಾಣ",
+    formWastePrice: "ನಿರೀಕ್ಷಿತ ಬೆಲೆ (₹ ಪ್ರತಿ ಯೂನಿಟ್‌ಗೆ)",
+    formWastePriceUnit: "ಯೂನಿಟ್",
+    formWasteSubmit: "ತ್ಯಾಜ್ಯದ ಪಟ್ಟಿಯನ್ನು ಸಲ್ಲಿಸಿ",
+    selectWasteHint: "ಮರುಬಳಕೆ ಮಾಡಬಹುದಾದ ಕೃಷಿ ತ್ಯಾಜ್ಯವನ್ನು ಆರಿಸಿ:",
+    wastePostedSuccess: "ಕೃಷಿ ತ್ಯಾಜ್ಯವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ! ಖರೀದಿದಾರರು ನಿಮ್ಮನ್ನು ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಬಹುದು.",
+    waste_cow_dung: "ಹಸುವಿನ ಸಗಣಿ (Cow dung)",
+    waste_cow_urine: "ಗೋಮೂತ್ರ (Cow urine)",
+    waste_cocopeat: "ಕೊಕೊಪಿಟ್ (Cocopeat)",
+    waste_sugarcane_bagasse: "ಕಬ್ಬಿನ ಚರಟ (Sugarcane bagasse)",
+    waste_rice_husk: "ಭತ್ತದ ಹೊಟ್ಟು (Rice husk)",
+    waste_paddy_straw: "ಭತ್ತದ ಒಣಹುಲ್ಲು (Paddy straw)",
+    waste_coconut_shells: "ತೆಂಗಿನ ಚಿಪ್ಪುಗಳು (Coconut shells)",
+    waste_banana_stems: "ಬಾಳೆ ಕಾಂಡಗಳು (Banana stems)",
+    waste_groundnut_shells: "ಕಡಲೆಕಾಯಿ ಸಿಪ್ಪೆ (Groundnut shells)",
+    waste_dry_leaves: "ಒಣ ಎಲೆಗಳು (Dry leaves)",
+    waste_vegetable_waste: "ತರಕಾರಿ ತ್ಯಾಜ್ಯ (Vegetable waste)",
+    waste_fruit_peels: "ಹಣ್ಣಿನ ಸಿಪ್ಪೆಗಳು (Fruit peels)",
+    waste_poultry_litter: "ಕೋಳಿ ಗೊಬ್ಬರ ತ್ಯಾಜ್ಯ (Poultry litter)",
+    waste_sawdust: "ಮರದ ಪುಡಿ (Sawdust)",
+    waste_arecanut_sheath: "ಅಡಿಕೆ ಹಾಳೆ (Arecanut sheath)",
+    waste_neem_seeds: "ಬೇವಿನ ಬೀಜಗಳು (Neem seeds)",
+    waste_corn_cobs: "ಮೆಕ್ಕೆಜೋಳದ ತೆನೆ ದಿಂಡು (Corn cobs)",
+    waste_cotton_stalks: "ಹತ್ತಿ ಗಿಡದ ಕಡ್ಡಿಗಳು (Cotton stalks)",
+    waste_coffee_husk: "ಕಾಫಿ ಹೊಟ್ಟು (Coffee husk)",
+    
+    
+    // Stats & Header labels
+    weatherLabel: "ಹವಾಮಾನ ಮುನ್ನೆಚ್ಚರಿಕೆ",
+    sowingSeasonLabel: "ಪ್ರಸ್ತುತ ಬಿತ್ತನೆ ಹಂಗಾಮು",
+    mandiLabel: "ರಾಗಿ ನ್ಯಾಯಯುತ ಸರಾಸರಿ",
+    voiceAssistantLabel: "ಧ್ವನಿ ಸಹಾಯ",
+
+    // Dashboard Cards
+    diagTitle: "ಸಸ್ಯ ರೋಗ ವಿಶ್ಲೇಷಣೆ",
+    diagDesc: "ಬೆಳೆಗಳಿಗೆ ಬರುವ ಕೀಟ ಅಥವಾ ರೋಗ ಬಾಧೆಗಳನ್ನು ತಕ್ಷಣವೇ ಪತ್ತೆ ಹಚ್ಚಿ, ನೈಸರ್ಗಿಕ ಮತ್ತು ಸಾವಯವ ಪರಿಹಾರಗಳನ್ನು ಪಡೆಯಲು ಎಲೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
+    diagLink: "ಈಗಲೇ ರೋಗ ವಿಶ್ಲೇಷಿಸಿ",
+    mandiTitle: "ಲೈವ್ ಮಂಡಿ ಬೆಲೆಗಳು",
+    mandiDesc: "ಕರ್ನಾಟಕದ ಪ್ರಮುಖ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿನ ದೈನಂದಿನ ಬೆಳೆಗಳ ನೈಜ ದರಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ್ತು ೭ ದಿನಗಳ ಬೆಲೆಯ ಪ್ರವೃತ್ತಿ ತಿಳಿದುಕೊಳ್ಳಿ.",
+    mandiLink: "ಮಾರುಕಟ್ಟೆ ದರ ಪರಿಶೀಲಿಸಿ",
+    marketTitle: "ರೈತರ ನೇರ ಮಾರುಕಟ್ಟೆ",
+    marketDesc: "ದಲ್ಲಾಳಿಗಳ ಹಾವಳಿಯಿಲ್ಲದೆ ನಿಮ್ಮ ಬೆಳೆಗಳನ್ನು ಖರೀದಿದಾರರಿಗೆ ನೇರವಾಗಿ ನ್ಯಾಯಯುತ ಬೆಲೆಯಲ್ಲಿ ಮಾರಾಟ ಮಾಡಿ.",
+    marketLink: "ಬೆಳೆಗಳನ್ನು ಕೊಳ್ಳಿ ಅಥವಾ ಮಾರಿ",
+    weatherTitle: "ಹವಾಮಾನ ಮತ್ತು ಬೆಳೆ ಕ್ಯಾಲೆಂಡರ್",
+    weatherDesc: "ದೈನಂದಿನ ಸ್ಥಳೀಯ ಮಳೆಯ ಮುನ್ಸೂಚನೆ ವಿವರಗಳು ಮತ್ತು ದಕ್ಷಿಣ ಭಾರತದ ಸೂಕ್ತ ಬಿತ್ತನೆ ಕ್ಯಾಲೆಂಡರ್ ಅನುಸರಿಸಿ.",
+    weatherLink: "ಬಿತ್ತನೆ ಯೋಜನೆ ನೋಡಿ",
+    soilTitle: "ಮಣ್ಣಿನ ಆರೋಗ್ಯ ಸಲಹೆಗಾರ",
+    soilDesc: "ನಿಮ್ಮ ಮಣ್ಣಿನ ಸಾರಜನಕ, ರಂಜಕ, ಪೊಟ್ಯಾಸಿಯಮ್ ಮತ್ತು ರಸಸಾರ (pH) ಮಟ್ಟಗಳನ್ನು ನಮೂದಿಸಿ ಸೂಕ್ತ ಗೊಬ್ಬರದ ಸಲಹೆ ಪಡೆಯಿರಿ.",
+    soilLink: "ಮಣ್ಣಿನ ಆರೋಗ್ಯ ಪರೀಕ್ಷಿಸಿ",
+    schemesTitle: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು",
+    schemesDesc: "ರೈತರಿಗಾಗಿ ಲಭ್ಯವಿರುವ ಪ್ರಮುಖ ಯೋಜನೆಗಳು ಮತ್ತು ಬಾವಿ ಕೊರೆಯಿಸುವ ಸಹಾಯಧನಗಳ (ಉದಾ: ಪಿಎಂ-ಕಿಸಾನ್, ಗಂಗಾ ಕಲ್ಯಾಣ) ಮಾಹಿತಿ ಪಡೆಯಿರಿ.",
+    schemesLink: "ಸಹಾಯಧನಗಳನ್ನು ಹುಡುಕಿ",
+
+    // Voice Assistant UI
+    voiceActive: "ಧ್ವನಿ ಸಹಾಯ ಸಕ್ರಿಯವಾಗಿದೆ",
+    voiceIdle: "ಧ್ವನಿ ಆದೇಶಗಳಿಗಾಗಿ ಮೈಕ್ ಕ್ಲಿಕ್ ಮಾಡಿ",
+    voiceListening: "ಕೇಳಿಸಿಕೊಳ್ಳುತ್ತಿದೆ... ಈಗ ಮಾತನಾಡಿ",
+    voiceBtnHelp: "ಧ್ವನಿ ನಿಯಂತ್ರಣ",
+    voiceCommandList: "ಹೀಗೆ ಹೇಳಿ: 'ಮಂಡಿ ಬೆಲೆ', 'ರೋಗ ತಪಾಸಣೆ', 'ಹವಾಮಾನ ನೋಡು', 'ಖಾಯಿಲೆ', 'ಚಾಟ್ ಮಾಡಿ'",
+    closeVoiceBtn: "ರದ್ದುಮಾಡು",
+    
+    // Disease Analyser Panel
+    selectCropHint: "ಬೆಳೆಯನ್ನು ಆರಿಸಿ (೧೦೦% ನಿಖರವಾದ ರೋಗ ಪತ್ತೆಗಾಗಿ):",
+    "crop-auto": "ಸ್ವಯಂ ಪತ್ತೆ",
+    "crop-tomato": "ಟೊಮೆಟೊ",
+    "crop-paddy": "ಭತ್ತ",
+    "crop-ragi": "ರಾಗಿ",
+    "crop-onion": "ಈರುಳ್ಳಿ",
+    "crop-corn": "ಮೆಕ್ಕೆಜೋಳ",
+    uploadTitle: "ಬೆಳೆ ರೋಗ ಪತ್ತೆ ಹಚ್ಚಿ",
+    uploadSubtitle: "ತಕ್ಷಣದ ಕೃಷಿ AI ಪರಿಹಾರಗಳಿಗಾಗಿ ರೋಗಗ್ರಸ್ತ ಬೆಳೆಯ ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ ಅಥವಾ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
+    dragDropText: "ಬೆಳೆಯ ಚಿತ್ರವನ್ನು ಇಲ್ಲಿ ಎಳೆಯಿರಿ, ಅಥವಾ",
+    browseFiles: "ಫೈಲ್‌ಗಳನ್ನು ಹುಡುಕಿ",
+    cameraBtn: "ಕ್ಯಾಮೆರಾ ಬಳಸಿ",
+    captureBtn: "ಫೋಟೋ ತೆಗೆಯಿರಿ",
+    cancelCamBtn: "ಕ್ಯಾಮೆರಾ ಮುಚ್ಚಿ",
+    scanStartBtn: "ಕೃಷಿ AI ಮೂಲಕ ರೋಗ ವಿಶ್ಲೇಷಿಸಿ",
+    severity: "ತೀವ್ರತೆಯ ಮಟ್ಟ",
+    low: "ಕಡಿಮೆ",
+    medium: "ಮಧ್ಯಮ",
+    high: "ಹೆಚ್ಚು",
+    critical: "ಅಪಾಯಕಾರಿ",
+    diagnosing: "ಕೃಷಿ AI ನಿಮ್ಮ ಬೆಳೆಯನ್ನು ಪರಿಶೀಲಿಸುತ್ತಿದೆ...",
+    scanStep1: "ಚಿತ್ರದ ಲಕ್ಷಣಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾಗುತ್ತಿದೆ...",
+    scanStep2: "ಬೆಳೆಯ ತಳಿಯನ್ನು ಗುರುತಿಸಲಾಗುತ್ತಿದೆ...",
+    scanStep3: "ಕೀಟ ಮತ್ತು ರೋಗಾಣು ತಾಣಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...",
+    scanStep4: "ಕೃಷಿ AI ಜ್ಞಾನಕೋಶವನ್ನು ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ...",
+    scanDone: "ರೋಗ ಪತ್ತೆ ಪೂರ್ಣಗೊಂಡಿದೆ!",
+    voiceReadout: "ಓದಿ ಹೇಳಿ (ಧ್ವನಿ)",
+    stopVoice: "ಧ್ವನಿ ನಿಲ್ಲಿಸಿ",
+    
+    // Analysis Result Fields
+    cropType: "ಗುರುತಿಸಲಾದ ಬೆಳೆ",
+    detectedDisease: "ಪತ್ತೆಯಾದ ರೋಗ",
+    diseaseCauses: "ಮೂಲ ಕಾರಣ ಮತ್ತು ಲಕ್ಷಣಗಳು",
+    biologicalTreatment: "ಸಾವಯವ / ನೈಸರ್ಗಿಕ ಪರಿಹಾರಗಳು (ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ)",
+    chemicalTreatment: "ರಾಸಾಯನಿಕ ನಿಯಂತ್ರಣ (ಎಚ್ಚರಿಕೆಯಿಂದ ಬಳಸಿ)",
+    preventiveMeasures: "ಭವಿಷ್ಯದ ಮುನ್ನೆಚ್ಚರಿಕೆ ಸಲಹೆಗಳು",
+    noImageError: "ದಯವಿಟ್ಟು ಮೊದಲು ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ!",
+    noImageTitle: "ರೋಗ ತಪಾಸಣೆಗೆ ಸಿದ್ಧವಾಗಿದೆ",
+    noImageDesc: "ನೀವು ಬೆಳೆಯ ಎಲೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿದಾಗ ಅಥವಾ ತೆಗೆದಾಗ, ಕೃಷಿ AI ವಿಶ್ಲೇಷಣೆಯ ವಿವರಗಳು ಇಲ್ಲಿ ಮೂಡುತ್ತವೆ.",
+    
+    // Mandi Price Panel
+    mandiHeader: "ಲೈವ್ ಮಂಡಿ ಬೆಲೆಗಳು",
+    mandiSubtitle: "ಕರ್ನಾಟಕದ ಸ್ಥಳೀಯ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಬೆಳೆಗಳ ನೈಜ-ಸಮಯದ ದರಗಳು. ಬೆಲೆಗಳು ಸಕ್ರಿಯವಾಗಿ ಬದಲಾಗುತ್ತವೆ.",
+    searchPlaceholder: "ಬೆಳೆ ಅಥವಾ ಮಾರುಕಟ್ಟೆ ಹುಡುಕಿ...",
+    filterMarket: "ಎಲ್ಲಾ ಮಾರುಕಟ್ಟೆಗಳು",
+    filterCrop: "ಎಲ್ಲಾ ಬೆಳೆಗಳು",
+    liveTicker: "ಲೈವ್ ದರಗಳು",
+    tableCrop: "ಬೆಳೆ",
+    tableMarket: "ಮಾರುಕಟ್ಟೆ",
+    tablePrice: "ಬೆಲೆ (ಪ್ರತಿ ಕ್ವಿಂಟಾಲ್‌ಗೆ)",
+    tableTrend: "ಬದಲಾವಣೆ (24 ಗಂ)",
+    priceHistoryHeader: "7-ದಿನಗಳ ಬೆಲೆಯ ಪ್ರವೃತ್ತಿ",
+    selectCropToView: "ಬೆಲೆ ಪ್ರವೃತ್ತಿ ಚಾರ್ಟ್ ನೋಡಲು ಮೇಲಿನ ಕೋಷ್ಟಕದಲ್ಲಿ ಯಾವುದೇ ಬೆಳೆಯನ್ನು ಆರಿಸಿ.",
+    rupeesPerQuintal: "₹/ಕ್ವಿಂಟಾಲ್",
+    fairListingAdvice: "ನ್ಯಾಯಯುತ ಮಾರುಕಟ್ಟೆ ಸರಾಸರಿ",
+    
+    // Marketplace Panel
+    marketHeader: "ರೈತರ ನೇರ ಮಾರುಕಟ್ಟೆ",
+    marketSubtitle: "ದಲ್ಲಾಳಿಗಳಿಲ್ಲದೆ ಮುಕ್ತ ಮತ್ತು ನ್ಯಾಯಯುತ ಖರೀದಿ ಮತ್ತು ಮಾರಾಟದ ಅವಕಾಶಗಳು",
+    sellHarvest: "ನಿಮ್ಮ ಬೆಳೆಯನ್ನು ಪಟ್ಟಿ ಮಾಡಿ (ರೈತರಿಗಾಗಿ)",
+    buyHarvest: "ಲಭ್ಯವಿರುವ ಬೆಳೆಗಳು (ಖರೀದಿದಾರರಿಗಾಗಿ)",
+    formCropName: "ಬೆಳೆಯ ಹೆಸರು",
+    formVariety: "ಬೆಳೆಯ ತಳಿ",
+    formQuantity: "ಪ್ರಮಾಣ (ಕ್ವಿಂಟಾಲ್‌ಗಳಲ್ಲಿ)",
+    formPrice: "ನಿರೀಕ್ಷಿತ ಬೆಲೆ (₹ ಪ್ರತಿ ಕ್ವಿಂಟಾಲ್‌ಗೆ)",
+    formLocation: "ಮಾರುಕಟ್ಟೆ ಸ್ಥಳ",
+    formContact: "ದೂರವಾಣಿ / ಸಂಪರ್ಕ ಸಂಖ್ಯೆ",
+    formSubmit: "ಮಾರಾಟದ ಪಟ್ಟಿಯನ್ನು ಸಲ್ಲಿಸಿ",
+    fairPriceIndicator: "ನ್ಯಾಯಯುತ ಬೆಲೆ ಸಲಹೆಗಾರ",
+    fairPriceGood: "ನಿಮ್ಮ ಬೆಲೆಯು ಮಂಡಿ ಸರಾಸರಿಗೆ ಸಮನಾಗಿದೆ, ನ್ಯಾಯಯುತವಾಗಿದೆ!",
+    fairPriceHigh: "ಎಚ್ಚರಿಕೆ: ನಿಮ್ಮ ಬೆಲೆ ಮಂಡಿ ಸರಾಸರಿಗಿಂತ ಹೆಚ್ಚಾಗಿದೆ. ಮಾರಾಟವಾಗಲು ಸಮಯ ತೆಗೆದುಕೊಳ್ಳಬಹುದು.",
+    fairPriceLow: "ಸೂಚನೆ: ನಿಮ್ಮ ಬೆಲೆ ತುಂಬಾ ಕಡಿಮೆಯಾಗಿದೆ! ನಷ್ಟ ಮಾಡಿಕೊಳ್ಳಬೇಡಿ.",
+    noActiveListings: "ಈ ವರ್ಗದಲ್ಲಿ ಇನ್ನು ಯಾವುದೇ ಬೆಳೆಗಳ ಪಟ್ಟಿ ಲಭ್ಯವಿಲ್ಲ. ನಿಮ್ಮ ಬೆಳೆಯನ್ನು ಮೊದಲಿಗ ರಾಗಿ ನೋಂದಾಯಿಸಿ!",
+    callFarmer: "ಮಾರಾಟಗಾರರಿಗೆ ಕರೆ ಮಾಡಿ",
+    chatBuyer: "ವಾಟ್ಸಾಪ್‌ನಲ್ಲಿ ಚಾಟ್ ಮಾಡಿ",
+    listingAddedSuccess: "ಬೆಳೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ! ಖರೀದಿದಾರರು ನಿಮ್ಮನ್ನು ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಬಹುದು.",
+    
+    // Weather & Calendar Panel
+    weatherHeader: "ಹವಾಮಾನ ಮತ್ತು ಬೆಳೆ ಕ್ಯಾಲೆಂಡರ್",
+    weatherSubtitle: "ಸ್ಥಳೀಯ ಕೃಷಿ ಸಲಹೆಗಳು ಮತ್ತು ಮಳೆ ಮುನ್ನೆಚ್ಚರಿಕೆಗಳು",
+    rainfallProb: "ತಾಪಮಾನ",
+    humidity: "ಆರ್ದ್ರತೆ (ತೇವಾಂಶ)",
+    windSpeed: "ಗಾಳಿಯ ವೇಗ",
+    sowingSeason: "ಪ್ರಸ್ತುತ ಬಿತ್ತನೆ ಹಂಗಾಮು",
+    cropCalendarHeader: "ಕರ್ನಾಟಕ ಬಿತ್ತನೆ ಕ್ಯಾಲೆಂಡರ್",
+    cropCalendarSub: "ಬಿತ್ತನೆಗೆ ಸೂಕ್ತ ಸಮಯ ಮತ್ತು ಪೂರಕ ಸಸ್ಯಗಳು",
+    kharifSeason: "ಖಾರಿಫ್ ಹಂಗಾಮು (ಜೂನ್ - ಅಕ್ಟೋಬರ್)",
+    rabiSeason: "ರಬಿ ಹಂಗಾಮು (ಅಕ್ಟೋಬರ್ - ಮಾರ್ಚ್)",
+    zaidSeason: "ಬೇಸಿಗೆ ಹಂಗಾಮು (ಮಾರ್ಚ್ - ಜೂನ್)",
+    weatherAdvisoryAlert: "ಕೃಷಿ ಮುನ್ನೆಚ್ಚರಿಕೆ",
+    descKharif: "ಮಳೆಯಾಧಾರಿತ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತ. ಮೊದಲ ಮುಂಗಾರು ಮಳೆಯ ನಂತರ ಬಿತ್ತನೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.",
+    descRabi: "ಮಣ್ಣಿನಲ್ಲಿರುವ ತೇವಾಂಶ ಮತ್ತು ಮುಂಜಾನೆಯ ತಂಪಾದ ಇಬ್ಬನಿಯಲ್ಲಿ ಈ ಬೆಳೆಗಳು ಚೆನ್ನಾಗಿ ಬೆಳೆಯುತ್ತವೆ.",
+    descZaid: "ನೀರಾವರಿ ವ್ಯವಸ್ಥೆಯಡಿ ನಿರಂತರ ಸೂರ್ಯನ ಬೆಳಕು ಮತ್ತು ಬೆಚ್ಚಗಿನ ಹವಾಮಾನ ಬಯಸುವ ಅಲ್ಪಾವಧಿ ಬೆಳೆಗಳು.",
+    weatherCropAdvisoryHeader: "ಹವಾಮಾನ ಬೆಳೆ ಸಲಹೆ",
+    weatherCropAdvisoryText: "ಹೆಚ್ಚಿನ ಮಳೆಯ ಸಾಧ್ಯತೆ. ರಾಸಾಯನಿಕ ಗೊಬ್ಬರಗಳು ಅಥವಾ ಸಾರಜನಕವು ನೀರಿನಲ್ಲಿ ಕೊಚ್ಚಿ ಹೋಗುವುದರಿಂದ ಇಂದು ಅವುಗಳನ್ನು ಬಳಸುವುದನ್ನು ತಪ್ಪಿಸಿ. ಜಲಾವೃತವಾಗುವುದನ್ನು ತಡೆಯಲು ಕಬ್ಬಿನ ಗದ್ದೆಗಳಲ್ಲಿ ಬರಿದಾಗುವ ಚಾನಲ್‌ಗಳನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಿ.",
+    expertGuidelinesPill: "ತಜ್ಞರ ಮಾರ್ಗಸೂಚಿಗಳನ್ನು ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ",
+    twinTitle: "ಡಿಜಿಟಲ್ ಟ್ವಿನ್ ಫಾರ್ಮ್",
+    twinDesc: "ನಿಮ್ಮ ಬೆಳೆ ಕ್ಷೇತ್ರಗಳು, ಮಣ್ಣಿನ ನಿಯತಾಂಕಗಳು ಮತ್ತು ನೀರಿನ ಹರಿವನ್ನು ಸಂವಾದಾತ್ಮಕ 3D ಯಲ್ಲಿ ಅನುಕರಿಸಿ ಮತ್ತು ದೃಶ್ಯೀಕರಿಸಿ.",
+    twinLink: "3D ಮಾದರಿ ರನ್ ಮಾಡಿ",
+    ttAcreage: "ವಿಸ್ತೀರ್ಣ",
+    twinHeader: "ಡಿಜಿಟಲ್ ಟ್ವಿನ್ ಫಾರ್ಮ್ ಸಿಮ್ಯುಲೇಟರ್",
+    twinSubtitle: "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಕ್ರಿಯಾತ್ಮಕವಾಗಿ ರಚಿಸಲಾದ ದ್ವಿಭಾಷಾ ಸಂವಾದಾತ್ಮಕ 3D ಫಾರ್ಮ್ ಮಾದರಿ.",
+    configTitle: "ಫಾರ್ಮ್ ಪ್ರೊಫೈಲ್ ಕಾನ್ಫಿಗರೇಟರ್",
+    btnUpdateTwin: "3D ಟ್ವಿನ್ ಸಿಂಕ್ ಮಾಡಿ",
+    twinAcreageBadge: "ಎಕರೆ ಪ್ರಮಾಣ",
+    ttCrop: "ಬೆಳೆ",
+    ttStatus: "ಸ್ಥಿತಿ",
+    ttYield: "ನಿರೀಕ್ಷಿತ ಇಳುವರಿ",
+    ttWater: "ನೀರಿನ ಹರಿವು",
+    ttProfit: "ನಿರೀಕ್ಷಿತ ಲಾಭ",
+    statYield: "ಅಂದಾಜು ಇಳುವರಿ",
+    statWater: "ಅಂದಾಜು ನೀರು",
+    statProfit: "ನಿರೀಕ್ಷಿತ ಲಾಭ",
+    unitAc: "ಎಕರೆ",
+    lblExperience: "ಕೃಷಿ ಅನುಭವ (ವರ್ಷಗಳು)",
+    lblIncome: "ವಾರ್ಷಿಕ ಕೃಷಿ ಆದಾಯ",
+    lblMachinery: "ಹೊಂದಿರುವ ಯಂತ್ರೋಪಕರಣಗಳು",
+    lblSoilType: "ಮಣ್ಣಿನ ವಿಧ",
+    lblWaterSource: "ನೀರು / ನೀರಾವರಿ ಮೂಲ",
+    btnFetchGPS: "ಲೈವ್ ಜಿಪಿಎಸ್ ಪಡೆಯಿರಿ",
+    lblDuration: "ಬೆಳೆ ಬೆಳೆಯುವ ಅವಧಿ (ತಿಂಗಳುಗಳು)",
+    ttWaterFlow: "ನೀರಿನ ಹರಿವು ದರ",
+    ttEfficiency: "ಕಾಲುವೆ ದಕ್ಷತೆ",
+    ttDailyUsage: "ದೈನಂದಿನ ಬಳಕೆ ಅಂದಾಜು",
+    aiYieldPredictHeader: "AI ಇಳುವರಿ ಮತ್ತು ಕಾರ್ಯಕ್ಷಮತೆ ವಿಶ್ಲೇಷಣೆ",
+    aiWaterAnalyticsHeader: "AI ಸ್ಮಾರ್ಟ್ ನೀರಾವರಿ ಸಲಹೆಗಳು",
+    aiProfitForecastHeader: "AI ಲಾಭ ಮತ್ತು ವೆಚ್ಚದ ಮುನ್ಸೂಚನೆ",
+    aiLoanEligibilityHeader: "AI ಸಾಲದ ಅರ್ಹತೆಯ ಅಂದಾಜು",
+    aiMultiCropHeader: "AI ಬಹು-ಬೆಳೆ ಮತ್ತು ಪೂರಕ ಕೃಷಿ ಸಲಹೆ",
+    aiRiskAnalysisHeader: "AI ಹವಾಮಾನ ಮತ್ತು ಕೀಟ ಬಾಧೆ ಅಪಾಯದ ವಿಶ್ಲೇಷಣೆ",
+    btnSyncTwin: "ಮಾಹಿತಿ ಸಿಂಕ್ ಮಾಡಿ ಮತ್ತು AI ಟ್ವಿನ್ ನವೀಕರಿಸಿ",
+    unitTons: "ಟನ್",
+    unitWater: "ಲೀ/ಸೆ",
+    storeLocatorHeader: "ಸಮೀಪದ ಕೃಷಿ ಪರಿಕರಗಳ ಮಾರಾಟ ಮಳಿಗೆಗಳು ಮತ್ತು ಅಂದಾಜು ವೆಚ್ಚ",
+    gpsActive: "ಲೈವ್ ಜಿಪಿಎಸ್ ಸಕ್ರಿಯ",
+    profileLocationFallback: "ಜಿಲ್ಲಾ ಪ್ರೊಫೈಲ್ ಆಧಾರಿತ",
+    itemLabel: "ಶಿಫಾರಸು ಮಾಡಿದ ಉತ್ಪನ್ನ",
+    priceLabel: "ಅಂದಾಜು ಬೆಲೆ",
+    distanceLabel: "ದೂರ",
+    getDirections: "ಮಾರ್ಗಸೂಚಿ ಪಡೆಯಿರಿ",
+    noStoresFound: "ಸಮೀಪದಲ್ಲಿ ಯಾವುದೇ ಮಳಿಗೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ.",
+    
+    // Soil NPK Advisor Panel
+    soilHeader: "ಮಣ್ಣಿನ ಆರೋಗ್ಯ ಮತ್ತು ರಸಗೊಬ್ಬರ ಸಲಹೆಗಾರ",
+    soilSubtitle: "ನಿಮ್ಮ ಮಣ್ಣಿನ ಪೋಷಕಾಂಶಗಳನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಸೂಕ್ತ ಬೆಳೆ ಹಾಗೂ ಗೊಬ್ಬರದ ಸಲಹೆ ಪಡೆಯಿರಿ",
+    soilTypeLabel: "ಮಣ್ಣಿನ ವಿಧ",
+    soilNitrogen: "ಸಾರಜನಕ (N) - ಗುರಿ 140",
+    soilPhosphorus: "ರಂಜಕ (P) - ಗುರಿ 60",
+    soilPotassium: "ಪೊಟ್ಯಾಸಿಯಮ್ (K) - ಗುರಿ 100",
+    soilPH: "ಮಣ್ಣಿನ ರಸಸಾರ (pH)",
+    calcSoilBtn: "ಮಣ್ಣಿನ ಆರೋಗ್ಯ ಸಲಹೆ ಪಡೆಯಿರಿ",
+    soilReportTitle: "ಮಣ್ಣಿನ ತಪಾಸಣಾ ವರದಿ ಮತ್ತು ಕಾರ್ಯಾಚರಣೆ ಯೋಜನೆ",
+    soilStatusGood: "ಪೋಷಕಾಂಶಗಳ ಮಟ್ಟವು ಉತ್ತಮವಾಗಿದೆ ಮತ್ತು ಸಮತೋಲನದಲ್ಲಿದೆ!",
+    soilStatusDeficient: "ಗಮನಿಸಿ: ಪೋಷಕಾಂಶಗಳ ಕೊರತೆ ಕಂಡುಬಂದಿದೆ.",
+    soilRepPlaceholderH: "ಪೋಷಕಾಂಶಗಳನ್ನು ಹೊಂದಿಸಿ",
+    soilRepPlaceholderP: "ನಿಮ್ಮ ಇತ್ತೀಚಿನ ಮಣ್ಣಿನ ಕಾರ್ಡ್ ಮೌಲ್ಯಗಳಿಗೆ ಅನುಗುಣವಾಗಿ ಮೇಲಿನ ಪೋಷಕಾಂಶಗಳ ಮಟ್ಟವನ್ನು ಹೊಂದಿಸಿ ವರದಿ ಪಡೆಯಿರಿ.",
+    soilCropsHeading: "ಅತ್ಯಂತ ಸೂಕ್ತವಾದ ಬೆಳೆಗಳು",
+    soilNPKAdvice: "ರಸಗೊಬ್ಬರ ಬಳಕೆ ಯೋಜನೆ",
+    soilOrganicBoost: "ಸಾವಯವ ಪದಾರ್ಥಗಳ ಸಂವರ್ಧನೆ",
+    
+    // Govt Schemes Panel
+    schemesHeader: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳ ಮಾಹಿತಿ ಕೇಂದ್ರ",
+    schemesSubtitle: "ಕರ್ನಾಟಕದ ರೈತರಿಗಾಗಿ ಲಭ್ಯವಿರುವ ಪ್ರಮುಖ ಆರ್ಥಿಕ ನೆರವು ಮತ್ತು ಸಹಾಯಧನಗಳು",
+    searchSchemes: "ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಿ...",
+    schemeEligibility: "ಅರ್ಹತೆಯ ಮಾನದಂಡಗಳು",
+    schemeBenefits: "ಆರ್ಥಿಕ ಮತ್ತು ಸಾಮಾನ್ಯ ಪ್ರಯೋಜನಗಳು",
+    schemeApply: "ಅರ್ಜಿ ಸಲ್ಲಿಸುವ ವಿಧಾನ",
+    schemeLink: "ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್ ಲಿಂಕ್",
+    
+    // Chatbot UI
+    botName: "ಕೃಷಿ AI ಸಹಾಯಕ",
+    botPlaceholder: "ಬೆಳೆಗಳು, ರೋಗಗಳು ಅಥವಾ ಮಂಡಿ ಬೆಲೆಯ ಬಗ್ಗೆ ಕೇಳಿ...",
+    botIntro: "ನಮಸ್ಕಾರ! ನಾನು ಕೃಷಿ AI. ನಾನು ಬೆಳೆಗಳ ಆರೋಗ್ಯ, ರೋಗಗಳು, ಮಂಡಿ ದರಗಳು ಮತ್ತು ಮಣ್ಣಿನ ಬಗ್ಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಬಲ್ಲೆ. ಇಂದು ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?",
+    botGuardrailMsg: "ನಾನು ಕೃಷಿ, ಬೆಳೆಗಳು, ರೋಗಗಳು ಮತ್ತು ಮಂಡಿ ಬೆಲೆಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಪ್ರಶ್ನೆಗಳಿಗೆ ಮಾತ್ರ ಉತ್ತರಿಸಲು ಸೀಮಿತವಾಗಿದ್ದೇನೆ. ಕೃಷಿ ಯಶಸ್ಸಿನ ಕಡೆಗೆ ಗಮನ ಹರಿಸೋಣ!",
+    
+    // Settings Panel
+    settingsHeader: "ಸಂರಚನಾ ಫಲಕ",
+    settingsSubtitle: "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಸಂರಚನೆಗಳು, ಪ್ರದರ್ಶನ ಶೈಲಿ ಮತ್ತು ನಿಮ್ಮ ಕೃಷಿ AI ಡೆವಲಪರ್ ಕೀಯನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ನಿರ್ವಹಿಸಿ.",
+    apiPlaceholder: "ನಿಮ್ಮ ಕೃಷಿ AI ಡೆವಲಪರ್ ಕೀಯನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ...",
+    apiSaveBtn: "ಉಳಿಸಿ",
+    apiSavedMsg: "API ಸಂರಚನೆಯನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ!",
+    demoModeActive: "ಡೆಮೊ ಮೋಡ್ ಸಕ್ರಿಯವಾಗಿದೆ (ಉತ್ತಮ ಗುಣಮಟ್ಟದ ರೋಗ ತಪಾಸಣಾ ಸಿಮ್ಯುಲೇಶನ್ ಬಳಸಲಾಗುತ್ತಿದೆ. ಲೈವ್ ಕೃಷಿ AI ವಿಶ್ಲೇಷಣೆಗಾಗಿ ಮೇಲೆ ಕೀಯನ್ನು ಸೇರಿಸಿ.)",
+    apiKeyFound: "ಕೃಷಿ AI ಡೆವಲಪರ್ ಕೀ ಯಶಸ್ವಿಯಾಗಿ ಲೋಡ್ ಆಗಿದೆ. ಲೈವ್ AI ವಿಶ್ಲೇಷಣೆ ಸಿದ್ಧವಾಗಿದೆ!",
+    themeMode: "ಪ್ರದರ್ಶನ ಶೈಲಿ",
+    lightMode: "ತಿಳಿ ಮಣ್ಣಿನ ಬಣ್ಣ",
+    darkMode: "ಕಡು ಇದ್ದಿಲು ಬಣ್ಣ",
+    apiLabel: "ಕೃಷಿ AI ಡೆವಲಪರ್ ಕೀ",
+    
+    // Calendar Chips
+    chipRagi: "ರಾಗಿ (ರಾಗಿ)",
+    chipPaddy: "ಭತ್ತ (ಅಕ್ಕಿ)",
+    chipGroundnut: "ನೆಲಗಡಲೆ (ಶೇಂಗಾ)",
+    chipTurmeric: "ಅರಿಶಿನ",
+    chipJowar: "ಜೋಳ",
+    chipChickpea: "ಕಡಲೆ",
+    chipMustard: "ಸಾಸಿವೆ",
+    chipSunflower: "ಸೂರ್ಯಕಾಂತಿ",
+    chipWatermelon: "ಕಲ್ಲಂಗಡಿ",
+    chipCucumber: "ಸೌತೆಕಾಯಿ",
+    chipPulses: "ಬೇಳೆಕಾಳುಗಳು (ಹೆಸರು/ಉದ್ದಿನ ಬೇಳೆ)",
+    chipFodder: "ಹಸಿರು ಮೇವು",
+    
+    // Farm Labor & Equipment Hub Strings
+    hubTitle: "ಕೂಲಿ ಮತ್ತು ಬಾಡಿಗೆ ಹಬ್",
+    hubDesc: "ಕೃಷಿ ಕೆಲಸಗಾರರನ್ನು ಹುಡುಕಿ, ಕೃಷಿ ಕೆಲಸ ಮಾಡಿ ಮತ್ತು ಕೃಷಿ ಯಂತ್ರಗಳನ್ನು ಬಾಡಿಗೆಗೆ ಪಡೆಯಿರಿ.",
+    hubLink: "ಕೇಂದ್ರವನ್ನು ತೆರೆಯಿರಿ",
+    hubHeader: "ಕೂಲಿ ಮತ್ತು ಯಂತ್ರೋಪಕರಣ ಕೇಂದ್ರ",
+    hubSubtitle: "ರೈತರಿಂದ ರೈತರಿಗೆ ಕೃಷಿ ಕಾರ್ಮಿಕರ ವಿನಿಮಯ ಮತ್ತು ಕೃಷಿ ಯಂತ್ರಗಳ ಬಾಡಿಗೆ ಮಾರುಕಟ್ಟೆ",
+    tabLaborExchange: "ಕೃಷಿ ಕಾರ್ಮಿಕರ ವಿನಿಮಯ",
+    tabEquipmentRental: "ಬಾಡಿಗೆ ಯಂತ್ರೋಪಕರಣಗಳು",
+    boardReadyToWork: "ಕೆಲಸಕ್ಕೆ ಸಿದ್ಧವಿರುವವರು (ಕಾರ್ಮಿಕರು)",
+    boardReadyToHire: "ಕೆಲಸ ನೀಡಲು ಸಿದ್ಧವಿರುವವರು (ರೈತರು)",
+    postLaborAvailability: "ಕೆಲಸದ ಲಭ್ಯತೆ ಪಟ್ಟಿ ಮಾಡಿ",
+    postHiringNeed: "ಕೂಲಿ ಆಳುಗಳ ಬೇಡಿಕೆ ಪಟ್ಟಿ ಮಾಡಿ",
+    postEquipment: "ಬಾಡಿಗೆ ಯಂತ್ರವನ್ನು ನೋಂದಾಯಿಸಿ",
+    availableEquipment: "ಲಭ್ಯವಿರುವ ಯಂತ್ರಗಳು ಮತ್ತು ಉಪಕರಣಗಳು",
+    experienceLevel: "ಅನುಭವದ ಮಟ್ಟ",
+    expectedWage: "ನಿರೀಕ್ಷಿತ ದಿನಗೂಲಿ",
+    wageOffered: "ನೀಡುವ ದಿನಗೂಲಿ",
+    laborersNeeded: "ಬೇಕಾದ ಕಾರ್ಮಿಕರ ಸಂಖ್ಯೆ",
+    urgencyLevel: "ತುರ್ತು ಪರಿಸ್ಥಿತಿ",
+    condition: "ಯಂತ್ರದ ಸ್ಥಿತಿ",
+    brandModel: "ಬ್ರ್ಯಾಂಡ್ ಮತ್ತು ಮಾಡೆಲ್",
+    rentalCost: "ಬಾಡಿಗೆ ದರ",
+    rentalPeriod: "ದರ ಅವಧಿ",
+    laborPostedSuccess: "ಕೆಲಸದ ಲಭ್ಯತೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ!",
+    hirePostedSuccess: "ಕಾರ್ಮಿಕರ ಬೇಡಿಕೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ!",
+    equipmentPostedSuccess: "ಬಾಡಿಗೆ ಯಂತ್ರವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನೋಂದಾಯಿಸಲಾಗಿದೆ!",
+    filterWorkType: "ಕೆಲಸದ ವಿಧ ಫಿಲ್ಟರ್",
+    filterEquipmentType: "ಯಂತ್ರೋಪಕರಣ ಫಿಲ್ಟರ್",
+    filterWageRange: "ಗರಿಷ್ಠ ಗೂಲಿ",
+    filterPriceRange: "ಗರಿಷ್ಠ ಬಾಡಿಗೆ",
+    availStatus: "ಸ್ಥಿತಿ",
+    btnBookNow: "ಈಗಲೇ ಬುಕ್ ಮಾಡಿ",
+    btnCallNow: "ಕರೆ ಮಾಡಿ",
+    btnMessage: "ಮೆಸೇಜ್ ಕಳುಹಿಸಿ",
+    
+    // Labor Droplist Work types
+    labor_harvesting: "ಕೊಯ್ಲು (Harvesting)",
+    labor_planting: "ನಾಟಿ ಮಾಡುವುದು (Planting)",
+    labor_irrigation: "ನೀರಾವರಿ ಕೆಲಸ (Irrigation)",
+    labor_driving: "ಟ್ರ್ಯಾಕ್ಟರ್ ಚಾಲನೆ (Tractor driving)",
+    labor_spraying: "ಕೀಟನಾಶಕ ಸಿಂಪಡಣೆ (Pesticide spraying)",
+    labor_loading: "ಲೋಡಿಂಗ್/ಅನ್ಲೋಡಿಂಗ್",
+    labor_weeding: "ಕಳೆ ಕೀಳುವುದು (Weeding)",
+    labor_fertilizer: "ಗೊಬ್ಬರ ಹಾಕುವುದು",
+    labor_sugarcane: "ಕಬ್ಬು ಕತ್ತರಿಸುವುದು",
+    labor_nursery: "ನರ್ಸರಿ ಕೆಲಸ (Nursery work)",
+    
+    // Equipment Droplist Types
+    equip_tractor: "ಟ್ರ್ಯಾಕ್ಟರ್ (Tractor)",
+    equip_rotavator: "ರೋಟಾವೇಟರ್ (Rotavator)",
+    equip_harvester: "ಕೊಯ್ಲು ಯಂತ್ರ (Harvester)",
+    equip_tiller: "ಪವರ್ ಟಿಲ್ಲರ್ (Power tiller)",
+    equip_tanker: "ನೀರಿನ ಟ್ಯಾಂಕರ್ (Water tanker)",
+    equip_drill: "ಬೀಜ ಬಿತ್ತುವ ಯಂತ್ರ (Seed drill)",
+    equip_sprayer: "ಸ್ಪ್ರೇಯರ್ (Sprayer)",
+    equip_cultivator: "ಕಲ್ಟಿವೇಟರ್ (Cultivator)",
+    equip_plough: "ನೇಗಿಲು (Plough)",
+    equip_thresher: "ಒಕ್ಕಣೆ ಯಂತ್ರ (Thresher)",
+    equip_minitruck: "ಮಿನಿ ಟ್ರಕ್ (Mini truck)",
+    equip_drone: "ಡ್ರೋನ್ ಸ್ಪ್ರೇಯರ್ (Drone sprayer)"
+  }
+};
+
+// ==========================================
+// SECTION: mandi.js
+// ==========================================
+
+// Krishi-Sanjeevini Mandi Prices Database & Dynamic Simulator
+
+const cropsList = [
+  { id: "ragi", en: "Ragi (Finger Millet)", kn: "ರಾಗಿ", basePrice: 3450 },
+  { id: "rice", en: "Rice (Paddy)", kn: "ಭತ್ತ (ಅಕ್ಕಿ)", basePrice: 2800 },
+  { id: "tomato", en: "Tomato", kn: "ಟೊಮೆಟೊ", basePrice: 1500 },
+  { id: "onion", en: "Onion", kn: "ಈರುಳ್ಳಿ", basePrice: 2100 },
+  { id: "arecanut", en: "Arecanut (Supari)", kn: "ಅಡಿಕೆ", basePrice: 43500 },
+  { id: "coconut", en: "Coconut (Per 1000)", kn: "ತೆಂಗಿನಕಾಯಿ (೧೦೦೦ಕ್ಕೆ)", basePrice: 18500 },
+  { id: "coffee", en: "Coffee Beans (Robusta)", kn: "ಕಾಫಿ ಬೀಜಗಳು", basePrice: 14200 },
+  { id: "jowar", en: "Jowar (Sorghum)", kn: "ಜೋಳ", basePrice: 3800 }
+];
+
+const marketsList = [
+  { id: "bengaluru", en: "Bengaluru (Yeshwanthpur)", kn: "ಬೆಂಗಳೂರು (ಯಶವಂತಪುರ)" },
+  { id: "kolar", en: "Kolar Market", kn: "ಕೋಲಾರ ಮಾರುಕಟ್ಟೆ" },
+  { id: "davanagere", en: "Davanagere Mandi", kn: "ದಾವಣಗೆರೆ ಮಂಡಿ" },
+  { id: "hubli", en: "Hubli APMC", kn: "ಹುಬ್ಬಳ್ಳಿ ಎ.ಪಿ.ಎಂ.ಸಿ" },
+  { id: "mysore", en: "Mysore Bandipalya", kn: "ಮೈಸೂರು ಬಂಡಿಪಾಳ್ಯ" },
+  { id: "mandya", en: "Mandya APMC", kn: "ಮಂಡ್ಯ ಎ.ಪಿ.ಎಂ.ಸಿ" },
+  { id: "maddur", en: "Maddur Market", kn: "ಮದ್ದೂರು ಮಾರುಕಟ್ಟೆ" },
+  { id: "pandavapura", en: "Pandavapura Mandi", kn: "ಪಾಂಡವಪುರ ಮಂಡಿ" }
+];
+
+// Initialize live memory price structure
+let liveMandiData = [];
+
+function initMandiData() {
+  liveMandiData = [];
+  marketsList.forEach(market => {
+    cropsList.forEach(crop => {
+      // Add slight variety based on market to make it realistic
+      let marketFactor = 0.95 + (Math.random() * 0.1); // ±5% variation per market
+      if (market.id === "kolar" && crop.id === "tomato") marketFactor *= 0.85; // Kolar is tomato capital, cheaper
+      if (market.id === "bengaluru") marketFactor *= 1.05; // Capital city is slightly more expensive
+      if (market.id === "mandya" && crop.id === "rice") marketFactor *= 0.92; // Mandya is paddy capital, cheaper
+      if (market.id === "maddur" && crop.id === "coconut") marketFactor *= 0.88; // Maddur is famous for tender coconuts, cheaper
+      
+      const currentPrice = Math.round(crop.basePrice * marketFactor);
+      const prevPrice = Math.round(currentPrice * (0.96 + Math.random() * 0.08)); // Last 24h variation
+      
+      liveMandiData.push({
+        cropId: crop.id,
+        marketId: market.id,
+        price: currentPrice,
+        prevPrice: prevPrice,
+        // Generate simulated 7-day price history
+        history: Array.from({ length: 7 }, (_, idx) => {
+          const shift = (idx - 6) * (0.01 - Math.random() * 0.02);
+          return Math.round(currentPrice * (1 + shift));
+        })
+      });
+    });
+  });
+}
+
+// Initialize on import
+initMandiData();
+
+/**
+ * Perform a live price tick simulation on random items.
+ * Fluctuates prices by a tiny percentage (±0.1% to ±0.4%) to simulate a real live market ticker.
+ */
+function simulateLiveTicks() {
+  const tickCount = 2 + Math.floor(Math.random() * 3); // 2 to 4 updates per tick
+  const updates = [];
+  
+  for (let i = 0; i < tickCount; i++) {
+    const rIndex = Math.floor(Math.random() * liveMandiData.length);
+    const item = liveMandiData[rIndex];
+    const percentage = 0.001 + (Math.random() * 0.003); // 0.1% to 0.4%
+    const direction = Math.random() > 0.48 ? 1 : -1; // Slight positive bias
+    
+    const delta = Math.round(item.price * percentage * direction);
+    if (delta !== 0) {
+      item.price += delta;
+      // Update today's history value (last element)
+      item.history[item.history.length - 1] = item.price;
+      updates.push({
+        cropId: item.cropId,
+        marketId: item.marketId,
+        price: item.price,
+        delta: delta
+      });
+    }
+  }
+  return updates;
+}
+
+/**
+ * Fetch all prices with localized translations
+ */
+function getMandiPrices(lang = "en") {
+  return liveMandiData.map(item => {
+    const crop = cropsList.find(c => c.id === item.cropId);
+    const market = marketsList.find(m => m.id === item.marketId);
+    const diff = item.price - item.prevPrice;
+    const percent = ((diff / item.prevPrice) * 100).toFixed(1);
+    
+    return {
+      cropId: item.cropId,
+      marketId: item.marketId,
+      cropName: lang === "kn" ? crop.kn : crop.en,
+      marketName: lang === "kn" ? market.kn : market.en,
+      price: item.price,
+      change: diff,
+      changePercent: percent,
+      isUp: diff >= 0,
+      history: item.history
+    };
+  });
+}
+
+/**
+ * Calculates average price for a crop across all markets
+ * Useful for the marketplace fair price advisor
+ */
+function getAverageCropPrice(cropId) {
+  const matches = liveMandiData.filter(item => item.cropId === cropId);
+  if (matches.length === 0) return 0;
+  const sum = matches.reduce((acc, curr) => acc + curr.price, 0);
+  return Math.round(sum / matches.length);
+}
+
+/**
+ * Returns a 7-day merged historical price array for a specific crop across all markets
+ */
+function getCropHistory(cropId) {
+  const matches = liveMandiData.filter(item => item.cropId === cropId);
+  const aggregateHistory = [0, 0, 0, 0, 0, 0, 0];
+  
+  if (matches.length === 0) return aggregateHistory;
+  
+  for (let day = 0; day < 7; day++) {
+    let daySum = 0;
+    matches.forEach(m => {
+      daySum += m.history[day] || m.price;
+    });
+    aggregateHistory[day] = Math.round(daySum / matches.length);
+  }
+  return aggregateHistory;
+}
+
+// ==========================================
+// SECTION: schemes.js
+// ==========================================
+
+// Krishi-Sanjeevini Government Schemes Database
+
+const schemesData = {
+  en: [
+    {
+      id: "pm-kisan",
+      title: "PM-KISAN Samman Nidhi",
+      subtitle: "Direct Income Support of ₹6,000 per Year",
+      description: "An initiative by the Government of India to provide financial assistance to all landholding farmer families across the country to buy agricultural inputs and support domestic needs.",
+      eligibility: [
+        "Small and marginal farmers who own cultivable land.",
+        "Land records must be in the farmer's name.",
+        "Institutional landholders, government employees, and income taxpayers are excluded."
+      ],
+      benefits: [
+        "₹6,000 per year paid in three equal installments of ₹2,000 directly into the bank account.",
+        "100% funding from Central Government.",
+        "Aids in purchasing seeds, fertilizers, and equipment before the crop cycle."
+      ],
+      applySteps: [
+        "Go to the PM-KISAN portal (pmkisan.gov.in) and click 'New Farmer Registration'.",
+        "Fill out Aadhaar card details and select state/district details.",
+        "Upload land registration document (Pahani/RTC) and bank details.",
+        "Submit and track status using Aadhaar number."
+      ],
+      link: "https://pmkisan.gov.in"
+    },
+    {
+      id: "krishi-bhagya",
+      title: "Karnataka Krishi Bhagya Yojana",
+      subtitle: "Rainwater Harvesting & Irrigation Subsidies",
+      description: "A flagship program of the Government of Karnataka focused on rainfed agricultural zones to improve dry-land farming productivity through rainwater harvesting, farm ponds, and efficient micro-irrigation systems.",
+      eligibility: [
+        "Dry-land farmers in rainfed regions of Karnataka.",
+        "Priority given to small and marginal farmers.",
+        "Must have suitable land space for constructing a farm pond (Krishi Honda)."
+      ],
+      benefits: [
+        "Up to 80% to 90% subsidy for constructing Farm Ponds (Krishi Honda).",
+        "80% subsidy for lifting pumps (diesel/solar) and polythene lining to prevent pond water seepage.",
+        "90% subsidy for drip and sprinkler irrigation setups.",
+        "Ensures supplementary irrigation during dry spells."
+      ],
+      applySteps: [
+        "Contact the nearest Hobli Raitha Samparka Kendra (RSK) or Taluk Assistant Director of Agriculture (ADA).",
+        "Submit RTC/Pahani, bank passbook copy, Aadhaar card, and passport photos.",
+        "Technical officers will visit the land to inspect and demarcate the pond layout.",
+        "Receive subsidy in bank account after construction verification."
+      ],
+      link: "https://raitamitra.karnataka.gov.in"
+    },
+    {
+      id: "fasal-bima",
+      title: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+      subtitle: "Comprehensive Crop Insurance Cover",
+      description: "A subsidized crop insurance scheme to protect farmers against yield losses due to natural calamities, droughts, floods, pests, and localized calamities.",
+      eligibility: [
+        "All farmers growing notified crops in notified areas (both land-owners and tenant farmers).",
+        "Voluntary for non-loanee farmers, highly recommended."
+      ],
+      benefits: [
+        "Very low premium for farmers: 2% for Kharif crops, 1.5% for Rabi crops, and 5% for commercial/horticultural crops.",
+        "Government pays the remaining major portion of the insurance premium.",
+        "Claims are settled directly into bank accounts based on crop cutting experiments and remote sensing data."
+      ],
+      applySteps: [
+        "Visit the National Crop Insurance Portal (pmfby.gov.in) or go to the nearest bank branch/CSC Center.",
+        "Provide RTC/Pahani (land record), Sowing Certificate from Village Accountant/Agri Officer, Aadhaar card, and Bank Passbook.",
+        "Pay the small premium amount before the cut-off date of the sowing season.",
+        "Keep the insurance receipt for claims."
+      ],
+      link: "https://pmfby.gov.in"
+    },
+    {
+      id: "ganga-kalyana",
+      title: "Ganga Kalyana Yojana",
+      subtitle: "Free Tube Well & Borewell Irrigation Scheme",
+      description: "A prominent scheme from Karnataka's minority, SC/ST, and OBC development corporations that provides free open wells/borewells with pump sets and electrification to individual or collective dry lands.",
+      eligibility: [
+        "Farmers belonging to SC, ST, OBC, or Minority communities in Karnataka.",
+        "Must be a small/marginal farmer with a minimum of 1 to 2 acres of dry-land (criteria varies slightly by corporation).",
+        "Family annual income must be under ₹1.03 Lakhs (rural areas) or ₹1.20 Lakhs (urban areas)."
+      ],
+      benefits: [
+        "100% free drilling of borewell or digging of open well.",
+        "Free supply of submersible pump set, accessories, and panel board.",
+        "Up to ₹2.5 Lakhs subsidy for individual borewells, and higher grants for lift irrigation pipelines.",
+        "Transforms barren dry-land into fertile double-cropped land."
+      ],
+      applySteps: [
+        "Apply online via the KD Karisiri portal or respective corporation websites (e.g., KMDC, D. Devaraj Urs Corporation).",
+        "Upload Caste, Income certificates, RTC/Pahani, Land map/boundaries document, Aadhaar card, and Bank Book.",
+        "Applications are scrutinized, and selected farmers receive drilling approvals.",
+        "Government-assigned contractors perform drilling and pump installation."
+      ],
+      link: "https://kmdc.karnataka.gov.in"
+    },
+    {
+      id: "yashaswini",
+      title: "Yashaswini Health Insurance Scheme",
+      subtitle: "Cashless Medical Treatment for Co-operative Farmers",
+      description: "A cashless, highly subsidized healthcare insurance program reintroduced by the Karnataka government, designed for members of rural co-operative societies and their families to cover major surgeries and treatments.",
+      eligibility: [
+        "Must be a member of a rural co-operative society in Karnataka for at least 3 months.",
+        "Applies to the co-operative member, spouse, children, and dependent parents."
+      ],
+      benefits: [
+        "Cashless treatment and surgeries in over 500+ network hospitals in Karnataka.",
+        "Covers up to ₹5 Lakhs per family per year for surgical procedures.",
+        "Negligible annual membership premium (approx. ₹500 to ₹1000 per family)."
+      ],
+      applySteps: [
+        "Visit your local Primary Agricultural Cooperative Society (PACS) or Milk Co-operative Society.",
+        "Fill out the Yashaswini registration form with family details.",
+        "Submit Aadhaar cards and pay the designated annual premium.",
+        "Receive a Yashaswini health card which can be shown at network hospitals for cashless treatment."
+      ],
+      link: "https://sahakara.kar.gov.in"
+    }
+  ],
+  kn: [
+    {
+      id: "pm-kisan",
+      title: "ಪಿಎಂ-ಕಿಸಾನ್ ಸಮ್ಮಾನ್ ನಿಧಿ",
+      subtitle: "ವರ್ಷಕ್ಕೆ ₹೬,೦೦೦ ನೇರ ಆದಾಯ ಬೆಂಬಲ",
+      description: "ದೇಶಾದ್ಯಂತ ಭೂಮಿ ಹೊಂದಿರುವ ಎಲ್ಲಾ ರೈತ ಕುಟುಂಬಗಳಿಗೆ ಕೃಷಿ ಪರಿಕರಗಳನ್ನು ಖರೀದಿಸಲು ಮತ್ತು ಗೃಹಬಳಕೆಯ ಅಗತ್ಯಗಳನ್ನು ಬೆಂಬಲಿಸಲು ಭಾರತ ಸರ್ಕಾರದಿಂದ ಹಣಕಾಸಿನ ನೆರವು ನೀಡುವ ಪ್ರಮುಖ ಯೋಜನೆ.",
+      eligibility: [
+        "ಸಾಗುವಳಿ ಭೂಮಿ ಹೊಂದಿರುವ ಸಣ್ಣ ಮತ್ತು ಅತಿ ಸಣ್ಣ ರೈತರು.",
+        "ಭೂ ದಾಖಲೆಗಳು (ಆರ್.ಟಿ.ಸಿ/ಪಹಣಿ) ರೈತರ ಹೆಸರಿನಲ್ಲಿರಬೇಕು.",
+        "ಸಾಂಸ್ಥಿಕ ಭೂಮಾಲೀಕರು, ಸರ್ಕಾರಿ ನೌಕರರು ಮತ್ತು ಆದಾಯ ತೆರಿಗೆ ಪಾವತಿಸುವವರನ್ನು ಹೊರಗಿಡಲಾಗಿದೆ."
+      ],
+      benefits: [
+        "ವರ್ಷಕ್ಕೆ ₹೬,೦೦೦ ಅನ್ನು ತಲಾ ₹೨,೦೦೦ ರಂತೆ ಮೂರು ಸಮಾನ ಕಂತುಗಳಲ್ಲಿ ನೇರವಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆಗೆ ಜಮೆ ಮಾಡಲಾಗುತ್ತದೆ.",
+        "ಕೇಂದ್ರ ಸರ್ಕಾರದಿಂದ ಶೇ. ೧೦೦ ರಷ್ಟು ಧನಸಹಾಯ.",
+        "ಬೆಳೆ ಬಿತ್ತನೆಗೆ ಮುಂಚಿತವಾಗಿ ಬೀಜಗಳು, ರಸಗೊಬ್ಬರಗಳು ಮತ್ತು ಉಪಕರಣಗಳನ್ನು ಖರೀದಿಸಲು ಸಹಕಾರಿ."
+      ],
+      applySteps: [
+        "ಪಿಎಂ-ಕಿಸಾನ್ ಪೋರ್ಟಲ್‌ಗೆ (pmkisan.gov.in) ಭೇಟಿ ನೀಡಿ ಮತ್ತು 'New Farmer Registration' ಕ್ಲಿಕ್ ಮಾಡಿ.",
+        "ಆಧಾರ್ ಕಾರ್ಡ್ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ರಾಜ್ಯ/ಜಿಲ್ಲೆಯ ವಿವರಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.",
+        "ಭೂ ದಾಖಲೆ ಪತ್ರ ( RTC/ಪಹಣಿ) ಮತ್ತು ಬ್ಯಾಂಕ್ ವಿವರಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
+        "ಅರ್ಜಿ ಸಲ್ಲಿಸಿ ಮತ್ತು ಆಧಾರ್ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಿ ಸ್ಥಿತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ."
+      ],
+      link: "https://pmkisan.gov.in"
+    },
+    {
+      id: "krishi-bhagya",
+      title: "ಕರ್ನಾಟಕ ಕೃಷಿ ಭಾಗ್ಯ ಯೋಜನೆ",
+      subtitle: "ಮಳೆನೀರು ಕೊಯ್ಲು ಮತ್ತು ನೀರಾವರಿ ಸಹಾಯಧನ",
+      description: "ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಮಹತ್ವಾಕಾಂಕ್ಷೆಯ ಯೋಜನೆಯಾಗಿದ್ದು, ಮಳೆಯಾಶ್ರಿತ ಕೃಷಿ ವಲಯಗಳಲ್ಲಿ ಕೃಷಿ ಹೊಂಡ, ಮಳೆನೀರು ಕೊಯ್ಲು ಮತ್ತು ದಕ್ಷ ಸೂಕ್ಷ್ಮ ನೀರಾವರಿ ಪದ್ಧತಿಗಳ ಮೂಲಕ ಒಣಭೂಮಿ ಬೇಸಾಯದ ಉತ್ಪಾದಕತೆಯನ್ನು ಸುಧಾರಿಸಲು ಗಮನಹರಿಸುತ್ತದೆ.",
+      eligibility: [
+        "ಕರ್ನಾಟಕದ ಮಳೆಯಾಶ್ರಿತ ಒಣಭೂಮಿ ಪ್ರದೇಶಗಳ ರೈತರು.",
+        "ಸಣ್ಣ ಮತ್ತು ಅತಿ ಸಣ್ಣ ರೈತರಿಗೆ ಮೊದಲ ಆದ್ಯತೆ ನೀಡಲಾಗುತ್ತದೆ.",
+        "ಕೃಷಿ ಹೊಂಡ ನಿರ್ಮಿಸಲು ಸೂಕ್ತವಾದ ಜಮೀನು ಇರಬೇಕು."
+      ],
+      benefits: [
+        "ಕೃಷಿ ಹೊಂಡ (ಕೃಷಿ ಹೊಂಡ) ನಿರ್ಮಾಣಕ್ಕೆ ಶೇ. ೮೦ ರಿಂದ ಶೇ. ೯೦ ರಷ್ಟು ಸಹಾಯಧನ.",
+        "ಹೊಂಡದ ನೀರು ಇಂಗಿ ಹೋಗದಂತೆ ತಡೆಯಲು ಪಾಲಿಥಿನ್ ಲೈನಿಂಗ್ ಅಳವಡಿಕೆ ಮತ್ತು ಡೀಸೆಲ್/ಸೌರ ಪಂಪ್ ಸೆಟ್‌ಗಳಿಗೆ ಶೇ. ೮೦ ರಷ್ಟು ಸಬ್ಸಿಡಿ.",
+        "ಹನಿ ಮತ್ತು ಸಿಂಪಡಣೆ (ಡ್ರಿಪ್ ಮತ್ತು ಸ್ಪ್ರಿಂಕ್ಲರ್) ನೀರಾವರಿ ವ್ಯವಸ್ಥೆಗೆ ಶೇ. ೯೦ ರಷ್ಟು ಸಬ್ಸಿಡಿ.",
+        "ಮಳೆ ಇಲ್ಲದ ಒಣ ಅವಧಿಯಲ್ಲಿ ಬೆಳೆಗೆ ಪೂರಕ ನೀರಾವರಿ ಒದಗಿಸುತ್ತದೆ."
+      ],
+      applySteps: [
+        "ನಿಮ್ಮ ಹತ್ತಿರದ ಹೋಬಳಿ ರೈತ ಸಂಪರ್ಕ ಕೇಂದ್ರ (RSK) ಅಥವಾ ತಾಲೂಕು ಸಹಾಯಕ ಕೃಷಿ ನಿರ್ದೇಶಕರ (ADA) ಕಚೇರಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+        "RTC/ಪಹಣಿ ವಿವರಗಳು, ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್ ಪ್ರತಿ, ಆಧಾರ್ ಕಾರ್ಡ್ ಮತ್ತು ಭಾವಚಿತ್ರಗಳನ್ನು ಸಲ್ಲಿಸಿ.",
+        "ಕೃಷಿ ತಾಂತ್ರಿಕ ಅಧಿಕಾರಿಗಳು ಜಮೀನಿಗೆ ಭೇಟಿ ನೀಡಿ ಹೊಂಡದ ವಿನ್ಯಾಸ ಮತ್ತು ಸ್ಥಳ ಗುರುತಿಸುತ್ತಾರೆ.",
+        "ಹೊಂಡ ನಿರ್ಮಾಣದ ಪರಿಶೀಲನೆಯ ನಂತರ ಸಹಾಯಧನವನ್ನು ಬ್ಯಾಂಕ್ ಖಾತೆಗೆ ಜಮೆ ಮಾಡಲಾಗುತ್ತದೆ."
+      ],
+      link: "https://raitamitra.karnataka.gov.in"
+    },
+    {
+      id: "fasal-bima",
+      title: "ಪ್ರಧಾನ ಮಂತ್ರಿ ಫಸಲ್ ಬಿಮಾ ಯೋಜನೆ (PMFBY)",
+      subtitle: "ಸಮಗ್ರ ಬೆಳೆ ವಿಮಾ ರಕ್ಷಣೆ",
+      description: "ನೈಸರ್ಗಿಕ ವಿಕೋಪಗಳು, ಬರಗಾಲ, ಪ್ರವಾಹ, ಕೀಟಬಾಧೆ ಮತ್ತು ಸ್ಥಳೀಯ ಅವಘಡಗಳಿಂದ ಉಂಟಾಗುವ ಬೆಳೆ ನಷ್ಟದ ವಿರುದ್ಧ ರೈತರಿಗೆ ಆರ್ಥಿಕ ರಕ್ಷಣೆ ನೀಡುವ ಸಹಾಯಧನ ಆಧಾರಿತ ಬೆಳೆ ವಿಮೆ ಯೋಜನೆ.",
+      eligibility: [
+        "ಸೂಚಿತ ಪ್ರದೇಶಗಳಲ್ಲಿ ಸೂಚಿತ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಯುವ ಎಲ್ಲಾ ರೈತರು (ಭೂಮಾಲೀಕರು ಮತ್ತು ಗೇಣಿದಾರ ರೈತರು ಇಬ್ಬರೂ ಅರ್ಹರು).",
+        "ಸಾಲ ಪಡೆಯದ ರೈತರಿಗೂ ಇದು ಸ್ವಯಂಪ್ರೇರಿತ ಮತ್ತು ಅತ್ಯಂತ ಉಪಯುಕ್ತ."
+      ],
+      benefits: [
+        "ರೈತರಿಗೆ ಅತ್ಯಂತ ಕಡಿಮೆ ಪ್ರೀಮಿಯಂ ದರ: ಖಾರಿಫ್ ಬೆಳೆಗಳಿಗೆ ಶೇ. ೨, ರಬಿ ಬೆಳೆಗಳಿಗೆ ಶೇ. ೧.೫ ಮತ್ತು ವಾಣಿಜ್ಯ/ತೋಟಗಾರಿಕಾ ಬೆಳೆಗಳಿಗೆ ಶೇ. ೫ ಮಾತ್ರ.",
+        "ವಿಮಾ ಪ್ರೀಮಿಯಂನ ಉಳಿದ ಬಹುದೊಡ್ಡ ಭಾಗವನ್ನು ಸರ್ಕಾರವೇ ಪಾವತಿಸುತ್ತದೆ.",
+        "ಬೆಳೆ ಕಟಾವು ಪ್ರಯೋಗಗಳು ಮತ್ತು ದೂರಸಂವೇದಿ ತಂತ್ರಜ್ಞಾನದ ಆಧಾರದ ಮೇಲೆ ನಷ್ಟ ಪರಿಹಾರವನ್ನು ನೇರವಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆಗೆ ಜಮೆ ಮಾಡಲಾಗುತ್ತದೆ."
+      ],
+      applySteps: [
+        "ರಾಷ್ಟ್ರೀಯ ಬೆಳೆ ವಿಮಾ ಪೋರ್ಟಲ್‌ಗೆ (pmfby.gov.in) ಭೇಟಿ ನೀಡಿ ಅಥವಾ ಹತ್ತಿರದ ಬ್ಯಾಂಕ್ ಶಾಖೆ/ಸಿಎಸ್‌ಸಿ ಕೇಂದ್ರಕ್ಕೆ ಹೋಗಿ.",
+        "RTC/ಪಹಣಿ, ಗ್ರಾಮ ಲೆಕ್ಕಾಧಿಕಾರಿಗಳು/ಕೃಷಿ ಅಧಿಕಾರಿಗಳಿಂದ ಪಡೆದ ಬಿತ್ತನೆ ದೃಢೀಕರಣ ಪತ್ರ, ಆಧಾರ್ ಮತ್ತು ಬ್ಯಾಂಕ್ ಪಾಸ್‌ಬುಕ್ ಸಲ್ಲಿಸಿ.",
+        "ಬಿತ್ತನೆ ಹಂಗಾಮಿನ ಕೊನೆಯ ದಿನಾಂಕದ ಮೊದಲು ನಿಗದಿತ ಸಣ್ಣ ಪ್ರೀಮಿಯಂ ಮೊತ್ತವನ್ನು ಪಾವತಿಸಿ.",
+        "ವಿಮಾ ರಸೀದಿಯನ್ನು ಭವಿಷ್ಯದ ಪರಿಹಾರದ ಹಕ್ಕುಗಳಿಗಾಗಿ ಸುರಕ್ಷಿತವಾಗಿರಿಸಿಕೊಳ್ಳಿ."
+      ],
+      link: "https://pmfby.gov.in"
+    },
+    {
+      id: "ganga-kalyana",
+      title: "ಗಂಗಾ ಕಲ್ಯಾಣ ಯೋಜನೆ",
+      subtitle: "ಉಚಿತ ಕೊಳವೆಬಾವಿ ಮತ್ತು ನೀರಾವರಿ ಪಂಪ್‌ಸೆಟ್ ಯೋಜನೆ",
+      description: "ಕರ್ನಾಟಕದ ಹಿಂದುಳಿದ ವರ್ಗಗಳು, ಪರಿಶಿಷ್ಟ ಜಾತಿ/ಪಂಗಡ ಮತ್ತು ಅಲ್ಪಸಂಖ್ಯಾತರ ಅಭಿವೃದ್ಧಿ ನಿಗಮಗಳ ಮೂಲಕ ವೈಯಕ್ತಿಕ ಅಥವಾ ಸಾಮೂಹಿಕ ಒಣ ಜಮೀನುಗಳಿಗೆ ಉಚಿತ ಕೊಳವೆಬಾವಿ ಕೊರೆಯಿಸಿ, ಪಂಪ್ ಸೆಟ್ ಮತ್ತು ವಿದ್ಯುದ್ದೀಕರಣ ಒದಗಿಸುವ ಜನಪ್ರಿಯ ಯೋಜನೆ.",
+      eligibility: [
+        "ಕರ್ನಾಟಕದ ಪರಿಶಿಷ್ಟ ಜಾತಿ (SC), ಪರಿಶಿಷ್ಟ ಪಂಗಡ (ST), ಒಬಿಸಿ ಅಥವಾ ಅಲ್ಪಸಂಖ್ಯಾತ ಸಮುದಾಯಕ್ಕೆ ಸೇರಿದ ರೈತರಾಗಿರಬೇಕು.",
+        "ಕನಿಷ್ಠ ೧ ರಿಂದ ೨ ಎಕರೆ ಒಣ ಜಮೀನು ಹೊಂದಿರುವ ಸಣ್ಣ ಅಥವಾ ಅತಿ ಸಣ್ಣ ರೈತರಾಗಿರಬೇಕು.",
+        "ಕುಟುಂಬದ ವಾರ್ಷಿಕ ಆದಾಯವು ಗ್ರಾಮೀಣ ಪ್ರದೇಶಗಳಲ್ಲಿ ₹೧.೦೩ ಲಕ್ಷ ಮತ್ತು ನಗರ ಪ್ರದೇಶಗಳಲ್ಲಿ ₹೧.೨೦ ಲಕ್ಷ ಮೀರಬಾರದು."
+      ],
+      benefits: [
+        "ಶೇ. ೧೦೦ ರಷ್ಟು ಉಚಿತವಾಗಿ ಕೊಳವೆಬಾವಿ ಕೊರೆಯುವುದು ಅಥವಾ ತೆರೆದ ಬಾವಿ ನಿರ್ಮಾಣ.",
+        "ಉಚಿತ ಸಬ್‌ಮರ್ಸಿಬಲ್ ಪಂಪ್ ಸೆಟ್, ಕೇಬಲ್ ಮತ್ತು ಪ್ಯಾನಲ್ ಬೋರ್ಡ್ ಪೂರೈಕೆ.",
+        "ವೈಯಕ್ತಿಕ ಕೊಳವೆಬಾವಿಗೆ ₹೨.೫ ಲಕ್ಷದವರೆಗೆ ಸಹಾಯಧನ ಮತ್ತು ಸಾಮೂಹಿಕ ನೀರಾವರಿ ಯೋಜನೆಗೆ ಹೆಚ್ಚಿನ ಅನುದಾನ.",
+        "ಒಣಭೂಮಿಯನ್ನು ಸಂಪೂರ್ಣ ನೀರಾವರಿ ಜಮೀನಾಗಿ ಪರಿವರ್ತಿಸುತ್ತದೆ."
+      ],
+      applySteps: [
+        "ಕರ್ನಾಟಕ ಸೇವಾ ಸಿಂಧು ಪೋರ್ಟಲ್ ಅಥವಾ ಆಯಾ ಅಭಿವೃದ್ಧಿ ನಿಗಮಗಳ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ಗಳ ಮೂಲಕ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ.",
+        "ಜಾತಿ, ಆದಾಯ ಪ್ರಮಾಣಪತ್ರಗಳು, RTC/ಪಹಣಿ, ನಕ್ಷೆ/ಹದ್ದುಬಸ್ತು ಪತ್ರ, ಆಧಾರ್ ಕಾರ್ಡ್ ಮತ್ತು ಬ್ಯಾಂಕ್ ಬುಕ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
+        "ಅರ್ಜಿಗಳನ್ನು ಪರಿಶೀಲಿಸಿ, ಅರ್ಹ ರೈತರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಕೊಳವೆಬಾವಿ ಕೊರೆಯಲು ಅನುಮೋದನೆ ನೀಡಲಾಗುತ್ತದೆ.",
+        "ಸರ್ಕಾರ ನಿಯೋಜಿಸಿದ ಗುತ್ತಿಗೆದಾರರು ಬಾವಿ ಕೊರೆದು ಪಂಪ್ ಅಳವಡಿಸುತ್ತಾರೆ."
+      ],
+      link: "https://kmdc.karnataka.gov.in"
+    },
+    {
+      id: "yashaswini",
+      title: "ಯಶಸ್ವಿನಿ ಸಹಕಾರಿ ರೈತರ ಆರೋಗ್ಯ ವಿಮೆ",
+      subtitle: "ಸಹಕಾರಿ ರೈತರಿಗೆ ನಗದುರಹಿತ ವೈದ್ಯಕೀಯ ಚಿಕಿತ್ಸೆ",
+      description: "ಕರ್ನಾಟಕ ಸರ್ಕಾರವು ಮರುಜಾರಿಗೊಳಿಸಿರುವ ನಗದುರಹಿತ, ಅತ್ಯಂತ ಕಡಿಮೆ ವೆಚ್ಚದ ಆರೋಗ್ಯ ವಿಮೆ ಯೋಜನೆಯಾಗಿದ್ದು, ಗ್ರಾಮೀಣ ಸಹಕಾರ ಸಂಘಗಳ ಸದಸ್ಯರು ಮತ್ತು ಅವರ ಕುಟುಂಬದವರಿಗೆ ಪ್ರಮುಖ ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಗಳು ಮತ್ತು ಚಿಕಿತ್ಸೆಗಳನ್ನು ಪಡೆಯಲು ನೆರವಾಗುತ್ತದೆ.",
+      eligibility: [
+        "ಕರ್ನಾಟಕದ ಗ್ರಾಮೀಣ ಸಹಕಾರಿ ಸಂಘದಲ್ಲಿ ಕನಿಷ್ಠ ೩ ತಿಂಗಳುಗಳಿಂದ ಸದಸ್ಯರಾಗಿರಬೇಕು.",
+        "ಸಹಕಾರಿ ಸದಸ್ಯರು, ಅವರ ಸಂಗಾತಿ, ಮಕ್ಕಳು ಮತ್ತು ಅವಲಂಬಿತ ಪೋಷಕರಿಗೆ ಅನ್ವಯಿಸುತ್ತದೆ."
+      ],
+      benefits: [
+        "ಕರ್ನಾಟಕದ ೫೦೦ಕ್ಕೂ ಹೆಚ್ಚು ಅತ್ಯುತ್ತಮ ನೆಟ್‌ವರ್ಕ್ ಆಸ್ಪತ್ರೆಗಳಲ್ಲಿ ನಗದುರಹಿತ (ಕ್ಯಾಶ್‌ಲೆಸ್) ಚಿಕಿತ್ಸೆ ಮತ್ತು ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಗಳು.",
+        "ಒಂದು ಕುಟುಂಬಕ್ಕೆ ವರ್ಷಕ್ಕೆ ₹೫ ಲಕ್ಷದವರೆಗಿನ ಶಸ್ತ್ರಚಿಕಿತ್ಸಾ ವೆಚ್ಚಗಳ ಭರಿಸುವಿಕೆ.",
+        "ಅತ್ಯಂತ ಅಲ್ಪ ವಾರ್ಷಿಕ ಸದಸ್ಯತ್ವ ಪ್ರೀಮಿಯಂ ದರ (ಕುಟುಂಬಕ್ಕೆ ಸರಿಸುಮಾರು ₹೫೦೦ ರಿಂದ ₹೧೦೦೦)."
+      ],
+      applySteps: [
+        "ನಿಮ್ಮ ಹತ್ತಿರದ ಪ್ರಾಥಮಿಕ ಕೃಷಿ ಪತ್ತಿನ ಸಹಕಾರ ಸಂಘ (PACS) ಅಥವಾ ಹಾಲಿನ ಉತ್ಪಾದಕರ ಸಹಕಾರ ಸಂಘಕ್ಕೆ ಭೇಟಿ ನೀಡಿ.",
+        "ಯಶಸ್ವಿನಿ ನೋಂದಣಿ ಫಾರ್ಮ್ ಅನ್ನು ಭರ್ತಿ ಮಾಡಿ ಕುಟುಂಬದ ವಿವರಗಳನ್ನು ಸಲ್ಲಿಸಿ.",
+        "ಕುಟುಂಬದ ಆಧಾರ್ ಕಾರ್ಡ್‌ಗಳನ್ನು ಸಲ್ಲಿಸಿ ಮತ್ತು ನಿಗದಿತ ವಾರ್ಷಿಕ ಪ್ರೀಮಿಯಂ ಪಾವತಿಸಿ.",
+        "ನೆಟ್‌ವರ್ಕ್ ಆಸ್ಪತ್ರೆಗಳಲ್ಲಿ ನಗದುರಹಿತ ಚಿಕಿತ್ಸೆ ಪಡೆಯಲು ಬಳಸಬಹುದಾದ ಯಶಸ್ವಿನಿ ಆರೋಗ್ಯ ಕಾರ್ಡ್ ಪಡೆಯಿರಿ."
+      ],
+      link: "https://sahakara.kar.gov.in"
+    }
+  ]
+};
+
+// ==========================================
+// SECTION: gemini.js
+// ==========================================
+
+// Krishi-Sanjeevini Gemini AI Connection Service & High-Fidelity Mock Engine
+
+// Database of high-fidelity agricultural diagnostics for Demo Mode
+const mockDiagnostics = {
+  tomato: {
+    en: {
+      crop: "Tomato",
+      disease: "Early Blight (Alternaria solani)",
+      severity: "Medium",
+      causes: "Fungal infection caused by Alternaria solani. It thrives in warm, humid weather with frequent rain or overhead irrigation. Spores spread via wind, splashing water, or infested tools. Symptoms start as dark spots with concentric ring 'target' patterns on older leaves.",
+      organic: "1. Spray Organic Neem Oil (1% concentration) thoroughly on leaves every 7-10 days.\n2. Apply baking soda spray (1 tablespoon baking soda, 1 tablespoon vegetable oil, and 2 drops liquid soap in 4 litres of water) to adjust leaf pH.\n3. Prune low-hanging branches and clear fallen debris to stop spore splashback.",
+      chemical: "1. Apply copper-based fungicide (like Copper Oxychloride 50 WP at 3g/L of water) at the first sign of spot formation.\n2. In severe cases, spray Mancozeb or Chlorothalonil according to package instructions.",
+      prevention: "1. Practice 3-year crop rotation (avoid planting peppers, potatoes, or eggplants in the same soil).\n2. Water at the base of the plant using drip irrigation; keep leaves completely dry.\n3. Ensure adequate spacing between tomato plants for optimal airflow."
+    },
+    kn: {
+      crop: "ಟೊಮೆಟೊ",
+      disease: "ಮುಂಚಿನ ಎಲೆ ಮಚ್ಚೆ ರೋಗ (Early Blight)",
+      severity: "Medium",
+      causes: "ಆಲ್ಟರ್ನೇರಿಯಾ ಸೊಲಾನಿ ಎಂಬ ಶಿಲೀಂಧ್ರದಿಂದ ಬರುತ್ತದೆ. ಇದು ಬೆಚ್ಚಗಿನ, ಆರ್ದ್ರ ಮತ್ತು ಅತಿಯಾದ ತೇವಾಂಶದ ವಾತಾವರಣದಲ್ಲಿ ವೇಗವಾಗಿ ಹರಡುತ್ತದೆ. ಹಳೆಯ ಎಲೆಗಳ ಮೇಲೆ ವೃತ್ತಾಕಾರದ ಕಪ್ಪು ಮಚ್ಚೆಗಳು ಮೊದಲು ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ. ಗಾಳಿ ಮತ್ತು ನೀರಿನ ಹನಿಗಳ ಮೂಲಕ ಪಕ್ಕದ ಗಿಡಗಳಿಗೆ ಹರಡುತ್ತದೆ.",
+      organic: "೧. ಶೇಕಡಾ ೧ ರಷ್ಟು ಸಾಂದ್ರತೆಯ ಬೇವಿನ ಎಣ್ಣೆಯನ್ನು ಎಲೆಗಳ ಮೇಲೆ ಪ್ರತಿ ೭-೧೦ ದಿನಗಳಿಗೊಮ್ಮೆ ಸಿಂಪಡಿಸಿ.\n೨. ಅಡುಗೆ ಸೋಡಾ ಮಿಶ್ರಣವನ್ನು ಸಿಂಪಡಿಸಿ (೧ ಚಮಚ ಅಡುಗೆ ಸೋಡಾ, ೧ ಚಮಚ ಅಡುಗೆ ಎಣ್ಣೆ, ಕೆಲವು ಹನಿ ಲಿಕ್ವಿಡ್ ಸೋಪ್ ಅನ್ನು ೪ ಲೀಟರ್ ನೀರಿನಲ್ಲಿ ಬೆರೆಸಿ).\n೩. ಕೆಳಭಾಗದ ಒಣಗಿದ ಎಲೆಗಳನ್ನು ಕತ್ತರಿಸಿ ಮತ್ತು ನೆಲದ ಮೇಲಿರುವ ಸಸ್ಯದ ತ್ಯಾಜ್ಯವನ್ನು ಸುಟ್ಟು ಹಾಕಿ.",
+      chemical: "೧. ರೋಗದ ಆರಂಭಿಕ ಲಕ್ಷಣಗಳು ಕಂಡಾಗ ತಾಮ್ರದ ಆಕ್ಸಿಕ್ಲೋರೈಡ್ (Copper Oxychloride 50 WP) ಅನ್ನು ಪ್ರತಿ ಲೀಟರ್ ನೀರಿಗೆ ೩ ಗ್ರಾಂ ನಂತೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n೨. ತೀವ್ರವಾಗಿದ್ದರೆ ಮ್ಯಾಂಕೊಜೆಬ್ (Mancozeb) ಶಿಲೀಂಧ್ರನಾಶಕವನ್ನು ಸೂಕ್ತ ಪ್ರಮಾಣದಲ್ಲಿ ಸಿಂಪಡಿಸಿ.",
+      prevention: "೧. ಮೂರು ವರ್ಷಗಳ ಬೆಳೆ ಸರದಿ ಪದ್ಧತಿಯನ್ನು ಅನುಸರಿಸಿ (ಟೊಮೆಟೊ ಜಾಗದಲ್ಲಿ ಆಲೂಗಡ್ಡೆ ಅಥವಾ ಬದನೆ ಬೆಳೆಯಬೇಡಿ).\n೨. ಗಿಡಗಳ ಬುಡಕ್ಕೆ ಮಾತ್ರ ನೀರು ಹಾಯಿಸಿ (ಹನಿ ನೀರಾವರಿ ಸೂಕ್ತ). ಎಲೆಗಳನ್ನು ಒಣದಾಗಿಡಿ.\n೩. ಗಿಡಗಳ ನಡುವೆ ಉತ್ತಮ ಗಾಳಿಯಾಡಲು ಸೂಕ್ತ ಅಂತರವನ್ನು ಕಾಯ್ದುಕೊಳ್ಳಿ."
+    }
+  },
+  rice: {
+    en: {
+      crop: "Rice (Paddy)",
+      disease: "Rice Blast (Magnaporthe oryzae)",
+      severity: "High",
+      causes: "One of the most destructive fungal diseases of rice. Thrives in cool daytime temperatures, high humidity, and heavy dew. It causes spindle-shaped (diamond) lesions with grey centers on leaves, and attacks nodes and panicles, leading to neck rot and severe grain loss.",
+      organic: "1. Spray Pseudomonas fluorescens liquid formulation (10 ml per litre of water) to boost natural bacterial resistance.\n2. Apply fresh cow dung extract (diluted 1:10 with water) or vermicompost tea to suppress fungal spores.",
+      chemical: "1. Spray Tricyclazole 75 WP at 0.6g per litre of water at the initiation of the disease.\n2. Alternatively, apply Azoxystrobin 25 SC (1 ml/L) or Carbendazim (1g/L) for rapid systemic control.",
+      prevention: "1. Avoid excessive use of Nitrogen fertilizers, which makes leaf tissues soft and highly susceptible to blast.\n2. Use blast-resistant certified seed varieties.\n3. Clean the bunds and remove wild weed hosts surrounding the paddy field."
+    },
+    kn: {
+      crop: "ಭತ್ತ (ಅಕ್ಕಿ)",
+      disease: "ಭತ್ತದ ಬೆಂಕಿ ರೋಗ (Rice Blast)",
+      severity: "High",
+      causes: "ಮ್ಯಾಗ್ನಾಪೋರ್ತೆ ಒರೈಜೆ ಎಂಬ ಶಿಲೀಂಧ್ರದಿಂದ ಬರುವ ಅತ್ಯಂತ ವಿನಾಶಕಾರಿ ರೋಗ. ಇದು ಎಲೆಗಳ ಮೇಲೆ ವಜ್ರಾಕಾರದ (ಕಣ್ಣಿನ ಆಕಾರದ) ಬೂದು ಬಣ್ಣದ ಮಚ್ಚೆಗಳನ್ನು ಉಂಟುಮಾಡುತ್ತದೆ. ಇದು ಕುತ್ತಿಗೆ ಕೊಳೆತ ರೋಗಕ್ಕೂ ಕಾರಣವಾಗಿ ಜೊಳ್ಳು ಕಾಳುಗಳಾಗುವಂತೆ ಮಾಡುತ್ತದೆ.",
+      organic: "೧. ಸುಡೋಮೊನಾಸ್ ಫ್ಲೋರೆಸೆನ್ಸ್ (Pseudomonas fluorescens) ದ್ರವ ರೂಪವನ್ನು (ಲೀಟರ್ ನೀರಿಗೆ ೧೦ ಮಿಲಿ) ಬೆರೆಸಿ ಎಲೆಗಳ ಮೇಲೆ ಸಿಂಪಡಿಸಿ.\n೨. ತಾಜಾ ಹಸುವಿನ ಸಗಣಿ ರಸವನ್ನು (೧:೧೦ ಪ್ರಮಾಣದಲ್ಲಿ ನೀರಿನೊಂದಿಗೆ ದುರ್ಬಲಗೊಳಿಸಿ) ಸೋಂಕಿತ ಬೆಳೆಗಳ ಮೇಲೆ ಸಿಂಪಡಿಸಿ.\n೩. ಮಣ್ಣಿನ ಜೈವಿಕ ಶಕ್ತಿ ಹೆಚ್ಚಿಸಲು ಹಸಿರೆಲೆ ಗೊಬ್ಬರ ಬಳಸಿ.",
+      chemical: "೧. ರೋಗದ ಆರಂಭದಲ್ಲಿ ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್ ೭೫ ಡಬ್ಲ್ಯೂ.ಪಿ (Tricyclazole) ಅನ್ನು ಪ್ರತಿ ಲೀಟರ್ ನೀರಿಗೆ ೦.೬ ಗ್ರಾಂ ನಂತೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n೨. ಅಥವಾ ಅಜೋಕ್ಸಿಸ್ಟ್ರೋಬಿನ್ (Azoxystrobin 25 SC - ೧ ಮಿಲಿ/ಲೀಟರ್) ಬಳಸಿ ನಿಯಂತ್ರಿಸಿ.",
+      prevention: "೧. ಸಾರಜನಕ (ಯೂರಿಯಾ) ಗೊಬ್ಬರವನ್ನು ಅತಿಯಾಗಿ ಬಳಸಬೇಡಿ, ಇದು ಎಲೆಗಳನ್ನು ಮೃದುವಾಗಿಸಿ ರೋಗಕ್ಕೆ ತುತ್ತಾಗಿಸುತ್ತದೆ.\n೨. ರೋಗ ನಿರೋಧಕ ಪ್ರಮಾಣೀಕೃತ ಬಿತ್ತನೆ ಬೀಜಗಳನ್ನು ಬಳಸಿ.\n೩. ಗದ್ದೆಯ ಬದುಗಳನ್ನು ಸ್ವಚ್ಛವಾಗಿಟ್ಟುಕೊಂಡು ಪರ್ಯಾಯ ಕಳೆ ಸಸ್ಯಗಳನ್ನು ನಾಶಪಡಿಸಿ."
+    }
+  },
+  ragi: {
+    en: {
+      crop: "Ragi (Finger Millet)",
+      disease: "Finger Millet Leaf & Neck Blast (Pyricularia grisea)",
+      severity: "Critical",
+      causes: "Fungal pathogen that attacks finger millet at all growth stages. Spreads heavily under overcast skies, high humidity, and continuous light drizzles. Spindle lesions dry up leaf tips; neck blast chokes nutrient flow to the grain heads, leaving them completely dry, ash-colored, and empty.",
+      organic: "1. Spray Neem Seed Kernel Extract (NSKE 5%) directly onto the developing crop.\n2. Dust wood ash mixed with turmeric on wet leaves in early morning.\n3. Treat seeds with Trichoderma viride bio-fungicide (4g/kg seed) before sowing.",
+      chemical: "1. Spray Kitazin (Iprobenfos 48% EC) at 2 ml/L of water or Edifenphos at 1 ml/L of water.\n2. Ensure spraying is targeted at the neck and panicles when grains begin to emerge.",
+      prevention: "1. Strictly maintain wider spacing between rows (30cm x 10cm) to keep the canopy dry.\n2. Apply recommended Potash (K) fertilizer, which strengthens the plant stalks.\n3. Remove and burn infected stubble post-harvest."
+    },
+    kn: {
+      crop: "ರಾಗಿ",
+      disease: "ರಾಗಿ ಕುತ್ತಿಗೆ ಮತ್ತು ತೆನೆ ಬೆಂಕಿ ರೋಗ (Ragi Blast)",
+      severity: "Critical",
+      causes: "ಪೈರಿಕ್ಯುಲೇರಿಯಾ ಗ್ರಿಸಿಯಾ ಎಂಬ ಶಿಲೀಂಧ್ರದಿಂದ ಬರುವ ರೋಗ. ಮೋಡ ಕವಿದ ವಾತಾವರಣ, ಅತಿ ತೇವಾಂಶ ಇದ್ದಾಗ ರೋಗ ತೀವ್ರವಾಗುತ್ತದೆ. ತೆನೆಗಳು ಬೆಳ್ಳಗಾಗಿ ಒಣಗಿ ನಿಲ್ಲುತ್ತವೆ ಮತ್ತು ಕಾಳುಗಳು ತುಂಬುವುದಿಲ್ಲ. ಇದರಿಂದ ಶೇಕಡಾ ೫೦ಕ್ಕೂ ಹೆಚ್ಚು ಇಳುವರಿ ನಷ್ಟವಾಗಬಹುದು.",
+      organic: "೧. ಶೇಕಡಾ ೫ ರಷ್ಟು ಬೇವಿನ ಬೀಜದ ಹಿಂಡಿ ಕಷಾಯವನ್ನು (NSKE) ಬೆಳೆಗೆ ಸಿಂಪಡಿಸಿ.\n೨. ಮುಂಜಾನೆ ಇಬ್ಬನಿ ಇರುವಾಗ ಎಲೆಗಳ ಮೇಲೆ ಒಲೆ ಬೂದಿ ಮತ್ತು ಅರಿಶಿನ ಪುಡಿ ಮಿಶ್ರಣವನ್ನು ಧೂಳೀಕರಿಸಿ.\n೩. ಬಿತ್ತನೆಗೆ ಮುನ್ನ ಬೀಜಗಳನ್ನು ಟ್ರೈಕೋಡರ್ಮಾ ವಿರಿಡೆ (Trichoderma viride - ೪ ಗ್ರಾಂ/ಕೆಜಿ) ಜೈವಿಕ ನಾಶಕದಿಂದ ಉಪಚರಿಸಿ.",
+      chemical: "೧. ಕೀಟಾಜಿನ್ (Kitazin 48% EC) ಔಷಧವನ್ನು ಪ್ರತಿ ಲೀಟರ್ ನೀರಿಗೆ ೨ ಮಿಲಿ ಅಥವಾ ಎಡಿಫೆನ್‌ಫಾಸ್ ೧ ಮಿಲಿ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n೨. ತೆನೆಗಳು ಮೂಡುವ ಹಂತದಲ್ಲಿ ನೇರವಾಗಿ ತೆನೆಗಳ ಮೇಲೆ ಬೀಳುವಂತೆ ಸಿಂಪಡಿಸುವುದು ಅಗತ್ಯ.",
+      prevention: "೧. ಬಿತ್ತನೆ ಮಾಡುವಾಗ ಸಾಲುಗಳ ನಡುವೆ ಕನಿಷ್ಠ ೩೦ ಸೆಂ.ಮೀ ಅಂತರ ಕಾಪಾಡಿಕೊಳ್ಳಿ.\n೨. ಶಿಫಾರಸು ಮಾಡಿದ ಪೊಟ್ಯಾಶ್ ಗೊಬ್ಬರವನ್ನು ತಪ್ಪದೇ ನೀಡಿ, ಇದು ಕಾಂಡವನ್ನು ಗಟ್ಟಿಗೊಳಿಸುತ್ತದೆ.\n೩. ಕೊಯ್ಲಿನ ನಂತರ ಹಳೆಯ ರೋಗಗ್ರಸ್ತ ಕಡ್ಡಿಗಳನ್ನು ಹೊಲದಿಂದ ತೆಗೆದು ಸುಟ್ಟು ಹಾಕಿ."
+    }
+  },
+  onion: {
+    en: {
+      crop: "Onion",
+      disease: "Purple Blotch (Alternaria porri)",
+      severity: "High",
+      causes: "Fungal infection characterized by small, water-soaked lesions on leaves and seed stalks that rapidly turn purple-brown with yellow halos. It breaks the leaves, reducing onion bulb size and storage life. Favoured by warm temperatures (21-30°C) and persistent free moisture.",
+      organic: "1. Apply fresh garlic-chilli extract spray (anti-fungal properties) once a week.\n2. Spray copper hydroxide (2.5g/L) which acts as an organic-compliant barrier.\n3. Improve soil drainage and avoid pooling water around onion beds.",
+      chemical: "1. Spray Mancozeb 75 WP at 2.5g per litre or Propiconazole 25 EC at 1 ml per litre of water.\n2. Mix a sticking agent (spreader) in the chemical spray so the droplets stick to the waxy, slippery onion leaves.",
+      prevention: "1. Avoid overhead sprinkler irrigation; always use drip or furrow systems.\n2. Maintain crop spacing to dry the leaf surfaces quickly.\n3. Apply balanced organic manure to improve overall crop immunity."
+    },
+    kn: {
+      crop: "ಈರುಳ್ಳಿ",
+      disease: "ನೇರಳೆ ಮಚ್ಚೆ ರೋಗ (Purple Blotch)",
+      severity: "High",
+      causes: "ಆಲ್ಟರ್ನೇರಿಯಾ ಪೋರಿ ಎಂಬ ಶಿಲೀಂಧ್ರದಿಂದ ಬರುವ ಪ್ರಮುಖ ರೋಗ. ಎಲೆಗಳ ಮೇಲೆ ಬಿಳಿ ಬಣ್ಣದ ಚುಕ್ಕೆಗಳು ಮೂಡಿ ನಂತರ ನೇರಳೆ ಬಣ್ಣಕ್ಕೆ ತಿರುಗುತ್ತವೆ. ಇದರಿಂದ ಎಲೆಗಳು ಒಣಗಿ ಮುರಿದು ಬೀಳುತ್ತವೆ ಮತ್ತು ಈರುಳ್ಳಿ ಗಡ್ಡೆಗಳ ಗಾತ್ರ ಹಾಗೂ ದಾಸ್ತಾನು ಸಾಮರ್ಥ್ಯ ಕಡಿಮೆಯಾಗುತ್ತದೆ.",
+      organic: "೧. ಬೆಳ್ಳುಳ್ಳಿ ಮತ್ತು ಹಸಿಮೆಣಸಿನಕಾಯಿ ರಸದ ಕಷಾಯವನ್ನು ತಯಾರಿಸಿ ವಾರಕ್ಕೊಮ್ಮೆ ಸಿಂಪಡಿಸಿ.\n೨. ತಾಮ್ರದ ಹೈಡ್ರಾಕ್ಸೈಡ್ (Copper Hydroxide) ಜೈವಿಕ ರಕ್ಷಕ ದ್ರಾವಣವನ್ನು ಸಿಂಪಡಿಸಿ.\n೩. ಈರುಳ್ಳಿ ಮಡಿಗಳಲ್ಲಿ ನೀರು ನಿಲ್ಲದಂತೆ ಉತ್ತಮ ಬರಿದಾಗುವ ವ್ಯವಸ್ಥೆ ಮಾಡಿ.",
+      chemical: "೧. ಮ್ಯಾಂಕೊಜೆಬ್ (Mancozeb) ಪ್ರತಿ ಲೀಟರ್ ನೀರಿಗೆ ೨.೫ ಗ್ರಾಂ ಅಥವಾ ಪ್ರೊಪಿಕೊನಾಜೋಲ್ (Propiconazole) ೧ ಮಿಲಿ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n೨. ಈರುಳ್ಳಿ ಎಲೆಗಳು ಮೇಣದಂತಿದ್ದು ಜಾರುವುದರಿಂದ, ಸಿಂಪಡಿಸುವ ದ್ರಾವಣಕ್ಕೆ ಗೋಂದು (Sticking Agent) ಸೇರಿಸುವುದು ಕಡ್ಡಾಯ.",
+      prevention: "೧. ಸ್ಪ್ರಿಂಕ್ಲರ್ ನೀರಾವರಿ ಪದ್ಧತಿ ಬಳಸಬೇಡಿ; ಸಾಲು ಕಾಲುವೆ ಅಥವಾ ಹನಿ ನೀರಾವರಿ ಸೂಕ್ತ.\n೨. ಎಲೆಗಳು ತೇವವಾಗಿ ಉಳಿಯದಂತೆ ಸಾಲುಗಳ ನಡುವೆ ಗರಿಷ್ಠ ಗಾಳಿಯಾಡುವಂತೆ ನೋಡಿಕೊಳ್ಳಿ.\n೩. ಉತ್ತಮ ರೋಗ ನಿರೋಧಕ ಶಕ್ತಿಗಾಗಿ ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರವನ್ನು ಸಮರ್ಪಕವಾಗಿ ಬಳಸಿ."
+    }
+  },
+  corn: {
+    en: {
+      crop: "Corn (Maize)",
+      disease: "Corn Common Rust (Puccinia sorghi)",
+      severity: "Medium",
+      causes: "Fungal infection caused by Puccinia sorghi. It is characterized by powdery, cinnamon-brown pustules on both upper and lower leaf surfaces. Favoured by cool temperatures, high relative humidity (above 95%), and free water on the leaves.",
+      organic: "1. Apply organic Neem oil spray (1-2% concentration) or baking soda solution to leaves.\n2. Spray liquid sulfur or seaweed extract to strengthen corn stalk immunity.\n3. Clean the field by removing infected crop debris after harvest.",
+      chemical: "1. Spray Mancozeb 75 WP (2g/L of water) or Tebuconazole (1 ml/L) for systemic rust control.\n2. Apply early when the first pustules appear to protect the yield.",
+      prevention: "1. Plant resistant corn hybrid varieties.\n2. Ensure proper spacing for rapid leaf drying.\n3. Rotate crops with legumes (like beans or soy) to reduce pathogen load in soil."
+    },
+    kn: {
+      crop: "ಮೆಕ್ಕೆಜೋಳ (ಜೋಳ)",
+      disease: "ಮೆಕ್ಕೆಜೋಳದ ಸಾಧಾರಣ ತುಕ್ಕು ರೋಗ (Common Rust)",
+      severity: "Medium",
+      causes: "ಪುಸ್ಸಿನಿಯಾ ಸೋರ್ಗಿ ಎಂಬ ಶಿಲೀಂಧ್ರದಿಂದ ಬರುವ ರೋಗ. ಎಲೆಗಳ ಎರಡೂ ಬದಿಗಳಲ್ಲಿ ಕಂದು ಬಣ್ಣದ ಪುಡಿಯಂತಹ ಸಣ್ಣ ಬಕ್ಕೆಗಳು ಏಳುತ್ತವೆ. ಇದು ತಂಪಾದ ವಾತಾವರಣ, ಅಧಿಕ ತೇವಾಂಶ ಮತ್ತು ಎಲೆಗಳ ಮೇಲಿರುವ ತೇವದಿಂದ ವೇಗವಾಗಿ ಹರಡುತ್ತದೆ.",
+      organic: "೧. ಶೇಕಡಾ ೧-೨ ರಷ್ಟು ಬೇವಿನ ಎಣ್ಣೆ ದ್ರಾವಣ ಅಥವಾ ಅಡುಗೆ ಸೋಡಾ ಮಿಶ್ರಣವನ್ನು ಸೋಂಕಿತ ಎಲೆಗಳ ಮೇಲೆ ಸಿಂಪಡಿಸಿ.\n೨. ಸಸ್ಯದ ರೋಗ ನಿರೋಧಕ ಶಕ್ತಿ ಹೆಚ್ಚಿಸಲು ಕಡಲಕಳೆ ಸಾರ (Seaweed extract) ಅಥವಾ ಜೀವಾಮೃತ ಬಳಸಿ.\n೩. ಕೊಯ್ಲಿನ ನಂತರ ಹೊಲದಲ್ಲಿ ಉಳಿದಿರುವ ಸೋಂಕಿತ ಕಡ್ಡಿ-ತ್ಯಾಜ್ಯಗಳನ್ನು ಒಟ್ಟುಗೂಡಿಸಿ ಸುಟ್ಟು ಹಾಕಿ.",
+      chemical: "೧. ಆರಂಭಿಕ ಹಂತದಲ್ಲಿ ಮ್ಯಾಂಕೊಜೆಬ್ (Mancozeb 75 WP) ಅನ್ನು ಪ್ರತಿ ಲೀಟರ್ ನೀರಿಗೆ ೨ ಗ್ರಾಂ ನಂತೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n೨. ರೋಗ ಉಲ್ಬಣಗೊಂಡರೆ ಟೆಬುಕೊನಜೋಲ್ (Tebuconazole - ೧ ಮಿಲಿ/ಲೀಟರ್) ನಂತಹ ವ್ಯವಸ್ಥಿತ ಶಿಲೀಂಧ್ರನಾಶಕ ಬಳಸಿ.",
+      prevention: "೧. ರೋಗ ನಿರೋಧಕ ಶಕ್ತಿಯುಳ್ಳ ತಳಿಗಳನ್ನು ಬಿತ್ತನೆಗೆ ಆಯ್ಕೆ ಮಾಡಿ.\n೨. ಸಾಲುಗಳ ನಡುವೆ ಸೂಕ್ತ ಗಾಳಿಯಾಡಲು ಅವಕಾಶ ನೀಡಿ, ಇದರಿಂದ ಎಲೆಗಳು ಬೇಗನೆ ಒಣಗುತ್ತವೆ.\n೩. ದ್ವಿದಳ ಧಾನ್ಯಗಳೊಂದಿಗೆ (ಉದಾ: ಸೋಯಾಬೀನ್ ಅಥವಾ ಹೆಸರುಬೇಳೆ) ಬೆಳೆ ಸರದಿ ಪದ್ಧತಿ ಅನುಸರಿಸಿ."
+    }
+  }
+};
+
+// Comprehensive response prompts for Krishi AI Chatbot in Demo Mode
+const mockBotFarmingExpert = {
+  questions: [
+    {
+      keywords: ["blight", "tomato", "ಚುಕ್ಕೆ", "ಟೊಮೆಟೊ", "ಖಾಯಿಲೆ"],
+      en: "For Tomato Early Blight, prune bottom leaves to stop spore splashback, avoid overhead watering, and spray Copper Oxychloride (3g/L) or 1% Neem Oil. Crop rotation with non-solanaceous crops is vital.",
+      kn: "ಟೊಮೆಟೊ ಎಲೆ ಮಚ್ಚೆ ರೋಗಕ್ಕೆ, ನೆಲಕ್ಕೆ ತಗಲುವ ಎಲೆಗಳನ್ನು ಕತ್ತರಿಸಿ, ಹನಿ ನೀರಾವರಿ ಬಳಸಿ ಮತ್ತು ತಾಮ್ರದ ಆಕ್ಸಿಕ್ಲೋರೈಡ್ (ಲೀಟರ್ ನೀರಿಗೆ ೩ ಗ್ರಾಮ್) ಅಥವಾ ಶೇಕಡಾ ೧ ರಷ್ಟು ಬೇವಿನ ಎಣ್ಣೆ ಸಿಂಪಡಿಸಿ."
+    },
+    {
+      keywords: ["blast", "ragi", "rice", "ರಾಗಿ", "ಭತ್ತ", "ಬೆಂಕಿ"],
+      en: "Blast disease is fungal. Treat seeds with Trichoderma viride. Reduce excess chemical Nitrogen (urea), use recommended Potash, and spray Tricyclazole (0.6g/L) or Pseudomonas liquid bio-agent.",
+      kn: "ಬೆಂಕಿ ರೋಗವು ಶಿಲೀಂಧ್ರದಿಂದ ಬರುತ್ತದೆ. ಯೂರಿಯಾ ಗೊಬ್ಬರವನ್ನು ಅತಿಯಾಗಿ ಬಳಸಬೇಡಿ, ಪೊಟ್ಯಾಶ್ ಗೊಬ್ಬರ ಬಳಸಿ ಮತ್ತು ಲೀಟರ್ ನೀರಿಗೆ ೦.೬ ಗ್ರಾಂ ನಂತೆ ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್ ಸಿಂಪಡಿಸಿ."
+    },
+    {
+      keywords: ["fertilizer", "manure", "npk", "ಗೊಬ್ಬರ", "ಯೂರಿಯಾ"],
+      en: "Always apply balanced fertilizers based on soil tests. Combine compost/farmyard manure with NPK. For leafy growth use Nitrogen (N), for strong roots use Phosphorus (P), and for disease resistance use Potassium (K).",
+      kn: "ಯಾವಾಗಲೂ ಮಣ್ಣಿನ ತಪಾಸಣೆ ಆಧಾರದ ಮೇಲೆ ಗೊಬ್ಬರ ನೀಡಿ. ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರದೊಂದಿಗೆ ಸಮತೋಲಿತ NPK ಗೊಬ್ಬರ ಬಳಸಿ. ಸಾರಜನಕವು ಬೆಳವಣಿಗೆಗೆ, ರಂಜಕವು ಬೇರುಗಳಿಗೆ ಮತ್ತು ಪೊಟ್ಯಾಶಿಯಂ ರೋಗ ನಿರೋಧಕ ಶಕ್ತಿಗೆ ಸಹಕಾರಿ."
+    },
+    {
+      keywords: ["mandi", "price", "market", "ಮಂಡಿ", "ಬೆಲೆ", "ದರ"],
+      en: "You can check daily market rates directly in the 'Mandi Prices' panel. Select your crop to view the 7-day average trend graph and list your harvest in the 'Marketplace' to get fair buying offers.",
+      kn: "ನಮ್ಮ ಆಪ್‌ನಲ್ಲಿರುವ 'ಮಂಡಿ ಬೆಲೆಗಳು' ವಿಭಾಗದಲ್ಲಿ ದಿನದ ಲೈವ್ ದರಗಳನ್ನು ನೋಡಬಹುದು. ಬೆಲೆಯನ್ನು ವಿಶ್ಲೇಷಿಸಿ ನೇರವಾಗಿ ದಲ್ಲಾಳಿಗಳಿಲ್ಲದೆ 'ರೈತ ಮಾರುಕಟ್ಟೆ'ಯಲ್ಲಿ ನಿಮ್ಮ ಬೆಳೆಯನ್ನು ಒಳ್ಳೆಯ ಬೆಲೆಗೆ ಮಾರಾಟ ಮಾಡಿ."
+    },
+    {
+      keywords: ["weather", "rain", "ಮಳೆ", "ಹವಾಮಾನ", "ಬಿತ್ತನೆ"],
+      en: "Farming depends heavily on weather. Sowing should ideally begin after the first good monsoon showers. Check our 'Weather & Calendar' panel for real-time rain probability and local sowing guides.",
+      kn: "ಕೃಷಿಯು ಹವಾಮಾನದ ಮೇಲೆ ನಿರ್ಧಾರಿತವಾಗಿದೆ. ಮುಂಗಾರು ಮಳೆಯ ಮೊದಲ ಮಳೆಯ ನಂತರ ಬಿತ್ತನೆ ಆರಂಭಿಸಿ. ವಿವರವಾದ ಹವಾಮಾನ ಮತ್ತು ಕೃಷಿ ಕ್ಯಾಲೆಂಡರ್ ಮಾಹಿತಿಗಾಗಿ ನಮ್ಮ 'ಹವಾಮಾನ ಸಲಹೆ' ವಿಭಾಗವನ್ನು ನೋಡಿ."
+    },
+    {
+      keywords: ["how to use", "website", "app", "navigate", "panel", "page", "ವೆಬ್‌ಸೈಟ್", "ಆಪ್", "ಬಳಸುವುದು"],
+      en: "To navigate: 1. Use the header tabs to visit sections (Home, Disease Analyser, Mandi Prices, Marketplace, Weather, Soil Advisor, Govt Schemes, 3D Digital Twin). 2. Click the Floating Mic for hands-free voice commands. 3. Adjust themes and languages in the Settings panel.",
+      kn: "ನಮ್ಮ ವೆಬ್‌ಸೈಟ್ ಬಳಸಲು: ೧. ಮುಖ್ಯ ಮೆನುವಿನಲ್ಲಿರುವ ವಿಭಾಗಗಳನ್ನು ಬಳಸಿ (ರೋಗ ವಿಶ್ಲೇಷಣೆ, ಮಂಡಿ ಬೆಲೆಗಳು, ರೈತ ಮಾರುಕಟ್ಟೆ, ಮಣ್ಣಿನ ಆರೋಗ್ಯ, ಡಿಜಿಟಲ್ ಟ್ವಿನ್). ೨. ಧ್ವನಿ ಆಜ್ಞೆಗಳಿಗಾಗಿ ಮೈಕ್ ಬಟನ್ ಒತ್ತಿ. ೩. ಭಾಷೆ ಮತ್ತು ಥೀಮ್ ಬಣ್ಣಗಳನ್ನು ಬದಲಾಯಿಸಲು ಸೆಟ್ಟಿಂಗ್ಸ್ ಬಳಸಿ."
+    },
+    {
+      keywords: ["disease analyser", "leaf scan", "photo", "camera", "ಕ್ಯಾಮೆರಾ", "ರೋಗ", "ವಿಶ್ಲೇಷಣೆ"],
+      en: "In 'Disease Analyser', you can drop leaf photos or click 'Start Camera' to fetch a live photo. Press 'Start AI Scan' to diagnose tomato early blight, rice blast, onion blotch, and get customized chemical and organic remedies.",
+      kn: "'ಸಸ್ಯ ರೋಗ ವಿಶ್ಲೇಷಣೆ' ವಿಭಾಗದಲ್ಲಿ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ಲೈವ್ ಕ್ಯಾಮೆರಾದಿಂದ ಫೋಟೋ ತೆಗೆಯಿರಿ. ನಂತರ 'ವಿಶ್ಲೇಷಣೆ ಪ್ರಾರಂಭಿಸಿ' ಒತ್ತಿದರೆ ರೋಗಕ್ಕೆ ಕಾರಣಗಳು, ಸಾವಯವ ಮತ್ತು ರಾಸಾಯನಿಕ ಪರಿಹಾರಗಳು ಸಿಗುತ್ತವೆ."
+    },
+    {
+      keywords: ["digital twin", "3d", "canal", "hover", "sync", "ಹೂವರ್", "ಡಿಜಿಟಲ್", "೩ಡಿ"],
+      en: "The 'Digital Twin' displays a live 3D visual farmland. Configure land size, experience, water source, and machinery, then click 'Sync Data & Update AI Twin'. Hover over crop beds for expected yields and profits; hover over blue canals for flow rate, efficiency, and daily usage metrics.",
+      kn: "'ಡಿಜಿಟಲ್ ಟ್ವಿನ್' ಜಮೀನಿನ ೩D ಮಾದರಿಯಾಗಿದೆ. ಪ್ರೊಫೈಲ್ ನವೀಕರಿಸಿ 'ಸಿಂಕ್ ಮಾಡಿ'. ಬೆಳೆ ವಿವರಗಳಿಗಾಗಿ ಹೊಲದ ಮೇಲೆ ಹೂವರ್ ಮಾಡಿ, ಹಾಗೂ ಕಾಲುವೆಯ ದಕ್ಷತೆ ಮತ್ತು ನೀರಿನ ಹರಿವನ್ನು ತಿಳಿಯಲು ನೀಲಿ ಕಾಲುವೆಗಳ ಮೇಲೆ ಹೂವರ್ ಮಾಡಿ."
+    }
+  ],
+  fallback: {
+    en: "I am Krishi AI, your crop, disease, and Krishi-Sanjeevini website specialist. Ask me agricultural questions or how to navigate our active panels, Mandi chart, 3D Digital Twin, and Soil Card diagnostic systems.",
+    kn: "ನಾನು ಕೃಷಿ AI, ನಿಮ್ಮ ಬೆಳೆ, ರೋಗ ಮತ್ತು ಕೃಷಿ-ಸಂಜೀವಿನಿ ವೆಬ್‌ಸೈಟ್‌ನ ಸಹಾಯಕ. ಕೃಷಿ ಪ್ರಶ್ನೆಗಳು ಅಥವಾ ನಮ್ಮ ಆಪ್‌ನ ೩D ಡಿಜಿಟಲ್ ಟ್ವಿನ್, ಮಣ್ಣಿನ ಸಲಹೆ ಮತ್ತು ಮಂಡಿ ಚಾರ್ಟ್ ಬಳಸುವ ಬಗ್ಗೆ ಕೇಳಿ."
+  }
+};
+
+/**
+ * Encodes a local File object to a Base64 string suitable for the Gemini API
+ */
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      // Strip out metadata prefix (e.g. "data:image/jpeg;base64,")
+      const base64Str = reader.result.split(",")[1];
+      resolve(base64Str);
+    };
+    reader.onerror = error => reject(error);
+  });
+}
+
+/**
+ * Analyzes crop disease using either live Gemini API or high-fidelity smart fallback engine.
+ * @param {string} base64Image - Base64 encoded image string (optional if using mock)
+ * @param {string} mimeType - Image MIME type (e.g., "image/jpeg")
+ * @param {string} lang - Selected language ("en" or "kn")
+ * @param {string} apiKey - Optional Gemini API Key
+ * @param {string} fileName - Optional filename to guide the mock selector
+ * @param {string} selectedCrop - The crop selected by the user ("auto", "tomato", "rice", "ragi", "onion", "corn")
+ * @param {object} weatherContext - Optional object containing live weather data { main, temp, desc }
+ */
+async function analyseCropDisease(base64Image, mimeType, lang = "en", apiKey = "", fileName = "", selectedCrop = "auto", weatherContext = null) {
+  // If API Key is present, try invoking the real client-side Gemini 2.5 Flash API
+  if (apiKey && apiKey.trim() !== "") {
+    try {
+      const response = await callGeminiAPI(base64Image, mimeType, lang, apiKey, selectedCrop, weatherContext);
+      return response;
+    } catch (error) {
+      console.warn("Live Gemini API call failed. Falling back to Smart Mock Engine...", error);
+      // Let it fall through to the mock engine
+    }
+  }
+
+  // Smart Mock Engine Fallback
+  await new Promise(resolve => setTimeout(resolve, 3500)); // Simulate AI computation delay
+  
+  let targetCrop = selectedCrop;
+  if (!targetCrop || targetCrop === "auto") {
+    const lowerName = fileName.toLowerCase();
+    if (lowerName.includes("rice") || lowerName.includes("paddy") || lowerName.includes("blast")) {
+      targetCrop = "rice";
+    } else if (lowerName.includes("ragi") || lowerName.includes("millet") || lowerName.includes("finger")) {
+      targetCrop = "ragi";
+    } else if (lowerName.includes("onion") || lowerName.includes("blotch") || lowerName.includes("bulb")) {
+      targetCrop = "onion";
+    } else if (lowerName.includes("corn") || lowerName.includes("maize") || lowerName.includes("rust") || lowerName.includes("ಜೋಳ")) {
+      targetCrop = "corn";
+    } else {
+      // Default to corn instead of random to prevent user confusion with demo images
+      targetCrop = "corn";
+    }
+  }
+
+  const result = mockDiagnostics[targetCrop][lang];
+  
+  let finalOrganic = result.organic;
+  let finalChemical = result.chemical;
+
+  // Inject Weather-Aware Smart Alerts for Mock Engine
+  if (weatherContext) {
+    if (weatherContext.main.includes('rain') || weatherContext.main.includes('drizzle') || weatherContext.main.includes('thunderstorm')) {
+      const warningEn = "WEATHER ALERT: It is currently raining. Do NOT apply any chemical or organic foliar sprays right now as they will wash away. Ensure field drainage immediately to prevent root rot, and wait for clear skies to apply treatments.";
+      const warningKn = "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆ: ಪ್ರಸ್ತುತ ಮಳೆಯಾಗುತ್ತಿದೆ. ಯಾವುದೇ ಕೀಟನಾಶಕ ಸಿಂಪಡಿಸಬೇಡಿ, ಏಕೆಂದರೆ ಅದು ತೊಳೆದುಹೋಗುತ್ತದೆ. ತಕ್ಷಣ ಜಮೀನಿನಲ್ಲಿ ನೀರು ನಿಲ್ಲದಂತೆ ಬಸಿದುಹೋಗಲು ವ್ಯವಸ್ಥೆ ಮಾಡಿ. ಆಕಾಶ ತಿಳಿಯಾದ ಮೇಲೆ ಔಷಧ ಸಿಂಪಡಿಸಿ.";
+      finalChemical = `[🚨 ${lang === 'kn' ? warningKn : warningEn}]\n\n${finalChemical}`;
+      finalOrganic = `[🚨 ${lang === 'kn' ? warningKn : warningEn}]\n\n${finalOrganic}`;
+    } else if (weatherContext.temp > 35) {
+      const heatEn = "WEATHER ALERT: Extreme heat detected. Avoid spraying chemicals during peak sunlight to prevent leaf burn. Apply treatments only in the late evening or early morning.";
+      const heatKn = "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆ: ವಿಪರೀತ ಬಿಸಿಲು ಇದೆ. ಮಧ್ಯಾಹ್ನ ಯಾವುದೇ ಔಷಧ ಸಿಂಪಡಿಸಬೇಡಿ, ಇದರಿಂದ ಎಲೆಗಳು ಸುಟ್ಟುಹೋಗಬಹುದು. ಸಂಜೆ ಅಥವಾ ಮುಂಜಾನೆ ಮಾತ್ರ ಸಿಂಪಡಿಸಿ.";
+      finalChemical = `[☀️ ${lang === 'kn' ? heatKn : heatEn}]\n\n${finalChemical}`;
+    }
+  }
+
+  return {
+    crop: result.crop,
+    disease: result.disease,
+    severity: result.severity,
+    causes: result.causes,
+    organic: finalOrganic,
+    chemical: finalChemical,
+    prevention: result.prevention,
+    isMock: true
+  };
+}
+
+/**
+ * Communicates directly with the client-side Gemini 3.5 Flash model
+ */
+async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selectedCrop = "auto", weatherContext = null) {
+  const modelName = "gemini-3.5-flash";
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+  let cropHint = "";
+  if (selectedCrop && selectedCrop !== "auto") {
+    cropHint = `The farmer explicitly identified this crop as: "${selectedCrop}". You MUST prioritize and base your diagnostic analysis on this crop variety (e.g. if Tomato is selected, analyze it as a Tomato leaf disease; if Corn is selected, analyze it as Corn leaf disease).`;
+  }
+
+  let weatherHint = "";
+  if (weatherContext) {
+    weatherHint = `
+    CRITICAL WEATHER CONTEXT:
+    The user's current live weather is: ${weatherContext.desc} with a temperature of ${Math.round(weatherContext.temp)}°C. 
+    You MUST tailor the 'organic' and 'chemical' treatment steps to account for this specific live weather. For example, if it's raining or about to rain, explicitly warn them NOT to spray chemicals as they will wash off, and suggest alternative immediate actions to save the crop. If it's a heatwave, suggest heat-specific precautions. Put this weather-aware advisory prominently at the start of the treatment sections.
+    `;
+  }
+
+  const promptText = `
+    You are an expert crop pathologist and agricultural advisor. Analyze this crop leaf/plant image.
+    ${cropHint}
+    ${weatherHint}
+    Provide the analysis results in a structured JSON format. 
+    You MUST output ONLY a valid JSON object. Do NOT wrap it in markdown or backticks.
+    The response MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
+    
+    The JSON structure MUST contain the following keys exactly:
+    {
+      "crop": "Brief name of the crop",
+      "disease": "Detected disease name (scientific and common)",
+      "severity": "Severity level (choose one of: Low, Medium, High, Critical)",
+      "causes": "Explanation of root cause and environmental factors/symptoms",
+      "organic": "Step-by-step organic, chemical-free treatment steps",
+      "chemical": "Step-by-step chemical control methods (use specific safe crop fungicides/pesticides with exact dosages)",
+      "prevention": "Practical preventative steps for next cropping cycle"
+    }
+    
+    Keep explanations highly practical, farmer-friendly, and localized. If the language is Kannada, use clean, readable Kannada script.
+  `;
+
+  const requestBody = {
+    contents: [
+      {
+        parts: [
+          { text: promptText },
+          {
+            inlineData: {
+              mimeType: mimeType,
+              data: base64Image
+            }
+          }
+        ]
+      }
+    ],
+    generationConfig: {
+      responseMimeType: "application/json"
+    }
+  };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(requestBody)
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.error?.message || `HTTP error! Status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+  
+  if (!rawText) {
+    throw new Error("Empty response received from Gemini API");
+  }
+
+  // Clean rawText of any potential markdown wrapper blocks
+  let cleanText = rawText.trim();
+  if (cleanText.startsWith("```")) {
+    cleanText = cleanText.replace(/^```json/, "").replace(/```$/, "").trim();
+  }
+
+  const parsedResult = JSON.parse(cleanText);
+  return {
+    crop: parsedResult.crop || "Unknown",
+    disease: parsedResult.disease || "Healthy / Undetermined",
+    severity: parsedResult.severity || "Low",
+    causes: parsedResult.causes || "N/A",
+    organic: parsedResult.organic || "N/A",
+    chemical: parsedResult.chemical || "N/A",
+    prevention: parsedResult.prevention || "N/A",
+    isMock: false
+  };
+}
+
+/**
+ * Handle farming chatbot queries, restricted strictly to agricultural and website topics
+ */
+async function getChatbotResponse(query, lang = "en", apiKey = "") {
+  const queryLower = query.toLowerCase().trim();
+  
+  // Guardrail check: Is it agricultural or website related?
+  const agriculturalKeywords = [
+    "crop", "disease", "plant", "pest", "fertilizer", "soil", "mandi", "price", "ragi", "rice", "tomato", "onion", "arecanut", "coffee",
+    "coconut", "jowar", "water", "irrigation", "organic", "neem", "chemical", "fungicide", "weather", "rain", "seed", "sow", "harvest",
+    "yield", "subsidy", "scheme", "farming", "farm", "kisan", "paddy", "blight", "blast", "blotch", "npk", "ph", "nitrogen", "potash",
+    "ರಾಗಿ", "ಭತ್ತ", "ಅಕ್ಕಿ", "ಟೊಮೆಟೊ", "ಈರುಳ್ಳಿ", "ಅಡಿಕೆ", "ತೆಂಗಿನಕಾಯಿ", "ಕಾಫಿ", "ಜೋಳ", "ಬೆಳೆ", "ರೋಗ", "ಕೀಟ", "ಗೊಬ್ಬರ", "ಮಣ್ಣು", "ಮಂಡಿ",
+    "ಬೆಲೆ", "ಹವಾಮಾನ", "ಮಳೆ", "ನೀರಾವರಿ", "ಸಾವಯವ", "ಕೃಷಿ", "ಯೋಜನೆ", "ಬಿತ್ತನೆ", "ಕೊಯ್ಲು"
+  ];
+
+  const websiteKeywords = [
+    "website", "app", "navigate", "panel", "page", "use", "feature", "button", "how", "bug", "issue", "click", "select", "disease analyser",
+    "mandi prices", "marketplace", "weather", "soil", "digital twin", "schemes", "voice", "mic", "talk", "api key", "settings",
+    "language", "english", "kannada", "theme", "dark", "light", "sync", "gps", "location", "help", "support",
+    "ವೆಬ್‌ಸೈಟ್", "ಆಪ್", "ಪುಟ", "ನೆರವು", "ನೆರವಿಗಾಗಿ", "ರೋಗ ವಿಶ್ಲೇಷಣೆ", "ಮಂಡಿ ಬೆಲೆಗಳು", "ರೈತ ಮಾರುಕಟ್ಟೆ", "ಹವಾಮಾನ", "ಮಣ್ಣಿನ ಆರೋಗ್ಯ", "ಡಿಜಿಟಲ್ ಟ್ವಿನ್",
+    "ಯೋಜನೆಗಳು", "ಧ್ವನಿ", "ಭಾಷೆ", "ಕನ್ನಡ", "ಇಂಗ್ಲಿಷ್", "ಸಲಹೆ", "ಪರೀಕ್ಷೆ", "ಸಿಂಕ್", "ಜಿಪಿಎಸ್"
+  ];
+  
+  const isAllowed = agriculturalKeywords.some(keyword => queryLower.includes(keyword)) || 
+                    websiteKeywords.some(keyword => queryLower.includes(keyword));
+  
+  if (!isAllowed) {
+    return {
+      text: lang === "kn" 
+        ? "ಕ್ಷಮಿಸಿ, ನಾನು ಕೃಷಿ, ಬೆಳೆಗಳು, ರೋಗಗಳು, ಮಂಡಿ ಬೆಲೆಗಳು ಹಾಗೂ ಈ ವೆಬ್‌ಸೈಟ್‌ನ ಸೇವೆಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಪ್ರಶ್ನೆಗಳಿಗೆ ಮಾತ್ರ ಉತ್ತರಿಸಲು ಸೀಮಿತವಾಗಿದ್ದೇನೆ. ಕೃಷಿ ಯಶಸ್ಸಿನ ಕಡೆಗೆ ಗಮನ ಹರಿಸೋಣ!"
+        : "I am designed to assist with agricultural questions and issues or navigation related to our Krishi-Sanjeevini website only. Let's keep our focus on prosperous farming!",
+      isGuardrail: true
+    };
+  }
+
+  // If Gemini API key is available, call the Gemini API for highly customized chatbot answers
+  if (apiKey && apiKey.trim() !== "") {
+    try {
+      const chatText = await callGeminiChatAPI(query, lang, apiKey);
+      return { text: chatText, isGuardrail: false };
+    } catch (e) {
+      console.warn("Gemini Chat API call failed. Using Smart Mock fallback chat...", e);
+    }
+  }
+
+  // Simple keyword matcher for mock chatbot
+  for (const item of mockBotFarmingExpert.questions) {
+    if (item.keywords.some(keyword => queryLower.includes(keyword))) {
+      return {
+        text: lang === "kn" ? item.kn : item.en,
+        isGuardrail: false
+      };
+    }
+  }
+
+  // Default mock expert response
+  return {
+    text: mockBotFarmingExpert.fallback[lang],
+    isGuardrail: false
+  };
+}
+
+/**
+ * API call helper for Gemini chatbot
+ */
+async function callGeminiChatAPI(query, lang = "en", apiKey) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`;
+  
+  const systemPrompt = `
+    You are 'Krishi AI', a friendly, highly intelligent agricultural expert and website assistant. 
+    Your goal is to assist farmers with detailed, practical agricultural solutions and help users navigate and solve issues on the Krishi-Sanjeevini website.
+    You must answer in a very encouraging, clear, and direct style. Use bullet points where appropriate.
+    The response MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
+    
+    IMPORTANT: You must ONLY answer questions regarding:
+    - Crops, gardening, vegetables, grains, fruits, and forestry
+    - Plant pathogens, diseases, mold, pests, and insects
+    - Soils, NPK levels, fertilization, composting, and land prep
+    - Irrigation, weather guides, sowing times, and harvesting
+    - Mandi pricing, marketplace buying and selling strategies, and government agricultural schemes.
+    - Krishi-Sanjeevini website features, including:
+      1. Crop Disease Analyser (drag and drop leaf image or use camera stream to diagnose early blight, rice blast, onion blotch, and common corn rust)
+      2. Mandi Prices (check daily APMC rates, view 7-day pricing trend charts, search crops/markets)
+      3. Farmer Marketplace (list harvests, browse buyer/seller listings)
+      4. Weather & Calendar (live GPS weather, Kharif/Rabi/Zaid sowing calendars)
+      5. Soil Advisor (NPK N-140 P-60 K-100 targets and pH diagnostics, agricultural lime/gypsum soil amendments)
+      6. Government Schemes Portal (PM-KISAN, Krishi Bhagya, PMFBY, Ganga Kalyana, Yashaswini)
+      7. Digital Twin 3D Farmland (input experience, income, machinery, soil type, water source, GPS location, and crop duration; hover over cells for crop details; hover over blue canals for flow rate, efficiency, daily usage; click 'Sync Data' to animate the isometric board and update SaaS diagnostics including credit score / loan limits)
+      8. Voice Commands (click Mic to speak panels navigation, language switching, etc.)
+      
+    If the question is completely unrelated to farming, agriculture, or the Krishi-Sanjeevini website, politely reject it by saying:
+    "I am designed to assist with agricultural, crop, disease, Mandi questions, and website related queries only. Let's keep our focus on prosperous farming!" (or localized equivalent in Kannada).
+  `;
+
+  const requestBody = {
+    contents: [
+      {
+        parts: [
+          { text: systemPrompt },
+          { text: `User query: ${query}` }
+        ]
+      }
+    ]
+  };
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(requestBody)
+  });
+
+  if (!response.ok) {
+    throw new Error("Chatbot API response error");
+  }
+
+  const data = await response.json();
+  const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+  return text || "No response received.";
+}
+
+// ==========================================
+// SECTION: voice.js
+// ==========================================
+
+// Krishi-Sanjeevini Web Speech Synthesis & Recognition Services
+
+let synth = window.speechSynthesis;
+let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let currentUtterance = null;
+
+if (SpeechRecognition) {
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = false;
+}
+
+function findVoice(langCode) {
+  if (!synth) return null;
+  const voices = synth.getVoices();
+  
+  const prefix = langCode.split("-")[0].toLowerCase();
+  
+  // 1. Try to find native matching voices (e.g. kn-IN)
+  let matchingVoices = voices.filter(v => v.lang.toLowerCase() === langCode.toLowerCase() || v.lang.toLowerCase().startsWith(prefix));
+  
+  if (matchingVoices.length > 0) {
+    // 2. Prefer high-quality/neural South Indian voices over older robotic ones
+    const premiumVoice = matchingVoices.find(v => 
+      v.name.toLowerCase().includes("natural") || 
+      v.name.toLowerCase().includes("online") || 
+      v.name.toLowerCase().includes("gagan") || 
+      v.name.toLowerCase().includes("shruti") || 
+      v.name.toLowerCase().includes("google")
+    );
+    return premiumVoice || matchingVoices[0];
+  }
+
+  // 3. Special fallbacks
+  if (prefix === "kn") {
+    // Look for any Indian voice as alternative fallback
+    const indianVoice = voices.find(v => v.lang.toLowerCase().includes("in"));
+    return indianVoice || voices[0];
+  }
+  return voices[0];
+}
+
+function transliterateKannada(text) {
+  const consonants = {
+    'ಕ': 'k', 'ಖ': 'kh', 'ಗ': 'g', 'ಘ': 'gh', 'ಙ': 'ng',
+    'ಚ': 'ch', 'ಛ': 'chh', 'ಜ': 'j', 'ಝ': 'jh', 'ಞ': 'ny',
+    'ಟ': 't', 'ಠ': 'th', 'ಡ': 'd', 'ಢ': 'dh', 'ಣ': 'n',
+    'ತ': 't', 'ಥ': 'th', 'ದ': 'd', 'ಧ': 'dh', 'ನ': 'n',
+    'ಪ': 'p', 'ಫ': 'ph', 'ಬ': 'b', 'ಭ': 'bh', 'ಮ': 'm',
+    'ಯ': 'y', 'ರ': 'r', 'ಲ': 'l', 'ವ': 'v', 'ಶ': 'sh',
+    'ಷ': 'sh', 'ಸ': 's', 'ಹ': 'h', 'ಳ': 'l', 'ಕ್ಷ': 'ksh'
+  };
+  const vowels = {
+    'ಅ': 'a', 'ಆ': 'aa', 'ಇ': 'i', 'ಈ': 'ee', 'ಉ': 'u', 'ಊ': 'oo', 'ಋ': 'ru', 'ಎ': 'e', 'ಏ': 'ee', 'ಐ': 'ai', 'ಒ': 'o', 'ಓ': 'o', 'ಔ': 'au'
+  };
+  const vowelSigns = {
+    'ಾ': 'aa', 'ಿ': 'i', 'ೀ': 'ee', 'ು': 'u', 'ೂ': 'oo', 'ೃ': 'ru', 'ೆ': 'e', 'ೇ': 'ee', 'ೈ': 'ai', 'ೊ': 'o', 'ೋ': 'o', 'ೌ': 'au', 'ಂ': 'm', 'ಃ': 'h'
+  };
+  
+  let result = '';
+  let i = 0;
+  while (i < text.length) {
+    const char = text[i];
+    if (consonants[char]) {
+      let base = consonants[char];
+      let nextChar = text[i + 1];
+      if (nextChar === '್') {
+        result += base; i += 2;
+      } else if (nextChar === 'ಂ' || nextChar === 'ಃ') {
+        result += base + 'a' + vowelSigns[nextChar]; i += 2;
+      } else if (vowelSigns[nextChar]) {
+        result += base + vowelSigns[nextChar]; i += 2;
+      } else {
+        result += base + 'a'; i += 1;
+      }
+    } else if (vowels[char]) {
+      result += vowels[char]; i += 1;
+    } else {
+      result += char; i += 1;
+    }
+  }
+  
+  // Custom corrections for common agricultural phrases to optimize pronunciation
+  return result
+    .replace(/\bragi\b/gi, 'raagi')
+    .replace(/\broga\b/gi, 'rooga')
+    .replace(/\bbele\b/gi, 'bele')
+    .replace(/\bmannu\b/gi, 'mannu')
+    .replace(/\bkrushi\b/gi, 'krushi')
+    .replace(/\bsethu\b/gi, 'sethu');
+}
+
+let audioQueue = [];
+let currentAudio = null;
+let isPlayingAudioQueue = false;
+let audioResolve = null;
+let audioReject = null;
+
+/**
+ * Splits text into safe pronunciation chunks under standard limits
+ */
+function splitTextIntoChunks(text, maxLength = 160) {
+  const chunks = [];
+  const sentences = text.split(/([.?!,;|।\n]+)/);
+  let currentChunk = "";
+
+  for (let i = 0; i < sentences.length; i++) {
+    const part = sentences[i];
+    if (!part) continue;
+
+    if ((currentChunk + part).length > maxLength) {
+      if (currentChunk.trim()) {
+        chunks.push(currentChunk.trim());
+      }
+      currentChunk = part;
+      while (currentChunk.length > maxLength) {
+        let cutIndex = currentChunk.lastIndexOf(" ", maxLength);
+        if (cutIndex === -1) cutIndex = maxLength;
+        chunks.push(currentChunk.substring(0, cutIndex).trim());
+        currentChunk = currentChunk.substring(cutIndex);
+      }
+    } else {
+      currentChunk += part;
+    }
+  }
+  if (currentChunk.trim()) {
+    chunks.push(currentChunk.trim());
+  }
+  return chunks;
+}
+
+/**
+ * Plays the next chunk prioritizing high-quality native Web Speech over Google TTS.
+ */
+function playNextQueueItem() {
+  if (!isPlayingAudioQueue || audioQueue.length === 0) {
+    isPlayingAudioQueue = false;
+    if (audioResolve) {
+      audioResolve();
+      audioResolve = null;
+      audioReject = null;
+    }
+    return;
+  }
+
+  const { text, lang } = audioQueue.shift();
+  
+  const voiceLang = lang === "kn" ? "kn-IN" : "en-IN";
+  const bestVoice = findVoice(voiceLang);
+  const hasNative = bestVoice && bestVoice.lang.toLowerCase().startsWith(lang);
+
+  // Use Native Web Speech directly chunk-by-chunk to avoid Chrome 15s timeout
+  // AND because modern OS voices (like Windows Natural voices) sound 10x better than old Google TTS API
+  if (hasNative) {
+    speakWithWebSpeech(text, lang)
+      .then(() => {
+        playNextQueueItem();
+      })
+      .catch((err) => {
+        console.error("Web Speech chunk failed, trying Google TTS:", err);
+        fallbackToGoogleTTS(text, lang);
+      });
+  } else {
+    // If no native voice, fallback to old API
+    fallbackToGoogleTTS(text, lang);
+  }
+}
+
+/**
+ * Legacy Google TTS fallback
+ */
+function fallbackToGoogleTTS(text, lang) {
+  const ttsUrl = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${lang}&ttsspeed=1&q=${encodeURIComponent(text)}`;
+  
+  currentAudio = new Audio(ttsUrl);
+  
+  const playTimeout = setTimeout(() => {
+    console.warn("TTS Playback timed out.");
+    if (currentAudio) {
+      try { currentAudio.pause(); } catch (e) {}
+      currentAudio = null;
+    }
+    playNextQueueItem();
+  }, 4000);
+
+  currentAudio.play()
+    .then(() => {
+      clearTimeout(playTimeout);
+      if (!currentAudio) return;
+      currentAudio.onended = () => {
+        currentAudio = null;
+        playNextQueueItem();
+      };
+      currentAudio.onerror = () => {
+        currentAudio = null;
+        playNextQueueItem();
+      };
+    })
+    .catch(() => {
+      clearTimeout(playTimeout);
+      currentAudio = null;
+      playNextQueueItem();
+    });
+}
+
+/**
+ * Native SpeechSynthesis fallback for offline or blocked requests
+ */
+function fallbackToWebSpeech(text, lang) {
+  isPlayingAudioQueue = false;
+  const remainingText = text + " " + audioQueue.map(item => item.text).join(" ");
+  audioQueue = [];
+  
+  speakWithWebSpeech(remainingText, lang)
+    .then(() => {
+      if (audioResolve) {
+        audioResolve();
+        audioResolve = null;
+        audioReject = null;
+      }
+    })
+    .catch((err) => {
+      if (audioReject) {
+        audioReject(err);
+        audioResolve = null;
+        audioReject = null;
+      }
+    });
+}
+
+/**
+ * Standard SpeechSynthesis speaker
+ */
+function speakWithWebSpeech(text, lang = "en") {
+  return new Promise((resolve, reject) => {
+    if (!synth) {
+      reject("Speech Synthesis not supported in this browser.");
+      return;
+    }
+    
+    let targetText = text;
+    let voiceLang = lang === "kn" ? "kn-IN" : "en-IN";
+
+    const hasNativeKannada = synth.getVoices().some(v => v.lang.toLowerCase().startsWith("kn"));
+    if (lang === "kn" && !hasNativeKannada) {
+      // If there is no native Kannada voice, silently resolve to prevent reading Kannada text 
+      // with a broken English accent, which sounds very odd to the user.
+      console.warn("No native Kannada voice found. Skipping Web Speech fallback to avoid odd pronunciation.");
+      resolve();
+      return;
+    }
+
+    currentUtterance = new SpeechSynthesisUtterance(targetText);
+    currentUtterance.lang = voiceLang;
+
+    const bestVoice = findVoice(voiceLang);
+    if (bestVoice) {
+      currentUtterance.voice = bestVoice;
+    }
+
+    currentUtterance.rate = lang === "kn" ? 0.85 : 1.0;
+    currentUtterance.pitch = 1.05;
+
+    currentUtterance.onend = () => {
+      currentUtterance = null;
+      resolve();
+    };
+
+    currentUtterance.onerror = (event) => {
+      currentUtterance = null;
+      reject(event.error);
+    };
+
+    synth.speak(currentUtterance);
+  });
+}
+
+/**
+ * Speaks out the provided text using sequential Google TTS streams (falling back to Web Speech Synthesis)
+ */
+function speakText(text, lang = "en") {
+  return new Promise((resolve, reject) => {
+    stopSpeaking();
+
+    const cleanText = text
+      .replace(/[*#`_\-]/g, " ")
+      .replace(/\d\./g, "")
+      .trim();
+
+    if (!cleanText) {
+      resolve();
+      return;
+    }
+
+    audioResolve = resolve;
+    audioReject = reject;
+    isPlayingAudioQueue = true;
+
+    const chunks = splitTextIntoChunks(cleanText, 160);
+    audioQueue = chunks.map(chunk => ({ text: chunk, lang }));
+
+    playNextQueueItem();
+  });
+}
+
+/**
+ * Stops any ongoing narration (TTS streams or standard speech synthesis)
+ */
+function stopSpeaking() {
+  if (synth) {
+    synth.cancel();
+    currentUtterance = null;
+  }
+  isPlayingAudioQueue = false;
+  audioQueue = [];
+  if (currentAudio) {
+    try {
+      currentAudio.pause();
+      currentAudio.src = "";
+    } catch (e) {
+      console.error("Error pausing audio track:", e);
+    }
+    currentAudio = null;
+  }
+  if (audioResolve) {
+    audioResolve();
+    audioResolve = null;
+    audioReject = null;
+  }
+}
+
+// Bind stop functions globally to guarantee immediate halt when navigating or clicking Stop
+window.stopAudioChunks = stopSpeaking;
+window.stopSpeaking = stopSpeaking;
+
+/**
+ * Starts continuous or single speech-to-text recognition to capture farming commands
+ */
+function startVoiceRecognition({ onResult, onEnd, onError, onStart, lang = "en" }) {
+  if (!recognition) {
+    if (onError) onError("Speech recognition is not supported in this browser. Use Chrome or Edge.");
+    return null;
+  }
+
+  // Configure target language
+  recognition.lang = lang === "kn" ? "kn-IN" : "en-IN";
+
+  recognition.onstart = () => {
+    if (onStart) onStart();
+  };
+
+  recognition.onresult = (event) => {
+    const last = event.results.length - 1;
+    const speechResult = event.results[last][0].transcript;
+    const confidence = event.results[last][0].confidence;
+    console.log(`Voice Command Received: "${speechResult}" (Confidence: ${confidence})`);
+    
+    // Parse voice commands
+    const command = parseVoiceCommand(speechResult, lang);
+    if (onResult) onResult({ rawText: speechResult, command });
+  };
+
+  recognition.onerror = (event) => {
+    if (onError) onError(event.error);
+  };
+
+  recognition.onend = () => {
+    if (onEnd) onEnd();
+  };
+
+  try {
+    recognition.start();
+  } catch (e) {
+    console.warn("Recognition already active", e);
+  }
+
+  return recognition;
+}
+
+/**
+ * Halts voice recording
+ */
+function stopVoiceRecognition() {
+  if (recognition) {
+    recognition.stop();
+  }
+}
+
+/**
+ * Parses spoken inputs into standardized action commands in both English and Kannada
+ */
+function parseVoiceCommand(text, lang = "en") {
+  const t = text.toLowerCase().trim();
+  const wordCount = t.split(/\s+/).length;
+  
+  // If the user speaks a full sentence/question, route directly to AI Chatbot
+  if (wordCount > 3) {
+    return "unknown";
+  }
+
+  // English Navigation Command Map
+  const enCommands = {
+    home: ["home", "dashboard", "main screen", "welcome"],
+    scan: ["scan", "disease", "camera", "crop diagnosis", "diagnose"],
+    mandi: ["mandi", "price", "market", "rates", "cost"],
+    buy: ["buy", "sell", "marketplace", "trade", "harvest listing"],
+    weather: ["weather", "rain", "calendar", "forecast", "cloud"],
+    soil: ["soil", "npk", "fertilizer", "mud"],
+    schemes: ["scheme", "government", "subsidy", "benefit", "pm kisan"],
+    chat: ["chat", "bot", "assistant", "ask ai", "krishi ai"],
+    language: ["switch to kannada", "kannada language", "kannada please"],
+    recycler: ["recycler", "waste", "recycle", "upcycle", "biogas"],
+    hub: ["hub", "labor", "rental", "employment", "exchange", "machinery", "rent", "equipment"]
+  };
+
+  // Kannada Navigation Command Map
+  const knCommands = {
+    home: ["ಮುಖಪುಟ", "ಹೋಮ್", "ದರ್ಪಣ"],
+    scan: ["ಸ್ಕ್ಯಾನ್", "ಖಾಯಿಲೆ", "ರೋಗ", "ಕ್ಯಾಮೆರಾ", "ಫೋಟೋ"],
+    mandi: ["ಮಂಡಿ", "ಬೆಲೆ", "ಮಾರುಕಟ್ಟೆ", "ದರ", "ರೇಟ್"],
+    buy: ["ಖರೀದಿ", "ಮಾರಾಟ", "ರೈತ ಮಾರುಕಟ್ಟೆ", "ವ್ಯಾಪಾರ"],
+    weather: ["ಹವಾಮಾನ", "ಮಳೆ", "ಬಿಸಿಲು", "ಮುನ್ಸೂಚನೆ"],
+    soil: ["ಮಣ್ಣು", "ಗೊಬ್ಬರ", "ತಪಾಸಣೆ"],
+    schemes: ["ಯೋಜನೆ", "ಸರ್ಕಾರ", "ಸಹಾಯಧನ"],
+    chat: ["ಚಾಟ್", "ಬಾಟ್", "ಸಹಾಯ", "ಪ್ರಶ್ನೆ"],
+    language: ["ಇಂಗ್ಲಿಷ್", "ಸ್ವಿಚ್ ಟು ಇಂಗ್ಲಿಷ್", "english please"],
+    recycler: ["ಮರುಬಳಕೆ", "ರಿಸೈಕ್ಲರ್", "ತ್ಯಾಜ್ಯ", "ಕಸ"],
+    hub: ["ಕೂಲಿ", "ಬಾಡಿಗೆ", "ಹಬ್", "ಯಂತ್ರಗಳು", "ಬಾಡಿಗೆಗೆ"]
+  };
+
+  const commandMap = lang === "kn" ? knCommands : enCommands;
+
+  // Direct exact match scan
+  for (const [action, keywords] of Object.entries(commandMap)) {
+    if (keywords.some(keyword => t.includes(keyword))) {
+      return action;
+    }
+  }
+
+  // Cross-lingual fallback checks
+  const crossMap = lang === "kn" ? enCommands : knCommands;
+  for (const [action, keywords] of Object.entries(crossMap)) {
+    if (keywords.some(keyword => t.includes(keyword))) {
+      // Swapping languages triggers
+      if (action === "language") {
+        return "language";
+      }
+      return action;
+    }
+  }
+
+  return "unknown";
+}
+
+// Force synthesis voices to load on initialization
+if (synth) {
+  synth.getVoices();
+  if (synth.onvoiceschanged !== undefined) {
+    synth.onvoiceschanged = () => synth.getVoices();
+  }
+}
+/* exported SpeechRecognition */
+
+// ==========================================
+// SECTION: app.js
+// ==========================================
+
 // Krishi-Sanjeevini Main Application Controller
-import { translations } from "./translations.js";
-import { cropsList, marketsList, getMandiPrices, simulateLiveTicks, getAverageCropPrice, getCropHistory } from "./mandi.js";
-import { schemesData } from "./schemes.js";
-import { analyseCropDisease, getChatbotResponse, fileToBase64 } from "./gemini.js";
-import { speakText, stopSpeaking, startVoiceRecognition, stopVoiceRecognition, SpeechRecognition } from "./voice.js";
+// import removed
+// import removed
+// import removed
+// import removed
+// import removed
 
 
 // Global App State

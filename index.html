@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Krishi-Sanjeevini (ಕೃಷಿ ಸಂಜೀವಿನಿ) - Farmer Friendly AI Assistant</title>
+  <title>Krishi Sethu (ಕೃಷಿ ಸೇತು) - Farmer's Comprehensive Companion</title>
   <meta name="description" content="An intelligent, accessible dual-language web application for crop disease analysis, Mandi prices, agricultural marketplace, weather, and Soil NPK recommendations. Powered by Krishi AI.">
   <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="index.css">
@@ -43,14 +43,12 @@
     <!-- SLEEK HEADER SHELL -->
     <header>
       <div class="brand" id="brand-home-link" style="cursor: pointer;">
-        <div class="logo-container">
-          <svg viewBox="0 0 24 24">
-            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L7.54,17.5C11.53,16.7 15.67,13.2 18.5,9.5C19.78,7.82 21,5.32 21,3C21,3 18.9,3.5 17,8M15.5,12C18,12 20,10 20,7.5C20,5 18,3 15.5,3C13,3 11,5 11,7.5C11,10 13,12 15.5,12Z" />
-          </svg>
+        <div class="logo-container" style="overflow: hidden; padding: 0; background: none; border: 1.5px solid var(--border-color);">
+          <img src="logo.jpg" alt="Krishi Sethu Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm);">
         </div>
         <div class="brand-text">
-          <h1 id="txt-appName">Krishi-Sanjeevini</h1>
-          <p id="txt-appSubtitle">Your Intelligent Farming Companion</p>
+          <h1 id="txt-appName">Krishi Sethu</h1>
+          <p id="txt-appSubtitle">Farmer's Comprehensive Companion</p>
         </div>
       </div>
 
@@ -205,6 +203,47 @@
           <p id="card-schemes-desc">Browse local subsidies and agricultural programs (e.g. PM-KISAN, Krishi Bhagya) with application paths.</p>
           <span class="card-link"><span id="card-schemes-link">Search Subsidies</span> &rarr;</span>
         </div>
+
+        <!-- Digital Twin Farm Simulator Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('digital-twin')">
+          <div class="card-icon-container" style="background:#e0f2fe; color:#0284c7; display: flex; align-items: center; justify-content: center; border-radius: 50%; width: 48px; height: 48px; margin-bottom: 15px;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 id="card-twin-title">Digital Twin Farm</h3>
+          <p id="card-twin-desc">Simulate and visualize your crop fields, soil parameters, and water flow in interactive 3D.</p>
+          <span class="card-link"><span id="card-twin-link">Launch 3D Model</span> &rarr;</span>
+        </div>
+
+        <!-- Agri Recycler Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('agri-recycler')">
+          <div class="card-icon-container" style="background:#e8f5e9; color:#2d6a4f; display: flex; align-items: center; justify-content: center; border-radius: 50%; width: 48px; height: 48px; margin-bottom: 15px;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+          </div>
+          <h3 id="card-recycler-title">Agri Recycler</h3>
+          <p id="card-recycler-desc">Upcycle agricultural waste (e.g. cow dung, husks, straw) directly with local bio-energy facilities.</p>
+          <span class="card-link"><span id="card-recycler-link">Upcycle Waste Now</span> &rarr;</span>
+        </div>
+
+        <!-- Farm Labor & Equipment Hub Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('agri-hub')">
+          <div class="card-icon-container" style="background:#fff7ed; color:#ea580c; display: flex; align-items: center; justify-content: center; border-radius: 50%; width: 48px; height: 48px; margin-bottom: 15px;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 id="card-hub-title">Labor & Rental Hub</h3>
+          <p id="card-hub-desc">Find agricultural jobs, hire nearby laborers, or rent and book farming machinery.</p>
+          <span class="card-link"><span id="card-hub-link">Open Hub Now</span> &rarr;</span>
+        </div>
       </div>
     </div>
 
@@ -329,6 +368,20 @@
               <div class="remedy-card-block">
                 <h4 id="lbl-preventiveMeasures">Future Prevention Advisory</h4>
                 <p id="res-prevention">Keep crop rows spaced nicely.</p>
+              </div>
+
+              <!-- Dynamic Store Suggestions and Pricing -->
+              <div class="remedy-card-block" id="store-locator-card" style="border-left: 4px solid var(--accent-blue); background: rgba(56, 189, 248, 0.03);">
+                <h4 style="color: var(--accent-blue-dark); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                  <span style="display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span id="lbl-storeLocatorHeader">Nearest Stores & Estimated Costs</span>
+                  </span>
+                  <span id="lbl-location-source" class="severity-gauge" style="font-size: 10px; padding: 4px 8px; border-radius: 12px; background: rgba(56,189,248,0.2); color: #0369a1; font-weight: 800; text-transform: uppercase; margin: 0;">GPS Active</span>
+                </h4>
+                <div id="store-suggestions-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+                  <!-- Dynamically generated shops will go here -->
+                </div>
               </div>
             </div>
           </div>
@@ -479,56 +532,87 @@
       </div>
 
       <div class="grid-cols-2">
-        <!-- Creative Weather Dashboard Widget -->
-        <div class="creative-weather-widget" id="weather-hero-bg">
-          <div class="weather-glass-layer">
-            
-             <div class="weather-header-row">
-                <div class="pulse-live"></div> 
-                <span id="weather-location-name">Fetching Location...</span>
-             </div>
+        <!-- Column 1: Live Weather & Weather Crop Advisory -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Creative Weather Dashboard Widget -->
+          <div class="creative-weather-widget" id="weather-hero-bg">
+            <div class="weather-glass-layer">
+              
+               <div class="weather-header-row">
+                  <div class="pulse-live"></div> 
+                  <span id="weather-location-name">Fetching Location...</span>
+               </div>
 
-             <div class="weather-main-row">
-                <div class="weather-icon-box" id="dynamic-weather-icon">
-                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotating"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                </div>
-                <div class="weather-temp-box">
-                   <h1 id="val-temperature">--°C</h1>
-                   <p id="val-condition-text">Loading Data...</p>
-                </div>
-             </div>
+               <div class="weather-main-row">
+                  <div class="weather-icon-box" id="dynamic-weather-icon">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotating"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                  </div>
+                  <div class="weather-temp-box">
+                     <h1 id="val-temperature">--°C</h1>
+                     <p id="val-condition-text">Loading Data...</p>
+                  </div>
+               </div>
 
-             <!-- The smooth CSS alert ticker -->
-             <div class="weather-ticker-box">
-                <div class="ticker-label-badge" id="lbl-weatherAdvisoryAlert">Farming Alert</div>
-                <div class="weather-alert-text-container">
-                   <div class="weather-marquee-smooth" id="txt-weather-alert">Initializing live weather radar and gathering local advisories...</div>
-                </div>
-             </div>
+               <!-- The smooth CSS alert ticker -->
+               <div class="weather-ticker-box">
+                  <div class="ticker-label-badge" id="lbl-weatherAdvisoryAlert">Farming Alert</div>
+                  <div class="weather-alert-text-container">
+                     <div class="weather-marquee-smooth" id="txt-weather-alert">Initializing live weather radar and gathering local advisories...</div>
+                  </div>
+               </div>
 
-             <div class="weather-metrics-row">
-                <div class="weather-metric-item">
-                   <div class="w-icon">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                   </div>
-                   <div class="w-details">
-                     <span class="w-label" id="lbl-rainfallProb">Temperature</span>
-                     <span class="w-val" id="val-humidity">--%</span>
-                   </div>
-                </div>
-                <div class="weather-metric-item">
-                   <div class="w-icon">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
-                   </div>
-                   <div class="w-details">
-                     <span class="w-label" id="lbl-windSpeed">Wind Speed</span>
-                     <span class="w-val" id="val-windSpeed">-- km/h</span>
-                   </div>
-                </div>
-             </div>
+               <div class="weather-metrics-row">
+                  <div class="weather-metric-item">
+                     <div class="w-icon">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                     </div>
+                     <div class="w-details">
+                       <span class="w-label" id="lbl-rainfallProb">Temperature</span>
+                       <span class="w-val" id="val-humidity">--%</span>
+                     </div>
+                  </div>
+                  <div class="weather-metric-item">
+                     <div class="w-icon">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+                     </div>
+                     <div class="w-details">
+                       <span class="w-label" id="lbl-windSpeed">Wind Speed</span>
+                       <span class="w-val" id="val-windSpeed">-- km/h</span>
+                     </div>
+                  </div>
+               </div>
 
+            </div>
+          </div>
+
+          <!-- Weather Crop Advisory Card -->
+          <div class="card-wrapper weather-advisory-card">
+            <div class="advisory-card-header">
+              <div class="advisory-warning-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke="#f59e0b" fill="none"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12" stroke="#f59e0b" stroke-linecap="round"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16" stroke="#f59e0b" stroke-linecap="round"></line>
+                </svg>
+              </div>
+              <h3 id="lbl-weatherCropAdvisoryHeader">Weather Crop Advisory</h3>
+            </div>
+            <div class="advisory-card-divider"></div>
+            <div class="advisory-card-body">
+              <p id="txt-weatherCropAdvisoryText">High rain probability. Please avoid applying chemical fertilizers or nitrogen today as they will wash off. Clean drain channels in sugarcane fields to avoid waterlogging.</p>
+            </div>
+            <div class="advisory-card-footer">
+              <div class="expert-badge-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10" stroke="#10b981" fill="none"></circle>
+                  <path d="M9 12l2 2 4-4" stroke="#10b981" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <span id="lbl-expertGuidelinesPill">EXPERT GUIDELINES RECOMMENDED</span>
+              </div>
+            </div>
           </div>
         </div>
+
 
         <!-- Crop Calendar Card -->
         <div class="card-wrapper">
@@ -722,6 +806,680 @@
       </div>
     </div>
 
+    <!-- PANEL 9: DIGITAL TWIN SIMULATOR -->
+    <div id="panel-digital-twin" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-twinHeader">Digital Twin Farm Simulator</h2>
+        <p id="txt-twinSubtitle">Bilingual interactive 3D farm model generated dynamically from your profile settings.</p>
+      </div>
+
+      <div class="twin-grid-layout">
+        <!-- Column 1: Interactive 3D Farm Visualizer -->
+        <div class="card-wrapper twin-visualizer-card">
+          <div class="visualizer-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div class="twin-badge" style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary-pale); padding: 6px 14px; border-radius: 30px; border: 1.5px solid var(--primary-glow);">
+              <span id="lbl-twinAcreageBadge" style="font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.5px;">Acreage Scale</span>: <span id="lbl-twin-acreage-badge" style="font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.5px;">12.5 Acres</span>
+            </div>
+          </div>
+          
+          <div class="farm-3d-viewport" style="position: relative; width: 100%; display: flex; align-items: center; justify-content: center; perspective: 1000px; min-height: 380px;">
+            <div class="farm-3d-board" id="farm-board-3d">
+              <!-- Rendered Dynamically -->
+            </div>
+
+            <!-- Hover Tooltip -->
+            <div class="farm-overlay-tooltip" id="farm-hover-tooltip" style="position: absolute; pointer-events: none; opacity: 0; transition: all 0.4s ease; z-index: 100; width: 240px;">
+              <div class="tooltip-glass-content" style="background: rgba(15, 23, 20, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: var(--radius-md); color: #fff; box-shadow: var(--shadow-lg);">
+                <div class="tooltip-header" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="crop-badge" id="tt-crop-badge" style="font-weight: 800; font-size: 14px; color: var(--primary-light);">Sugarcane</span>
+                  <span class="status-badge" id="tt-status-badge" style="background-color: var(--primary-pale); color: var(--primary-light); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; border: 1px solid var(--primary-glow);">Maturing</span>
+                </div>
+                <div class="tooltip-divider" style="height: 1px; background-color: rgba(255, 255, 255, 0.1); margin: 10px 0;"></div>
+                
+                <!-- Crop details section -->
+                <div id="tt-crop-section" style="display: block;">
+                  <div class="tooltip-data-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                      <span class="label" id="lbl-ttCrop" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Crop</span>
+                      <span class="val" id="tt-crop" style="font-size: 12px; font-weight: 700; margin-top: 2px;">Sugarcane</span>
+                    </div>
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                      <span class="label" id="lbl-ttAcreage" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Acreage</span>
+                      <span class="val" id="tt-acreage" style="font-size: 12px; font-weight: 700; margin-top: 2px;">1.4 ac</span>
+                    </div>
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                      <span class="label" id="lbl-ttYield" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Exp. Yield</span>
+                      <span class="val" id="tt-yield" style="font-size: 12px; font-weight: 700; margin-top: 2px;">105 tons</span>
+                    </div>
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                      <span class="label" id="lbl-ttWater" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Water Req</span>
+                      <span class="val" id="tt-water" style="font-size: 12px; font-weight: 700; margin-top: 2px;">1.1 L/s</span>
+                    </div>
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column; grid-column: span 2;">
+                      <span class="label" id="lbl-ttProfit" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Est. Profit</span>
+                      <span class="val text-green" id="tt-profit" style="font-size: 12px; font-weight: 700; margin-top: 2px; color: var(--primary-light);">+$16,800</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Water Channel details section -->
+                <div id="tt-channel-section" style="display: none;">
+                  <div class="tooltip-data-grid" style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                      <span class="label" id="lbl-ttWaterFlow" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Water Flow</span>
+                      <span class="val" id="tt-water-flow" style="font-size: 12px; font-weight: 700; margin-top: 2px;">4.5 L/s</span>
+                    </div>
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                      <span class="label" id="lbl-ttEfficiency" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Efficiency</span>
+                      <span class="val" id="tt-efficiency" style="font-size: 12px; font-weight: 700; margin-top: 2px;">92%</span>
+                    </div>
+                    <div class="tooltip-data-item" style="display: flex; flex-direction: column; grid-column: span 2;">
+                      <span class="label" id="lbl-ttDailyUsage" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Daily Usage</span>
+                      <span class="val text-blue" id="tt-daily-usage" style="font-size: 12px; font-weight: 700; margin-top: 2px; color: #38bdf8;">12,500 L</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visualizer-footer" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px;">
+            <div class="legend-row" style="display: flex; gap: 12px;">
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot sugarcane-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #059669;"></span><span>Sugarcane</span></div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot wheat-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #d97706;"></span><span>Wheat</span></div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot potato-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #22c55e;"></span><span>Sweet Potato</span></div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot canal-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-blue);"></span><span>Irrigation</span></div>
+            </div>
+            <div class="legend-hint" style="font-size: 10px; color: var(--text-muted); font-weight: 700;">Hover fields on desktop to examine metrics</div>
+          </div>
+        </div>
+
+        <!-- Column 2: Configuration & Statistics Overview -->
+        <div class="twin-sidebar-column" style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Configuration Form Card -->
+          <div class="card-wrapper config-card" style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px); border: 1.5px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); transition: all 0.4s ease;">
+            <h3 id="txt-configTitle" style="margin-bottom: 20px; color: var(--primary-dark); font-size: 18px; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="color: var(--primary);"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+              <span>Farm Profile Configurator</span>
+            </h3>
+            <form id="farm-config-form">
+              
+              <!-- Land Size -->
+              <div class="form-group mb-4">
+                <label for="input-land-size" id="lbl-formQuantity" style="font-weight: 700;">Farmland Acreage</label>
+                <div class="range-with-text-row" style="display: flex; align-items: center; gap: 15px;">
+                  <input type="range" id="input-land-size" min="1" max="100" step="0.5" value="12.5" class="drawer-slider" style="-webkit-appearance: none; flex-grow: 1; height: 6px; border-radius: 3px; background: var(--border-color); outline: none;">
+                  <span class="slider-display-badge" id="lbl-land-size-display" style="background-color: var(--primary-pale); color: var(--primary); padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; min-width: 60px; text-align: center;">12.5 ac</span>
+                </div>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <!-- Farming Experience -->
+                <div class="form-group">
+                  <label for="input-experience" id="lbl-lblExperience" style="font-weight: 700;">Farming Experience (Years)</label>
+                  <input type="number" id="input-experience" min="0" max="60" value="5" class="form-input" style="width: 100%;" required>
+                </div>
+
+                <!-- Annual Income -->
+                <div class="form-group">
+                  <label for="input-income" id="lbl-lblIncome" style="font-weight: 700;">Annual Farming Income</label>
+                  <input type="number" id="input-income" min="0" step="5000" value="180000" class="form-input" style="width: 100%;" required>
+                </div>
+              </div>
+
+              <!-- Machinery Owned -->
+              <div class="form-group mb-4">
+                <label id="lbl-lblMachinery" style="font-weight: 700; display: block; margin-bottom: 8px;">Machinery Owned</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; font-weight: 700;">
+                  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="checkbox" id="input-machinery-tractor" value="tractor" checked style="accent-color: var(--primary);">
+                    <span>Tractor (ಟ್ರಾಕ್ಟರ್)</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="checkbox" id="input-machinery-harvester" value="harvester" style="accent-color: var(--primary);">
+                    <span>Harvester (ಕೊಯ್ಲು ಯಂತ್ರ)</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="checkbox" id="input-machinery-drip" value="drip" checked style="accent-color: var(--primary);">
+                    <span>Drip Kit (ಹನಿ ನೀರಾವರಿ)</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                    <input type="checkbox" id="input-machinery-tiller" value="tiller" style="accent-color: var(--primary);">
+                    <span>Power Tiller (ಉಳುಮೆ ಯಂತ್ರ)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <!-- Soil Texture Type -->
+                <div class="form-group">
+                  <label for="select-soil-type" id="lbl-lblSoilType" style="font-weight: 700;">Soil Texture Type</label>
+                  <select id="select-soil-type" class="form-input" style="width: 100%;">
+                    <option value="red">Red Soil (ಕೆಂಪು ಮಣ್ಣು)</option>
+                    <option value="black">Black Soil (ಕರಿ ಮಣ್ಣು)</option>
+                    <option value="clayey">Clayey Soil (ಜೇಡಿ ಮಣ್ಣು)</option>
+                    <option value="sandy">Sandy Loam (ಮರಳು ಮಣ್ಣು)</option>
+                  </select>
+                </div>
+
+                <!-- Water / Irrigation Source -->
+                <div class="form-group">
+                  <label for="select-irrigation" id="lbl-lblWaterSource" style="font-weight: 700;">Water / Irrigation Source</label>
+                  <select id="select-irrigation" class="form-input" style="width: 100%;">
+                    <option value="canal">Canal Network (ಕಾಲುವೆ)</option>
+                    <option value="borewell">Deep Borewell Tank (ಕೊಳವೆ ಬಾವಿ)</option>
+                    <option value="drip">Automated Drip (ಹನಿ ನೀರಾವರಿ)</option>
+                    <option value="rainfed">Rain-fed Dry (ಮಳೆಯಾಧಾರಿತ)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- GPS Geolocation Field -->
+              <div class="form-group mb-4">
+                <button type="button" id="btn-btnFetchGPS" class="btn btn-secondary w-full" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; font-size: 12px; font-weight: 700; border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  <span>Fetch Live GPS Coordinates</span>
+                </button>
+                <div id="gps-display-badge" style="display: none; justify-content: center; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 6px; background: rgba(56,189,248,0.1); border: 1.5px dashed rgba(56,189,248,0.4); color: #0369a1;">
+                  <span class="pulse-live" style="width: 8px; height: 8px; border-radius: 50%; background: #38bdf8;"></span>
+                  <span id="gps-coords-text">Lat: 12.5218, Lon: 76.8973</span>
+                </div>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <!-- Primary Crop -->
+                <div class="form-group">
+                  <label for="select-primary-crop" id="lbl-formCropName" style="font-weight: 700;">Crop Name</label>
+                  <select id="select-primary-crop" class="form-input" style="width: 100%;">
+                    <option value="sugarcane">Sugarcane (ಕಬ್ಬು)</option>
+                    <option value="wheat">Wheat (ಗೋಧಿ)</option>
+                    <option value="sweet_potato">Sweet Potato (ಗೆಣಸು)</option>
+                  </select>
+                </div>
+
+                <!-- Cultivation Duration -->
+                <div class="form-group">
+                  <label for="input-duration" id="lbl-lblDuration" style="font-weight: 700;">Cultivation Duration (Months)</label>
+                  <input type="number" id="input-duration" min="1" max="18" value="12" class="form-input" style="width: 100%;" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full" id="btn-btnSyncTwin" style="margin-top: 15px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; letter-spacing: 0.5px;">Sync Data & Update AI Twin</button>
+            </form>
+          </div>
+
+          <!-- Dynamic Statistics Card -->
+          <div class="card-wrapper overview-card" id="twin-ai-analytics-card" style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px); border: 1.5px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); transition: all 0.4s ease;">
+            <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 8px; color: var(--primary-dark); font-size: 18px; font-weight: 800;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="color: var(--primary);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v4z"/></svg>
+              <span id="lbl-twinAISaaSAnalytics">AI Farmland SaaS Diagnostics</span>
+            </h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+              <!-- Stat 1: AI Yield Prediction -->
+              <div style="background: rgba(255,255,255,0.55); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="stat-lbl" id="lbl-aiYieldPredictHeader" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">AI Yield & Performance Analytics</span>
+                  <span style="font-size: 10px; font-weight: 800; color: var(--primary); background: var(--primary-pale); padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">Confidence: 94%</span>
+                </div>
+                <span class="stat-val" id="lbl-overview-yield" style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">-- Tons</span>
+                <div style="width: 100%; height: 6px; background: var(--border-color); border-radius: 3px; margin-top: 8px; overflow: hidden;">
+                  <div id="yield-progress" style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 3px; transition: width 1s ease;"></div>
+                </div>
+              </div>
+
+              <!-- Stat 2: Water Requirement Analytics -->
+              <div style="background: rgba(255,255,255,0.55); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <span class="stat-lbl" id="lbl-aiWaterAnalyticsHeader" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">AI Smart Water Irrigation Advisories</span>
+                  <span id="lbl-overview-water-efficiency" style="font-size: 10px; font-weight: 800; color: #0284c7; background: rgba(56,189,248,0.15); padding: 2px 6px; border-radius: 4px;">Efficiency: 92%</span>
+                </div>
+                <span class="stat-val" id="lbl-overview-water" style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">-- L/s</span>
+                <p id="lbl-overview-water-advice" style="font-size: 11px; margin-top: 6px; color: var(--text-muted); font-weight: 600; line-height: 1.3;">Optimal scheduling: Water early morning to prevent evaporation.</p>
+              </div>
+
+              <!-- Stat 3: Profit Forecast -->
+              <div style="background: rgba(255,255,255,0.55); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <span class="stat-lbl" id="lbl-aiProfitForecastHeader" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">AI Profit & SaaS Cost Forecast</span>
+                <span class="stat-val text-green" id="lbl-overview-profit" style="font-size: 22px; font-weight: 800; color: var(--primary);">--</span>
+                <div id="profit-roi" style="font-size: 10px; margin-top: 5px; color: var(--primary); font-weight: 700; background: var(--primary-pale); display: inline-block; padding: 2px 8px; border-radius: 4px;">Projected ROI: +18.4%</div>
+              </div>
+
+              <!-- Stat 4: Loan Eligibility Estimation -->
+              <div style="background: rgba(255,255,255,0.55); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 4px solid var(--accent-gold-light);">
+                <span class="stat-lbl" id="lbl-aiLoanEligibilityHeader" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">AI Dynamic Loan Eligibility</span>
+                <span class="stat-val" id="lbl-overview-loan" style="font-size: 15px; font-weight: 800; color: var(--primary-dark); display: block;">Eligible for --</span>
+                <p id="lbl-overview-loan-interest" style="font-size: 10px; margin-top: 4px; color: var(--text-muted); font-weight: 700;">Subsidized Interest Rate: 4.5% p.a.</p>
+              </div>
+
+              <!-- Stat 5: Multi-Cropping Recommendations -->
+              <div style="background: rgba(255,255,255,0.55); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 4px solid var(--primary);">
+                <span class="stat-lbl" id="lbl-aiMultiCropHeader" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">AI Multi-Cropping & Companion Planting</span>
+                <p id="lbl-overview-multicrop" style="font-size: 12px; margin: 0; font-weight: 700; color: var(--primary-dark);">Ragi + Cowpea (Nitrogen Fixing)</p>
+              </div>
+
+              <!-- Stat 6: Risk Analysis (weather + pest) -->
+              <div style="background: rgba(255,255,255,0.55); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 4px solid var(--accent-clay);">
+                <span class="stat-lbl" id="lbl-aiRiskAnalysisHeader" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">AI Weather & Pest Pathogen Risk Analysis</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                  <span id="lbl-overview-risk-level" class="severity-gauge low" style="margin: 0; font-size: 11px; padding: 3px 8px; border-radius: var(--radius-sm);">Low Risk</span>
+                  <span id="lbl-overview-risk-desc" style="font-size: 10px; color: var(--text-muted); font-weight: 700;">No immediate threats</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PANEL 10: AGRI RECYCLER SYSTEM -->
+    <div id="panel-agri-recycler" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-recyclerHeader">Agri Recycler Portal</h2>
+        <p id="txt-recyclerSubtitle">Upcycle agricultural waste directly with local biogas plants and composters.</p>
+      </div>
+
+      <div class="analyser-layout">
+        <!-- Available Nearby listings -->
+        <div class="card-wrapper">
+          <h3 id="txt-wasteListings" style="margin-bottom: 20px; color: var(--primary-dark); font-size: 18px; font-weight: 800;">Available Nearby</h3>
+          <div id="recycler-listings-container" style="display: flex; flex-direction: column; gap: 15px; max-height: 700px; overflow-y: auto; padding-right: 5px;">
+            <!-- Rendered Dynamically -->
+          </div>
+        </div>
+
+        <!-- Post Waste Form -->
+        <div class="card-wrapper">
+          <h3 id="txt-postWaste" style="margin-bottom: 20px; color: var(--primary-dark); font-size: 18px; font-weight: 800;">Post Recyclable Waste</h3>
+          <form id="recycler-post-form">
+            <!-- Searchable Custom Dropdown -->
+            <div class="form-group mb-4" style="position: relative;">
+              <label id="lbl-selectWasteHint" style="font-weight: 700; display: block; margin-bottom: 8px;">Select Predefined Recyclable Item</label>
+              
+              <div class="agri-dropdown-container">
+                <!-- Dropdown Trigger Button -->
+                <button type="button" id="recycler-dropdown-trigger" class="agri-dropdown-trigger">
+                  <span id="recycler-dropdown-selected-text">Select predefined recyclable agricultural waste item:</span>
+                  <span class="agri-dropdown-caret">&darr;</span>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="recycler-dropdown-menu" class="agri-dropdown-menu">
+                  <div class="agri-dropdown-search-wrapper">
+                    <input type="text" id="recycler-dropdown-search-input" class="agri-dropdown-search-input" placeholder="Search recyclable items...">
+                  </div>
+                  <div id="recycler-dropdown-list" class="agri-dropdown-list">
+                    <!-- Dropdown Items populated dynamically by app.js -->
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" id="recycler-item-value" required>
+            </div>
+
+            <!-- Form fields: Qty, Price, Location, Phone -->
+            <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+              <div class="form-group">
+                <label for="recycler-qty" id="lbl-formWasteQty" style="font-weight: 700;">Quantity</label>
+                <div style="display: flex; gap: 8px;">
+                  <input type="number" id="recycler-qty" min="1" step="0.1" class="form-input" style="flex-grow: 1;" placeholder="e.g. 5, 20" required>
+                  <select id="recycler-unit" class="form-input" style="width: 80px;">
+                    <option value="kg">kg</option>
+                    <option value="tons" selected>tons</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="recycler-price" id="lbl-formWastePrice" style="font-weight: 700;">Expected Price (₹ per unit)</label>
+                <input type="number" id="recycler-price" min="0" class="form-input" placeholder="e.g. 1500 (Enter 0 for Free)" required>
+              </div>
+            </div>
+
+            <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+              <div class="form-group">
+                <label for="recycler-location" id="lbl-formLocation" style="font-weight: 700;">Location</label>
+                <input type="text" id="recycler-location" class="form-input" placeholder="e.g. Mandya, Davanagere" required>
+              </div>
+
+              <div class="form-group">
+                <label for="recycler-phone" id="lbl-formContact" style="font-weight: 700;">Phone / Contact Number</label>
+                <input type="tel" id="recycler-phone" class="form-input" placeholder="e.g. 9876543210" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full" id="btn-formWasteSubmit" style="margin-top: 10px; width: 100%;">Post Recycle Listing</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 11: FARM LABOR & EQUIPMENT RENTAL HUB -->
+    <div id="panel-agri-hub" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-hubHeader">Farm Labor & Equipment Hub</h2>
+        <p id="txt-hubSubtitle">Direct Peer-to-Peer Agricultural Labor Exchange & Machinery Rentals</p>
+      </div>
+
+      <!-- Top Segmented Navigation Tabs to toggle between Exchange and Rental -->
+      <div class="hub-tabs-container" style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+        <button id="btn-tabLaborExchange" class="hub-tab-btn active" style="background: none; border: none; font-size: 16px; font-weight: 800; color: var(--primary); border-bottom: 3px solid var(--primary); padding: 8px 16px; cursor: pointer; transition: all 0.3s ease;">Farm Labor Exchange</button>
+        <button id="btn-tabEquipmentRental" class="hub-tab-btn" style="background: none; border: none; font-size: 16px; font-weight: 800; color: var(--text-muted); padding: 8px 16px; cursor: pointer; transition: all 0.3s ease;">Equipment Rentals</button>
+      </div>
+
+      <!-- ==================== SUB-SECTION 1: LABOR EXCHANGE ==================== -->
+      <div id="hub-labor-section" class="hub-sub-section">
+        <!-- Dual Feed Toggle (Ready to Work vs Ready to Hire) -->
+        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; background: var(--bg-card); padding: 8px; border-radius: var(--radius-lg); border: 1px solid var(--border-color); max-width: 500px; margin-left: auto; margin-right: auto;">
+          <button id="btn-boardReadyToWork" class="btn btn-primary toggle-board-btn active" style="flex: 1; text-align: center;">Ready to Work (Laborers)</button>
+          <button id="btn-boardReadyToHire" class="btn btn-secondary toggle-board-btn" style="flex: 1; text-align: center;">Ready to Hire (Farm Owners)</button>
+        </div>
+
+        <div class="analyser-layout">
+          <!-- Active Labor Card Listings -->
+          <div class="card-wrapper" style="flex: 1.3;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h3 id="txt-activeLaborFeeds" style="color: var(--primary-dark); font-size: 18px; font-weight: 800; margin: 0;">Active Connections</h3>
+              <span id="lbl-labor-count-badge" class="severity-gauge low" style="margin: 0; font-size: 11px;">0 active posts</span>
+            </div>
+
+            <!-- Labor filter board -->
+            <div class="hub-filter-bar" style="background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); padding: 15px; border-radius: var(--radius-sm); margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+              <input type="text" id="labor-filter-location" class="form-input" style="padding: 8px;" placeholder="Search village/district...">
+              
+              <!-- Dynamic options generated or simplified -->
+              <select id="labor-filter-type" class="form-input" style="padding: 8px;">
+                <option value="" id="opt-filterWorkType">Filter Work Type</option>
+                <option value="harvesting">Harvesting</option>
+                <option value="planting">Planting</option>
+                <option value="irrigation">Irrigation</option>
+                <option value="driving">Tractor Driving</option>
+                <option value="spraying">Pesticide Spraying</option>
+                <option value="loading">Loading/Unloading</option>
+                <option value="weeding">Weeding</option>
+                <option value="fertilizer">Fertilizer Application</option>
+                <option value="sugarcane">Sugarcane Cutting</option>
+                <option value="nursery">Nursery Work</option>
+              </select>
+
+              <div style="display: flex; flex-direction: column; justify-content: center; padding: 0 5px;">
+                <label for="labor-filter-wage" id="lbl-filterWageRange" style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Max Wage</label>
+                <input type="range" id="labor-filter-wage" min="200" max="2000" step="50" value="2000" style="width: 100%; accent-color: var(--primary);">
+                <span id="labor-wage-val" style="font-size: 10px; font-weight: 700; text-align: right; color: var(--primary);">Max: ₹2000/day</span>
+              </div>
+            </div>
+
+            <!-- Scrollable list of active labor listings -->
+            <div id="labor-listings-container" style="display: flex; flex-direction: column; gap: 15px; max-height: 650px; overflow-y: auto; padding-right: 5px;">
+              <!-- Dynamic Labor Cards Rendered Here -->
+            </div>
+          </div>
+
+          <!-- Wizard Post Form Column -->
+          <div class="card-wrapper" style="flex: 0.9;">
+            <!-- Board 1 Form: Ready to Work (Laborer Post) -->
+            <div id="labor-work-form-container">
+              <h3 id="txt-postLaborAvailability" style="margin-bottom: 20px; color: var(--primary-dark); font-size: 18px; font-weight: 800;">Post Work Availability</h3>
+              <form id="labor-work-post-form">
+                <div class="form-group mb-3">
+                  <label for="labor-work-name" style="font-weight: 700;">Name / Full Name</label>
+                  <input type="text" id="labor-work-name" class="form-input" placeholder="e.g. Charan Gowda, Mahesh" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                  <label for="labor-work-location" style="font-weight: 700;">Village / Location</label>
+                  <input type="text" id="labor-work-location" class="form-input" placeholder="e.g. Mandya Town, Kothathi" required>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="labor-work-type" style="font-weight: 700;">Work Type</label>
+                  <select id="labor-work-type" class="form-input" required>
+                    <option value="harvesting">Harvesting</option>
+                    <option value="planting">Planting</option>
+                    <option value="irrigation">Irrigation</option>
+                    <option value="driving">Tractor Driving</option>
+                    <option value="spraying">Pesticide Spraying</option>
+                    <option value="loading">Loading/Unloading</option>
+                    <option value="weeding">Weeding</option>
+                    <option value="fertilizer">Fertilizer Application</option>
+                    <option value="sugarcane">Sugarcane Cutting</option>
+                    <option value="nursery">Nursery Work</option>
+                  </select>
+                </div>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                  <div class="form-group">
+                    <label for="labor-work-wage" id="lbl-expectedWage" style="font-weight: 700;">Expected Wage (₹ / Day)</label>
+                    <input type="number" id="labor-work-wage" min="100" class="form-input" placeholder="e.g. 500" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="labor-work-exp" id="lbl-experienceLevel" style="font-weight: 700;">Experience Level</label>
+                    <select id="labor-work-exp" class="form-input" required>
+                      <option value="1-2">1-2 Years</option>
+                      <option value="3-5" selected>3-5 Years</option>
+                      <option value="5+">5+ Years</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                  <div class="form-group">
+                    <label for="labor-work-dates" style="font-weight: 700;">Available Dates</label>
+                    <input type="text" id="labor-work-dates" class="form-input" placeholder="e.g. May 25 - Jun 10" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="labor-work-phone" style="font-weight: 700;">Phone / Contact</label>
+                    <input type="tel" id="labor-work-phone" class="form-input" placeholder="e.g. 9876543210" required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full" id="btn-postLaborAvailabilitySubmit" style="margin-top: 10px; width: 100%;">Post Work Availability</button>
+              </form>
+            </div>
+
+            <!-- Board 2 Form: Ready to Hire (Farm Owner Post) -->
+            <div id="labor-hire-form-container" style="display:none;">
+              <h3 id="txt-postHiringNeed" style="margin-bottom: 20px; color: var(--primary-dark); font-size: 18px; font-weight: 800;">Post Hiring Requirement</h3>
+              <form id="labor-hire-post-form">
+                <div class="form-group mb-3">
+                  <label for="labor-hire-work" style="font-weight: 700;">Work Required</label>
+                  <input type="text" id="labor-hire-work" class="form-input" placeholder="e.g. Sugarcane Harvesting, Paddy Planting" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                  <label for="labor-hire-crop" style="font-weight: 700;">Crop Type</label>
+                  <select id="labor-hire-crop" class="form-input" required>
+                    <option value="sugarcane">Sugarcane</option>
+                    <option value="paddy">Paddy</option>
+                    <option value="ragi">Ragi</option>
+                    <option value="maize">Maize</option>
+                    <option value="banana">Banana</option>
+                    <option value="coconut">Coconut</option>
+                    <option value="tomato">Tomato</option>
+                    <option value="onion">Onion</option>
+                    <option value="cotton">Cotton</option>
+                    <option value="groundnut">Groundnut</option>
+                  </select>
+                </div>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                  <div class="form-group">
+                    <label for="labor-hire-qty" id="lbl-laborersNeeded" style="font-weight: 700;">Laborers Needed</label>
+                    <input type="number" id="labor-hire-qty" min="1" class="form-input" placeholder="e.g. 5, 12" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="labor-hire-wage" id="lbl-wageOffered" style="font-weight: 700;">Wage Offered (₹ / Day)</label>
+                    <input type="number" id="labor-hire-wage" min="100" class="form-input" placeholder="e.g. 600" required>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                  <div class="form-group">
+                    <label for="labor-hire-duration" style="font-weight: 700;">Work Duration</label>
+                    <input type="text" id="labor-hire-duration" class="form-input" placeholder="e.g. 5 days, 2 weeks" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="labor-hire-location" style="font-weight: 700;">Location</label>
+                    <input type="text" id="labor-hire-location" class="form-input" placeholder="e.g. Kothathi Village" required>
+                  </div>
+                </div>
+
+                <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                  <div class="form-group">
+                    <label for="labor-hire-urgency" id="lbl-urgencyLevel" style="font-weight: 700;">Urgency Level</label>
+                    <select id="labor-hire-urgency" class="form-input" required>
+                      <option value="Low">Low</option>
+                      <option value="Medium" selected>Medium</option>
+                      <option value="High">High</option>
+                      <option value="Immediate">Immediate / Urgent</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="labor-hire-phone" style="font-weight: 700;">Phone / Contact</label>
+                    <input type="tel" id="labor-hire-phone" class="form-input" placeholder="e.g. 9988776655" required>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full" id="btn-postHiringNeedSubmit" style="margin-top: 10px; width: 100%;">Post Hiring Requirement</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SUB-SECTION 2: EQUIPMENT RENTALS ==================== -->
+      <div id="hub-equipment-section" class="hub-sub-section" style="display:none;">
+        <div class="analyser-layout">
+          <!-- Active Equipment Listings -->
+          <div class="card-wrapper" style="flex: 1.3;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h3 id="txt-availableEquipment" style="color: var(--primary-dark); font-size: 18px; font-weight: 800; margin: 0;">Available Machinery & Tools</h3>
+              <span id="lbl-equipment-count-badge" class="severity-gauge low" style="margin: 0; font-size: 11px;">0 listed items</span>
+            </div>
+
+            <!-- Equipment Filters -->
+            <div class="hub-filter-bar" style="background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); padding: 15px; border-radius: var(--radius-sm); margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+              <input type="text" id="equip-filter-location" class="form-input" style="padding: 8px;" placeholder="Search location...">
+              
+              <select id="equip-filter-type" class="form-input" style="padding: 8px;">
+                <option value="" id="opt-filterEquipmentType">Filter Equipment</option>
+                <option value="tractor">Tractor</option>
+                <option value="rotavator">Rotavator</option>
+                <option value="harvester">Harvester</option>
+                <option value="tiller">Power Tiller</option>
+                <option value="tanker">Water Tanker</option>
+                <option value="drill">Seed Drill</option>
+                <option value="sprayer">Sprayer</option>
+                <option value="cultivator">Cultivator</option>
+                <option value="plough">Plough</option>
+                <option value="thresher">Thresher</option>
+                <option value="minitruck">Mini Truck</option>
+                <option value="drone">Drone Sprayer</option>
+              </select>
+
+              <div style="display: flex; flex-direction: column; justify-content: center; padding: 0 5px;">
+                <label for="equip-filter-price" id="lbl-filterPriceRange" style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Max Cost</label>
+                <input type="range" id="equip-filter-price" min="100" max="10000" step="100" value="10000" style="width: 100%; accent-color: var(--primary);">
+                <span id="equip-price-val" style="font-size: 10px; font-weight: 700; text-align: right; color: var(--primary);">Max: ₹10000/day</span>
+              </div>
+            </div>
+
+            <!-- List container of active equipment cards -->
+            <div id="equipment-listings-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; max-height: 650px; overflow-y: auto; padding-right: 5px; padding-bottom: 10px;">
+              <!-- Dynamic Equipment Cards Rendered Here -->
+            </div>
+          </div>
+
+          <!-- Post Equipment Listing Form -->
+          <div class="card-wrapper" style="flex: 0.9;">
+            <h3 id="txt-postEquipment" style="margin-bottom: 20px; color: var(--primary-dark); font-size: 18px; font-weight: 800;">List Rental Equipment</h3>
+            <form id="equipment-post-form">
+              <div class="form-group mb-3">
+                <label for="equip-type" style="font-weight: 700;">Equipment Type</label>
+                <select id="equip-type" class="form-input" required>
+                  <option value="tractor">Tractor</option>
+                  <option value="rotavator">Rotavator</option>
+                  <option value="harvester">Harvester</option>
+                  <option value="tiller">Power Tiller</option>
+                  <option value="tanker">Water Tanker</option>
+                  <option value="drill">Seed Drill</option>
+                  <option value="sprayer">Sprayer</option>
+                  <option value="cultivator">Cultivator</option>
+                  <option value="plough">Plough</option>
+                  <option value="thresher">Thresher</option>
+                  <option value="minitruck">Mini Truck</option>
+                  <option value="drone">Drone Sprayer</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="equip-brand" id="lbl-brandModel" style="font-weight: 700;">Brand & Model</label>
+                <input type="text" id="equip-brand" class="form-input" placeholder="e.g. Mahindra Arjun 555, DJI Agras T40" required>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <div class="form-group">
+                  <label for="equip-cost" id="lbl-rentalCost" style="font-weight: 700;">Rental Cost (₹)</label>
+                  <input type="number" id="equip-cost" min="10" class="form-input" placeholder="e.g. 1500" required>
+                </div>
+                <div class="form-group">
+                  <label for="equip-period" id="lbl-rentalPeriod" style="font-weight: 700;">Rate Period</label>
+                  <select id="equip-period" class="form-input" required>
+                    <option value="day" selected>per Day</option>
+                    <option value="hour">per Hour</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <div class="form-group">
+                  <label for="equip-dates" style="font-weight: 700;">Available Dates</label>
+                  <input type="text" id="equip-dates" class="form-input" placeholder="e.g. Immediate, Jun 1 - Jun 20" required>
+                </div>
+                <div class="form-group">
+                  <label for="equip-condition" id="lbl-condition" style="font-weight: 700;">Condition</label>
+                  <select id="equip-condition" class="form-input" required>
+                    <option value="Excellent">Excellent / Brand New</option>
+                    <option value="Good" selected>Good Working Condition</option>
+                    <option value="Fair">Fair / Serviced</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <div class="form-group">
+                  <label for="equip-owner" style="font-weight: 700;">Owner Name</label>
+                  <input type="text" id="equip-owner" class="form-input" placeholder="e.g. Ramesh Gowda" required>
+                </div>
+                <div class="form-group">
+                  <label for="equip-location" style="font-weight: 700;">Village / Location</label>
+                  <input type="text" id="equip-location" class="form-input" placeholder="e.g. Mandya District" required>
+                </div>
+              </div>
+
+              <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <div class="form-group">
+                  <label for="equip-phone" style="font-weight: 700;">Contact Number</label>
+                  <input type="tel" id="equip-phone" class="form-input" placeholder="e.g. 9888877777" required>
+                </div>
+                <div class="form-group">
+                  <label for="equip-image" style="font-weight: 700;">Equipment Image</label>
+                  <input type="file" id="equip-image" accept="image/*" class="form-input" style="padding: 4px;">
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="equip-desc" style="font-weight: 700;">Brief Description</label>
+                <textarea id="equip-desc" class="form-input" style="height: 60px; font-family: inherit;" placeholder="Describe attachment details, driver availability, diesel inclusion details..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full" id="btn-postEquipmentSubmit" style="margin-top: 10px; width: 100%;">List Rental Equipment</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div> <!-- End App Container -->
 
 
@@ -769,6 +1527,6 @@
   </div>
 
   <!-- CORE SCRIPTS -->
-  <script type="module" src="app.js"></script>
+  <script src="app.bundle.js"></script>
 </body>
 </html>

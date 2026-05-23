@@ -16,7 +16,10 @@ export const marketsList = [
   { id: "kolar", en: "Kolar Market", kn: "ಕೋಲಾರ ಮಾರುಕಟ್ಟೆ" },
   { id: "davanagere", en: "Davanagere Mandi", kn: "ದಾವಣಗೆರೆ ಮಂಡಿ" },
   { id: "hubli", en: "Hubli APMC", kn: "ಹುಬ್ಬಳ್ಳಿ ಎ.ಪಿ.ಎಂ.ಸಿ" },
-  { id: "mysore", en: "Mysore Bandipalya", kn: "ಮೈಸೂರು ಬಂಡಿಪಾಳ್ಯ" }
+  { id: "mysore", en: "Mysore Bandipalya", kn: "ಮೈಸೂರು ಬಂಡಿಪಾಳ್ಯ" },
+  { id: "mandya", en: "Mandya APMC", kn: "ಮಂಡ್ಯ ಎ.ಪಿ.ಎಂ.ಸಿ" },
+  { id: "maddur", en: "Maddur Market", kn: "ಮದ್ದೂರು ಮಾರುಕಟ್ಟೆ" },
+  { id: "pandavapura", en: "Pandavapura Mandi", kn: "ಪಾಂಡವಪುರ ಮಂಡಿ" }
 ];
 
 // Initialize live memory price structure
@@ -30,6 +33,8 @@ function initMandiData() {
       let marketFactor = 0.95 + (Math.random() * 0.1); // ±5% variation per market
       if (market.id === "kolar" && crop.id === "tomato") marketFactor *= 0.85; // Kolar is tomato capital, cheaper
       if (market.id === "bengaluru") marketFactor *= 1.05; // Capital city is slightly more expensive
+      if (market.id === "mandya" && crop.id === "rice") marketFactor *= 0.92; // Mandya is paddy capital, cheaper
+      if (market.id === "maddur" && crop.id === "coconut") marketFactor *= 0.88; // Maddur is famous for tender coconuts, cheaper
       
       const currentPrice = Math.round(crop.basePrice * marketFactor);
       const prevPrice = Math.round(currentPrice * (0.96 + Math.random() * 0.08)); // Last 24h variation
