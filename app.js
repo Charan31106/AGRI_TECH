@@ -309,7 +309,32 @@ const dom = {
 // 1. APPLICATION INITIALIZATION & CORE SETUP
 // ==========================================
 
-function initializeKrishiApp() {
+/**
+ * Loads API key from local .env file dynamically if running on local server
+ */
+async function loadEnvApiKey() {
+  try {
+    const response = await fetch('.env');
+    if (response.ok) {
+      const text = await response.text();
+      const match = text.match(/GEMINI_API_KEY\s*=\s*([^\s#]+)/);
+      if (match && match[1]) {
+        state.apiKey = match[1].trim();
+        console.log("[Krishi App] API Key loaded successfully from .env file.");
+        if (dom.settingsApiKey) {
+          dom.settingsApiKey.value = state.apiKey;
+        }
+      }
+    }
+  } catch (err) {
+    console.warn("[Krishi App] Could not load .env file dynamically (normal for file:// protocol). Using default key.", err);
+  }
+}
+
+async function initializeKrishiApp() {
+  // Load API key from environment variables
+  await loadEnvApiKey();
+
   // Load State from localStorage
   let savedKey = localStorage.getItem("krishi_gemini_api_key");
   if (savedKey === "AIzaSyB8-l65N1UGfgdFdVrcERHM5Qj5K-c3mdA" || (savedKey && savedKey.trim() === "")) {
@@ -320,7 +345,10 @@ function initializeKrishiApp() {
     state.apiKey = savedKey;
     dom.settingsApiKey.value = savedKey;
   } else {
-    state.apiKey = "AIzaSyCSYbxWfjIodPdj2Gkmzh63BfEXXRMfvd8";
+    // If no localStorage, fallback is already set by loadEnvApiKey() or default
+    if (!state.apiKey) {
+      state.apiKey = "AIzaSyCSYbxWfjIodPdj2Gkmzh63BfEXXRMfvd8";
+    }
   }
   
   const savedLang = localStorage.getItem("krishi_lang");
