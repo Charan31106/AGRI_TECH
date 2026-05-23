@@ -2200,3 +2200,501 @@ body.dark .stat-box-tile {
   font-weight: 700;
 }
 
+@keyframes gridPulse {
+  0% { transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg) scale(1); filter: brightness(1); }
+  50% { transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg) scale(0.96) translateZ(8px); filter: brightness(1.15) drop-shadow(0 0 12px var(--primary-glow)); }
+  100% { transform: rotateX(60deg) rotateY(0deg) rotateZ(-45deg) scale(1); filter: brightness(1); }
+}
+
+.farm-3d-board.grid-syncing {
+  animation: gridPulse 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Agri Recycler Predefined Waste Dropdown & Animations */
+.agri-dropdown-container {
+  width: 100%;
+  position: relative;
+  font-family: var(--font-body);
+}
+
+.agri-dropdown-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition-smooth);
+  text-align: left;
+}
+
+.agri-dropdown-trigger:hover, .agri-dropdown-trigger:focus {
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.15);
+}
+
+.agri-dropdown-caret {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-light);
+  transition: transform 0.3s ease;
+}
+
+.agri-dropdown-container.open .agri-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.agri-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  animation: dropdown-slide-down 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.agri-dropdown-container.open .agri-dropdown-menu {
+  display: flex;
+}
+
+@keyframes dropdown-slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.agri-dropdown-search-wrapper {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(45, 106, 79, 0.03);
+}
+
+.agri-dropdown-search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  outline: none;
+  font-size: 13px;
+  transition: var(--transition-smooth);
+}
+
+.agri-dropdown-search-input:focus {
+  border-color: var(--primary-glow);
+}
+
+.agri-dropdown-list {
+  max-height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.agri-dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.agri-dropdown-item:hover {
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+  padding-left: 20px;
+}
+
+body.dark .agri-dropdown-item:hover {
+  background: rgba(82, 183, 136, 0.1);
+  color: var(--primary-glow);
+}
+
+.agri-dropdown-item.selected {
+  background: var(--primary);
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.agri-dropdown-item-icon {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.agri-dropdown-item:hover .agri-dropdown-item-icon {
+  transform: scale(1.2);
+}
+
+/* Recycler Listings Cards */
+.recycler-card {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--border-color);
+  padding: 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+  position: relative;
+  overflow: hidden;
+  animation: card-appear 0.4s ease-out forwards;
+}
+
+body.dark .recycler-card {
+  background: rgba(18, 30, 24, 0.4);
+}
+
+@keyframes card-appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.recycler-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.recycler-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.recycler-item-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.dark .recycler-item-title {
+  color: var(--primary-glow);
+}
+
+.recycler-qty-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  background: var(--primary-pale);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+body.dark .recycler-qty-badge {
+  color: var(--primary-glow);
+  background: var(--primary-dark);
+}
+
+.recycler-price-tag {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent-clay);
+  margin: 0;
+}
+
+body.dark .recycler-price-tag {
+  color: var(--accent-gold);
+}
+
+.recycler-price-tag.free {
+  color: #10b981;
+}
+
+.recycler-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ========================================= */
+/* Farm Labor & Equipment Hub Styling        */
+/* ========================================= */
+.hub-tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  outline: none;
+}
+
+.hub-tab-btn:hover {
+  color: var(--primary);
+}
+
+.hub-tab-btn.active {
+  color: var(--primary);
+}
+
+.hub-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+.toggle-board-btn {
+  transition: var(--transition-smooth);
+}
+
+.toggle-board-btn:not(.active) {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+}
+
+.toggle-board-btn:not(.active):hover {
+  background: var(--primary-pale);
+  color: var(--primary-dark);
+}
+
+.hub-filter-bar {
+  background: rgba(45, 106, 79, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+body.dark .hub-filter-bar {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Labor Listings Cards */
+.labor-card {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--border-color);
+  padding: 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+  animation: card-appear 0.4s ease-out forwards;
+}
+
+body.dark .labor-card {
+  background: rgba(18, 30, 24, 0.4);
+}
+
+.labor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.labor-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.labor-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.dark .labor-card-title {
+  color: var(--primary-glow);
+}
+
+.labor-wage-badge {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-clay);
+}
+
+body.dark .labor-wage-badge {
+  color: var(--accent-gold);
+}
+
+.labor-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.labor-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.labor-detail-row svg {
+  color: var(--primary-light);
+  flex-shrink: 0;
+}
+
+.labor-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+/* Equipment Card Marketplace items */
+.equipment-rental-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+  animation: card-appear 0.4s ease-out forwards;
+}
+
+.equipment-rental-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+.equipment-img-container {
+  width: 100%;
+  height: 160px;
+  background-color: var(--primary-pale);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.equipment-img-container svg {
+  color: var(--primary-light);
+  opacity: 0.5;
+}
+
+.equipment-status-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.equipment-card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.equipment-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+body.dark .equipment-card-title {
+  color: var(--primary-glow);
+}
+
+.equipment-rental-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-clay);
+  margin: 0;
+}
+
+body.dark .equipment-rental-price {
+  color: var(--accent-gold);
+}
+
+.equipment-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #1e293b;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.toast-notification.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast-notification svg {
+  color: #10b981;
+}
+
+

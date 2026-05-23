@@ -131,11 +131,26 @@ const mockBotFarmingExpert = {
       keywords: ["weather", "rain", "ಮಳೆ", "ಹವಾಮಾನ", "ಬಿತ್ತನೆ"],
       en: "Farming depends heavily on weather. Sowing should ideally begin after the first good monsoon showers. Check our 'Weather & Calendar' panel for real-time rain probability and local sowing guides.",
       kn: "ಕೃಷಿಯು ಹವಾಮಾನದ ಮೇಲೆ ನಿರ್ಧಾರಿತವಾಗಿದೆ. ಮುಂಗಾರು ಮಳೆಯ ಮೊದಲ ಮಳೆಯ ನಂತರ ಬಿತ್ತನೆ ಆರಂಭಿಸಿ. ವಿವರವಾದ ಹವಾಮಾನ ಮತ್ತು ಕೃಷಿ ಕ್ಯಾಲೆಂಡರ್ ಮಾಹಿತಿಗಾಗಿ ನಮ್ಮ 'ಹವಾಮಾನ ಸಲಹೆ' ವಿಭಾಗವನ್ನು ನೋಡಿ."
+    },
+    {
+      keywords: ["how to use", "website", "app", "navigate", "panel", "page", "ವೆಬ್‌ಸೈಟ್", "ಆಪ್", "ಬಳಸುವುದು"],
+      en: "To navigate: 1. Use the header tabs to visit sections (Home, Disease Analyser, Mandi Prices, Marketplace, Weather, Soil Advisor, Govt Schemes, 3D Digital Twin). 2. Click the Floating Mic for hands-free voice commands. 3. Adjust themes and languages in the Settings panel.",
+      kn: "ನಮ್ಮ ವೆಬ್‌ಸೈಟ್ ಬಳಸಲು: ೧. ಮುಖ್ಯ ಮೆನುವಿನಲ್ಲಿರುವ ವಿಭಾಗಗಳನ್ನು ಬಳಸಿ (ರೋಗ ವಿಶ್ಲೇಷಣೆ, ಮಂಡಿ ಬೆಲೆಗಳು, ರೈತ ಮಾರುಕಟ್ಟೆ, ಮಣ್ಣಿನ ಆರೋಗ್ಯ, ಡಿಜಿಟಲ್ ಟ್ವಿನ್). ೨. ಧ್ವನಿ ಆಜ್ಞೆಗಳಿಗಾಗಿ ಮೈಕ್ ಬಟನ್ ಒತ್ತಿ. ೩. ಭಾಷೆ ಮತ್ತು ಥೀಮ್ ಬಣ್ಣಗಳನ್ನು ಬದಲಾಯಿಸಲು ಸೆಟ್ಟಿಂಗ್ಸ್ ಬಳಸಿ."
+    },
+    {
+      keywords: ["disease analyser", "leaf scan", "photo", "camera", "ಕ್ಯಾಮೆರಾ", "ರೋಗ", "ವಿಶ್ಲೇಷಣೆ"],
+      en: "In 'Disease Analyser', you can drop leaf photos or click 'Start Camera' to fetch a live photo. Press 'Start AI Scan' to diagnose tomato early blight, rice blast, onion blotch, and get customized chemical and organic remedies.",
+      kn: "'ಸಸ್ಯ ರೋಗ ವಿಶ್ಲೇಷಣೆ' ವಿಭಾಗದಲ್ಲಿ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ಲೈವ್ ಕ್ಯಾಮೆರಾದಿಂದ ಫೋಟೋ ತೆಗೆಯಿರಿ. ನಂತರ 'ವಿಶ್ಲೇಷಣೆ ಪ್ರಾರಂಭಿಸಿ' ಒತ್ತಿದರೆ ರೋಗಕ್ಕೆ ಕಾರಣಗಳು, ಸಾವಯವ ಮತ್ತು ರಾಸಾಯನಿಕ ಪರಿಹಾರಗಳು ಸಿಗುತ್ತವೆ."
+    },
+    {
+      keywords: ["digital twin", "3d", "canal", "hover", "sync", "ಹೂವರ್", "ಡಿಜಿಟಲ್", "೩ಡಿ"],
+      en: "The 'Digital Twin' displays a live 3D visual farmland. Configure land size, experience, water source, and machinery, then click 'Sync Data & Update AI Twin'. Hover over crop beds for expected yields and profits; hover over blue canals for flow rate, efficiency, and daily usage metrics.",
+      kn: "'ಡಿಜಿಟಲ್ ಟ್ವಿನ್' ಜಮೀನಿನ ೩D ಮಾದರಿಯಾಗಿದೆ. ಪ್ರೊಫೈಲ್ ನವೀಕರಿಸಿ 'ಸಿಂಕ್ ಮಾಡಿ'. ಬೆಳೆ ವಿವರಗಳಿಗಾಗಿ ಹೊಲದ ಮೇಲೆ ಹೂವರ್ ಮಾಡಿ, ಹಾಗೂ ಕಾಲುವೆಯ ದಕ್ಷತೆ ಮತ್ತು ನೀರಿನ ಹರಿವನ್ನು ತಿಳಿಯಲು ನೀಲಿ ಕಾಲುವೆಗಳ ಮೇಲೆ ಹೂವರ್ ಮಾಡಿ."
     }
   ],
   fallback: {
-    en: "I am Krishi AI, your crop and disease specialist. For best crop yields: 1. Conduct annual soil testing. 2. Practice crop rotation. 3. Prefer biological organic pesticides. 4. Check the 'Disease Analyser' for specific leaf spots.",
-    kn: "ನಾನು ಕೃಷಿ AI, ನಿಮ್ಮ ಬೆಳೆ ಮತ್ತು ರೋಗ ತಜ್ಞ. ಉತ್ತಮ ಫಸಲಿಗಾಗಿ: ೧. ಪ್ರತಿ ವರ್ಷ ಮಣ್ಣಿನ ಪರೀಕ್ಷೆ ಮಾಡಿಸಿ. ೨. ಬೆಳೆ ಸರದಿ ವಿಧಾನ ಬಳಸಿ. ೩. ಜೈವಿಕ ಸಾವಯವ ಕೀಟನಾಶಕಗಳಿಗೆ ಆದ್ಯತೆ ನೀಡಿ. ೪. ಎಲೆಗಳ ರೋಗ ತಪಾಸಣೆಗಾಗಿ 'ಸಸ್ಯ ರೋಗ ವಿಶ್ಲೇಷಣೆ' ವಿಭಾಗವನ್ನು ಬಳಸಿ."
+    en: "I am Krishi AI, your crop, disease, and Krishi-Sanjeevini website specialist. Ask me agricultural questions or how to navigate our active panels, Mandi chart, 3D Digital Twin, and Soil Card diagnostic systems.",
+    kn: "ನಾನು ಕೃಷಿ AI, ನಿಮ್ಮ ಬೆಳೆ, ರೋಗ ಮತ್ತು ಕೃಷಿ-ಸಂಜೀವಿನಿ ವೆಬ್‌ಸೈಟ್‌ನ ಸಹಾಯಕ. ಕೃಷಿ ಪ್ರಶ್ನೆಗಳು ಅಥವಾ ನಮ್ಮ ಆಪ್‌ನ ೩D ಡಿಜಿಟಲ್ ಟ್ವಿನ್, ಮಣ್ಣಿನ ಸಲಹೆ ಮತ್ತು ಮಂಡಿ ಚಾರ್ಟ್ ಬಳಸುವ ಬಗ್ಗೆ ಕೇಳಿ."
   }
 };
 
@@ -229,10 +244,10 @@ export async function analyseCropDisease(base64Image, mimeType, lang = "en", api
 }
 
 /**
- * Communicates directly with the client-side Gemini 2.5 Flash model
+ * Communicates directly with the client-side Gemini 3.5 Flash model
  */
 async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selectedCrop = "auto", weatherContext = null) {
-  const modelName = "gemini-2.5-flash";
+  const modelName = "gemini-3.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
   let cropHint = "";
@@ -330,12 +345,12 @@ async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selecte
 }
 
 /**
- * Handle farming chatbot queries, restricted strictly to agricultural topics
+ * Handle farming chatbot queries, restricted strictly to agricultural and website topics
  */
 export async function getChatbotResponse(query, lang = "en", apiKey = "") {
   const queryLower = query.toLowerCase().trim();
   
-  // Guardrail check: Is it agricultural?
+  // Guardrail check: Is it agricultural or website related?
   const agriculturalKeywords = [
     "crop", "disease", "plant", "pest", "fertilizer", "soil", "mandi", "price", "ragi", "rice", "tomato", "onion", "arecanut", "coffee",
     "coconut", "jowar", "water", "irrigation", "organic", "neem", "chemical", "fungicide", "weather", "rain", "seed", "sow", "harvest",
@@ -343,14 +358,23 @@ export async function getChatbotResponse(query, lang = "en", apiKey = "") {
     "ರಾಗಿ", "ಭತ್ತ", "ಅಕ್ಕಿ", "ಟೊಮೆಟೊ", "ಈರುಳ್ಳಿ", "ಅಡಿಕೆ", "ತೆಂಗಿನಕಾಯಿ", "ಕಾಫಿ", "ಜೋಳ", "ಬೆಳೆ", "ರೋಗ", "ಕೀಟ", "ಗೊಬ್ಬರ", "ಮಣ್ಣು", "ಮಂಡಿ",
     "ಬೆಲೆ", "ಹವಾಮಾನ", "ಮಳೆ", "ನೀರಾವರಿ", "ಸಾವಯವ", "ಕೃಷಿ", "ಯೋಜನೆ", "ಬಿತ್ತನೆ", "ಕೊಯ್ಲು"
   ];
+
+  const websiteKeywords = [
+    "website", "app", "navigate", "panel", "page", "use", "feature", "button", "how", "bug", "issue", "click", "select", "disease analyser",
+    "mandi prices", "marketplace", "weather", "soil", "digital twin", "schemes", "voice", "mic", "talk", "api key", "settings",
+    "language", "english", "kannada", "theme", "dark", "light", "sync", "gps", "location", "help", "support",
+    "ವೆಬ್‌ಸೈಟ್", "ಆಪ್", "ಪುಟ", "ನೆರವು", "ನೆರವಿಗಾಗಿ", "ರೋಗ ವಿಶ್ಲೇಷಣೆ", "ಮಂಡಿ ಬೆಲೆಗಳು", "ರೈತ ಮಾರುಕಟ್ಟೆ", "ಹವಾಮಾನ", "ಮಣ್ಣಿನ ಆರೋಗ್ಯ", "ಡಿಜಿಟಲ್ ಟ್ವಿನ್",
+    "ಯೋಜನೆಗಳು", "ಧ್ವನಿ", "ಭಾಷೆ", "ಕನ್ನಡ", "ಇಂಗ್ಲಿಷ್", "ಸಲಹೆ", "ಪರೀಕ್ಷೆ", "ಸಿಂಕ್", "ಜಿಪಿಎಸ್"
+  ];
   
-  const isAgricultural = agriculturalKeywords.some(keyword => queryLower.includes(keyword));
+  const isAllowed = agriculturalKeywords.some(keyword => queryLower.includes(keyword)) || 
+                    websiteKeywords.some(keyword => queryLower.includes(keyword));
   
-  if (!isAgricultural) {
+  if (!isAllowed) {
     return {
       text: lang === "kn" 
-        ? "ಕ್ಷಮಿಸಿ, ನಾನು ಕೃಷಿ, ಬೆಳೆಗಳು, ರೋಗಗಳು ಮತ್ತು ಮಂಡಿ ಬೆಲೆಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಪ್ರಶ್ನೆಗಳಿಗೆ ಮಾತ್ರ ಉತ್ತರಿಸಲು ಸೀಮಿತವಾಗಿದ್ದೇನೆ. ಕೃಷಿ ಯಶಸ್ಸಿನ ಕಡೆಗೆ ಗಮನ ಹರಿಸೋಣ!"
-        : "I am designed to assist with agricultural, crop, disease, and Mandi questions only. Let's keep our focus on prosperous farming!",
+        ? "ಕ್ಷಮಿಸಿ, ನಾನು ಕೃಷಿ, ಬೆಳೆಗಳು, ರೋಗಗಳು, ಮಂಡಿ ಬೆಲೆಗಳು ಹಾಗೂ ಈ ವೆಬ್‌ಸೈಟ್‌ನ ಸೇವೆಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಪ್ರಶ್ನೆಗಳಿಗೆ ಮಾತ್ರ ಉತ್ತರಿಸಲು ಸೀಮಿತವಾಗಿದ್ದೇನೆ. ಕೃಷಿ ಯಶಸ್ಸಿನ ಕಡೆಗೆ ಗಮನ ಹರಿಸೋಣ!"
+        : "I am designed to assist with agricultural questions and issues or navigation related to our Krishi-Sanjeevini website only. Let's keep our focus on prosperous farming!",
       isGuardrail: true
     };
   }
@@ -386,11 +410,11 @@ export async function getChatbotResponse(query, lang = "en", apiKey = "") {
  * API call helper for Gemini chatbot
  */
 async function callGeminiChatAPI(query, lang = "en", apiKey) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`;
   
   const systemPrompt = `
-    You are 'Krishi AI', a friendly, highly intelligent agricultural expert and botanical chatbot. 
-    Your goal is to assist farmers with detailed, practical agricultural solutions. 
+    You are 'Krishi AI', a friendly, highly intelligent agricultural expert and website assistant. 
+    Your goal is to assist farmers with detailed, practical agricultural solutions and help users navigate and solve issues on the Krishi-Sanjeevini website.
     You must answer in a very encouraging, clear, and direct style. Use bullet points where appropriate.
     The response MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
     
@@ -400,9 +424,18 @@ async function callGeminiChatAPI(query, lang = "en", apiKey) {
     - Soils, NPK levels, fertilization, composting, and land prep
     - Irrigation, weather guides, sowing times, and harvesting
     - Mandi pricing, marketplace buying and selling strategies, and government agricultural schemes.
-    
-    If the question is completely unrelated to farming or agriculture, politely reject it by saying:
-    "I am designed to assist with agricultural, crop, disease, and Mandi questions only. Let's keep our focus on prosperous farming!" (or localized equivalent in Kannada).
+    - Krishi-Sanjeevini website features, including:
+      1. Crop Disease Analyser (drag and drop leaf image or use camera stream to diagnose early blight, rice blast, onion blotch, and common corn rust)
+      2. Mandi Prices (check daily APMC rates, view 7-day pricing trend charts, search crops/markets)
+      3. Farmer Marketplace (list harvests, browse buyer/seller listings)
+      4. Weather & Calendar (live GPS weather, Kharif/Rabi/Zaid sowing calendars)
+      5. Soil Advisor (NPK N-140 P-60 K-100 targets and pH diagnostics, agricultural lime/gypsum soil amendments)
+      6. Government Schemes Portal (PM-KISAN, Krishi Bhagya, PMFBY, Ganga Kalyana, Yashaswini)
+      7. Digital Twin 3D Farmland (input experience, income, machinery, soil type, water source, GPS location, and crop duration; hover over cells for crop details; hover over blue canals for flow rate, efficiency, daily usage; click 'Sync Data' to animate the isometric board and update SaaS diagnostics including credit score / loan limits)
+      8. Voice Commands (click Mic to speak panels navigation, language switching, etc.)
+      
+    If the question is completely unrelated to farming, agriculture, or the Krishi-Sanjeevini website, politely reject it by saying:
+    "I am designed to assist with agricultural, crop, disease, Mandi questions, and website related queries only. Let's keep our focus on prosperous farming!" (or localized equivalent in Kannada).
   `;
 
   const requestBody = {

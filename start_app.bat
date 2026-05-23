@@ -1,7 +1,7 @@
 @echo off
-title Krishi-Sanjeevini App Launcher
+title Krishi-Sethu App Launcher
 echo ===================================================
-echo   Krishi-Sanjeevini (ಕೃಷಿ ಸಂಜೀವಿನಿ) App Launcher
+echo   Krishi-Sethu (ಕೃಷಿ ಸೇತು) App Launcher
 echo ===================================================
 echo.
 echo Starting the local Earthy Premium agricultural application...
