@@ -1,9 +1,10 @@
 // Krishi-Sanjeevini Main Application Controller
-import { translations } from "./data/translations.js";
-import { cropsList, marketsList, getMandiPrices, simulateLiveTicks, getAverageCropPrice, getCropHistory } from "./data/mandi.js";
-import { schemesData } from "./data/schemes.js";
-import { analyseCropDisease, getChatbotResponse, fileToBase64 } from "./services/gemini.js";
-import { speakText, stopSpeaking, startVoiceRecognition, stopVoiceRecognition, SpeechRecognition } from "./services/voice.js";
+import { translations } from "./translations.js";
+import { cropsList, marketsList, getMandiPrices, simulateLiveTicks, getAverageCropPrice, getCropHistory } from "./mandi.js";
+import { schemesData } from "./schemes.js";
+import { analyseCropDisease, getChatbotResponse, fileToBase64 } from "./gemini.js";
+import { speakText, stopSpeaking, startVoiceRecognition, stopVoiceRecognition, SpeechRecognition } from "./voice.js";
+
 
 // Global App State
 const state = {
@@ -26,7 +27,19 @@ const state = {
   uploadedFile: null,
   activeVideoTrack: null,
   currentDiseaseAnalysis: null,
-  activeCropScan: "auto"
+  activeCropScan: "auto",
+  twin: {
+    landSize: 12.5,
+    primaryCrop: "sugarcane",
+    irrigation: "canal",
+    climate: "humid"
+  },
+  userLocation: {
+    lat: 12.5218,
+    lon: 76.8973,
+    city: "Mandya",
+    isGPSActive: false
+  }
 };
 
 // Dom Reference Cache
@@ -53,7 +66,8 @@ const dom = {
     weather: document.getElementById("panel-weather"),
     soil: document.getElementById("panel-soil"),
     schemes: document.getElementById("panel-schemes"),
-    settings: document.getElementById("panel-settings")
+    settings: document.getElementById("panel-settings"),
+    "digital-twin": document.getElementById("panel-digital-twin")
   },
  
   // Disease Analyser Panel
@@ -73,6 +87,9 @@ const dom = {
   diagnosisHud: document.getElementById("diagnosis-hud"),
   resultPlaceholder: document.getElementById("result-placeholder"),
   resultBox: document.getElementById("result-box"),
+  storeSuggestionsContainer: document.getElementById("store-suggestions-container"),
+  lblLocationSource: document.getElementById("lbl-location-source"),
+  storeLocatorCard: document.getElementById("store-locator-card"),
   voiceReadoutBtn: document.getElementById("voice-readout-btn"),
   stopVoiceBtn: document.getElementById("btn-stopVoice"),
   
@@ -155,7 +172,28 @@ const dom = {
   chatInput: document.getElementById("chat-input"),
   sendChatBtn: document.getElementById("send-chat-btn"),
   closeChat: document.getElementById("close-chat"),
-  chatQuickTags: document.getElementById("chat-quick-tags")
+  chatQuickTags: document.getElementById("chat-quick-tags"),
+  
+  // Digital Twin Panel Elements
+  twinBoard3D: document.getElementById("farm-board-3d"),
+  twinLandSizeInput: document.getElementById("input-land-size"),
+  twinLandSizeDisplay: document.getElementById("lbl-land-size-display"),
+  twinPrimaryCropSelect: document.getElementById("select-primary-crop"),
+  twinIrrigationSelect: document.getElementById("select-irrigation"),
+  twinClimateSelect: document.getElementById("select-climate"),
+  twinConfigForm: document.getElementById("farm-config-form"),
+  twinAcreageBadge: document.getElementById("lbl-twin-acreage-badge"),
+  twinOverviewYield: document.getElementById("lbl-overview-yield"),
+  twinOverviewWater: document.getElementById("lbl-overview-water"),
+  twinOverviewProfit: document.getElementById("lbl-overview-profit"),
+  twinTooltip: document.getElementById("farm-hover-tooltip"),
+  twinTTCropBadge: document.getElementById("tt-crop-badge"),
+  twinTTStatusBadge: document.getElementById("tt-status-badge"),
+  twinTTCropVal: document.getElementById("tt-crop"),
+  twinTTAcreageVal: document.getElementById("tt-acreage"),
+  twinTTYieldVal: document.getElementById("tt-yield"),
+  twinTTWaterVal: document.getElementById("tt-water"),
+  twinTTProfitVal: document.getElementById("tt-profit")
 };
 
 // ==========================================
@@ -200,6 +238,9 @@ document.addEventListener("DOMContentLoaded", () => {
       updateMandiTickerTape();
     }
   }, 5000); // simulate price changes every 5 seconds
+
+  // Initialize 3D Digital Twin
+  initTwin();
 });
 
 /**
@@ -273,8 +314,12 @@ function translateDOM() {
     else if (id.startsWith("card-")) {
       const parts = id.split("-");
       // e.g. card-diag-title -> diagTitle
-      const camel = parts[1] + parts[2].charAt(0).toUpperCase() + parts[2].slice(1);
-      key = camel;
+      if (parts.length > 2) {
+        const camel = parts[1] + parts[2].charAt(0).toUpperCase() + parts[2].slice(1);
+        key = camel;
+      } else {
+        key = parts[1];
+      }
     }
 
     if (key && dict[key]) {
@@ -307,6 +352,26 @@ function translateDOM() {
   renderSchemes();
   updateAdvisoryBar();
   updateMandiTickerTape();
+  if (dom.twinBoard3D) {
+    recalculateTwinStats();
+    render3DFarmReplica();
+  }
+
+  // Update dynamic store suggestions translation
+  if (state.currentDiseaseAnalysis && dom.resultBox && dom.resultBox.style.display === "block") {
+    const result = state.currentDiseaseAnalysis;
+    const organicProduct = detectRemedyProduct(result.organic);
+    const chemicalProduct = detectRemedyProduct(result.chemical);
+    const fullText = `${result.organic} ${result.chemical} ${result.causes} ${result.prevention}`.toLowerCase();
+    
+    let detectedItem = null;
+    if (fullText.includes("nitrogen") || fullText.includes("urea") || fullText.includes("ಯೂರಿಯಾ") || fullText.includes("ಸಾರಜನಕ")) {
+      detectedItem = productPricesDb["urea"];
+    } else {
+      detectedItem = chemicalProduct || organicProduct || productPricesDb["copper oxychloride"];
+    }
+    generateStoreSuggestions(detectedItem);
+  }
 }
 
 /**
@@ -352,6 +417,7 @@ async function fetchLiveWeather() {
         if (dom.valWindSpeed) dom.valWindSpeed.textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
         
         if (dom.weatherLocationName) dom.weatherLocationName.textContent = data.name;
+        state.userLocation.city = data.name;
 
         const weatherMain = data.weather[0].main.toLowerCase();
         const weatherDesc = data.weather[0].description;
@@ -408,6 +474,10 @@ async function fetchLiveWeather() {
   const getFallbackWeather = async () => {
     // Ultimate fallback for this user if Windows Location Services are disabled
     const city = "Mandya"; 
+    state.userLocation.lat = 12.5218;
+    state.userLocation.lon = 76.8973;
+    state.userLocation.city = "Mandya";
+    state.userLocation.isGPSActive = false;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},in&appid=${apiKey}&units=metric`;
     fetchWeatherData(url);
   };
@@ -417,6 +487,9 @@ async function fetchLiveWeather() {
       (position) => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
+        state.userLocation.lat = lat;
+        state.userLocation.lon = lon;
+        state.userLocation.isGPSActive = true;
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
         fetchWeatherData(url);
       },
@@ -879,6 +952,274 @@ function stripMarkdown(text) {
   return text.replace(/\*\*(.*?)\*\*/g, "$1").replace(/\*(.*?)\*/g, "$1").replace(/__/g, "").replace(/_/g, "");
 }
 
+// Database of agricultural retail shops across Karnataka
+const agriStoresDb = [
+  {
+    id: 1,
+    nameEn: "Mandya Farmers Co-operative Marketing Society Ltd.",
+    nameKn: "ಮಂಡ್ಯ ರೈತ ಸಹಕಾರ ಮಾರುಕಟ್ಟೆ ಸಂಘ",
+    addressEn: "APMC Yard, Mandya Town",
+    addressKn: "ಎ.ಪಿ.ಎಮ್.ಸಿ ಆವರಣ, ಮಂಡ್ಯ ನಗರ",
+    district: "Mandya",
+    lat: 12.5218,
+    lon: 76.8973
+  },
+  {
+    id: 2,
+    nameEn: "Sri Manjunatha Fertilizer & Agro Chemicals",
+    nameKn: "ಶ್ರೀ ಮಂಜುನಾಥ ಫರ್ಟಿಲೈಸರ್ & ಆಗ್ರೋ ಕೆಮಿಕಲ್ಸ್",
+    addressEn: "M.C. Road, near Bus Stand, Mandya",
+    addressKn: "ಎಂ.ಸಿ. ರಸ್ತೆ, ಬಸ್ ನಿಲ್ದಾಣದ ಹತ್ತಿರ, ಮಂಡ್ಯ",
+    district: "Mandya",
+    lat: 12.5275,
+    lon: 76.8990
+  },
+  {
+    id: 3,
+    nameEn: "Government Raita Mitra Kendra (RSK) Mandya",
+    nameKn: "ರೈತ ಸಂಪರ್ಕ ಕೇಂದ್ರ (RSK) ಮಂಡ್ಯ",
+    addressEn: "Kothathi Road, Mandya",
+    addressKn: "ಕೊತ್ತತ್ತಿ ರಸ್ತೆ, ಮಂಡ್ಯ",
+    district: "Mandya",
+    lat: 12.5020,
+    lon: 76.8745
+  },
+  {
+    id: 4,
+    nameEn: "Sri Srinivasa Agro Agencies",
+    nameKn: "ಶ್ರೀ ಶ್ರೀನಿವಾಸ ಆಗ್ರೋ ಏಜೆನ್ಸೀಸ್",
+    addressEn: "APMC Market Road, Kolar Town",
+    addressKn: "ಎ.ಪಿ.ಎಮ್.ಸಿ ರಸ್ತೆ, ಕೋಲಾರ ನಗರ",
+    district: "Kolar",
+    lat: 13.1368,
+    lon: 78.1356
+  },
+  {
+    id: 5,
+    nameEn: "Kolar Taluk Farmers Co-op Society",
+    nameKn: "ಕೋಲಾರ ತಾಲೂಕು ರೈತ ಸಹಕಾರ ಸಂಘ",
+    addressEn: "M.G. Road, Kolar",
+    addressKn: "ಎಂ.ಜಿ. ರಸ್ತೆ, ಕೋಲಾರ",
+    district: "Kolar",
+    lat: 13.1390,
+    lon: 78.1300
+  },
+  {
+    id: 6,
+    nameEn: "Mysore District Farmers Service Co-op Society",
+    nameKn: "ಮೈಸೂರು ಜಿಲ್ಲಾ ರೈತ ಸೇವಾ ಸಹಕಾರ ಸಂಘ",
+    addressEn: "Bandipalya APMC Yard, Mysuru",
+    addressKn: "ಬಂಡಿಪಾಳ್ಯ ಎ.ಪಿ.ಎಮ್.ಸಿ ಆವರಣ, ಮೈಸೂರು",
+    district: "Mysuru",
+    lat: 12.2680,
+    lon: 76.6690
+  },
+  {
+    id: 7,
+    nameEn: "Sri Chamundeshwari Agri Inputs",
+    nameKn: "ಶ್ರೀ ಚಾಮುಂಡೇಶ್ವರಿ ಕೃಷಿ ಪರಿಕರಗಳು",
+    addressEn: "Devaraja Market Building, Mysuru",
+    addressKn: "ದೇವರಾಜ ಮಾರುಕಟ್ಟೆ ಕಟ್ಟಡ, ಮೈಸೂರು",
+    district: "Mysuru",
+    lat: 12.3115,
+    lon: 76.6508
+  },
+  {
+    id: 8,
+    nameEn: "Sri Siddheshwara Fertilizer Depot",
+    nameKn: "ಶ್ರೀ ಸಿದ್ದೇಶ್ವರ ಫರ್ಟಿಲೈಸರ್ ಡಿಪೋ",
+    addressEn: "P.B. Road, Davanagere",
+    addressKn: "ಪಿ.ಬಿ. ರಸ್ತೆ, ದಾವಣಗೆರೆ",
+    district: "Davanagere",
+    lat: 14.4644,
+    lon: 75.9218
+  },
+  {
+    id: 9,
+    nameEn: "Davanagere District Farmers Co-op Union",
+    nameKn: "ದಾವಣಗೆರೆ ಜಿಲ್ಲಾ ರೈತ ಸಹಕಾರ ಒಕ್ಕೂಟ",
+    addressEn: "APMC Yard, Davanagere",
+    addressKn: "ಎ.ಪಿ.ಎಮ್.ಸಿ ಆವರಣ, ದಾವಣಗೆರೆ",
+    district: "Davanagere",
+    lat: 14.4710,
+    lon: 75.9290
+  },
+  {
+    id: 10,
+    nameEn: "Karnataka State Seeds Corporation Store",
+    nameKn: "ಕರ್ನಾಟಕ ರಾಜ್ಯ ಬಿತ್ತನೆ ಬೀಜ ನಿಗಮ ನಿಯಮಿತ",
+    addressEn: "Hebbal Main Road, Bengaluru",
+    addressKn: "ಹೆಬ್ಬಾಳ ಮುಖ್ಯ ರಸ್ತೆ, ಬೆಂಗಳೂರು",
+    district: "Bengaluru",
+    lat: 13.0354,
+    lon: 77.5978
+  },
+  {
+    id: 11,
+    nameEn: "Government Raita Kendra (RSK) Bengaluru",
+    nameKn: "ರೈತ ಸಂಪರ್ಕ ಕೇಂದ್ರ (RSK) ಬೆಂಗಳೂರು",
+    addressEn: "Yeshwanthpur APMC Yard, Bengaluru",
+    addressKn: "ಯಶವಂತಪುರ ಎ.ಪಿ.ಎಮ್.ಸಿ ಆವರಣ, ಬೆಂಗಳೂರು",
+    district: "Bengaluru",
+    lat: 13.0235,
+    lon: 77.5501
+  }
+];
+
+// Product price catalog
+const productPricesDb = {
+  "neem oil": { en: "Organic Neem Oil", kn: "ಬೇವಿನ ಎಣ್ಣೆ", priceEn: "₹180 / 500ml", priceKn: "₹180 / 500ಮಿಲಿ" },
+  "copper oxychloride": { en: "Copper Oxychloride 50% WP", kn: "ತಾಮ್ರದ ಆಕ್ಸಿಕ್ಲೋರೈಡ್", priceEn: "₹280 / 500g", priceKn: "₹280 / 500ಗ್ರಾಂ" },
+  "pseudomonas": { en: "Pseudomonas fluorescens", kn: "ಸುಡೋಮೊನಾಸ್ ಬಯೋ-ಏಜೆಂಟ್", priceEn: "₹120 / 1kg bag", priceKn: "₹120 / 1ಕೆಜಿ ಚೀಲ" },
+  "tricyclazole": { en: "Tricyclazole 75% WP (Blast Control)", kn: "ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್", priceEn: "₹350 / 250g", priceKn: "₹350 / 250ಗ್ರಾಂ" },
+  "kitazin": { en: "Kitazin (Iprobenfos 48% EC)", kn: "ಕೀಟಾಜಿನ್", priceEn: "₹390 / 500ml", priceKn: "₹390 / 500ಮಿಲಿ" },
+  "mancozeb": { en: "Mancozeb 75% WP Fungicide", kn: "ಮ್ಯಾಂಕೊಜೆಬ್", priceEn: "₹220 / 500g", priceKn: "₹220 / 500ಗ್ರಾಂ" },
+  "trichoderma": { en: "Trichoderma viride Bio-Fungicide", kn: "ಟ್ರೈಕೋಡರ್ಮಾ ವಿರಿಡೆ", priceEn: "₹90 / 500g", priceKn: "₹90 / 500ಗ್ರಾಂ" },
+  "copper hydroxide": { en: "Copper Hydroxide 53.8% DF", kn: "ತಾಮ್ರದ ಹೈಡ್ರಾಕ್ಸೈಡ್", priceEn: "₹340 / 500g", priceKn: "₹340 / 500ಗ್ರಾಂ" },
+  "propiconazole": { en: "Propiconazole 25% EC", kn: "ಪ್ರೊಪಿಕೊನಾಜೋಲ್", priceEn: "₹290 / 250ml", priceKn: "₹290 / 250ಮಿಲಿ" },
+  "tebuconazole": { en: "Tebuconazole 250 EC", kn: "ಟೆಬುಕೊನಜೋಲ್", priceEn: "₹380 / 250ml", priceKn: "₹380 / 250ಮಿಲಿ" },
+  "nitrogen": { en: "Nitrogen Fertilizer (Urea)", kn: "ಸಾರಜನಕ ಗೊಬ್ಬರ (ಯೂರಿಯಾ)", priceEn: "₹266.50 / 45kg bag", priceKn: "₹266.50 / 45ಕೆಜಿ ಚೀಲ" },
+  "urea": { en: "Urea Fertilizer", kn: "ಯೂರಿಯಾ ಗೊಬ್ಬರ", priceEn: "₹266.50 / 45kg bag", priceKn: "₹266.50 / 45ಕೆಜಿ ಚೀಲ" },
+  "potash": { en: "Muriate of Potash (MOP)", kn: "ಪೊಟ್ಯಾಶ್ ರಸಗೊಬ್ಬರ (MOP)", priceEn: "₹1,700 / 50kg bag", priceKn: "₹1,700 / 50ಕೆಜಿ ಚೀಲ" },
+  "sulfur": { en: "Elemental Sulfur 80% WDG", kn: "ದ್ರವ ಗಂಧಕ", priceEn: "₹150 / 1kg", priceKn: "₹150 / 1ಕೆಜಿ" }
+};
+
+// Haversine distance calculator
+function calcDistanceKm(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Earth's radius in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+// Scrapes text to find a matching product from our database
+function detectRemedyProduct(resultText) {
+  if (!resultText) return null;
+  const normalized = resultText.toLowerCase();
+  
+  const keywords = [
+    { key: "neem", dbKey: "neem oil" },
+    { key: "ಬೇವಿನ", dbKey: "neem oil" },
+    { key: "copper oxychloride", dbKey: "copper oxychloride" },
+    { key: "ಆಕ್ಸಿಕ್ಲೋರೈಡ್", dbKey: "copper oxychloride" },
+    { key: "pseudomonas", dbKey: "pseudomonas" },
+    { key: "ಸುಡೋಮೊನಾಸ್", dbKey: "pseudomonas" },
+    { key: "tricyclazole", dbKey: "tricyclazole" },
+    { key: "ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್", dbKey: "tricyclazole" },
+    { key: "kitazin", dbKey: "kitazin" },
+    { key: "ಕೀಟಾಜಿನ್", dbKey: "kitazin" },
+    { key: "mancozeb", dbKey: "mancozeb" },
+    { key: "ಮ್ಯಾಂಕೊಜೆಬ್", dbKey: "mancozeb" },
+    { key: "trichoderma", dbKey: "trichoderma" },
+    { key: "ಟ್ರೈಕೋಡರ್ಮಾ", dbKey: "trichoderma" },
+    { key: "hydroxide", dbKey: "copper hydroxide" },
+    { key: "ಹೈಡ್ರಾಕ್ಸೈಡ್", dbKey: "copper hydroxide" },
+    { key: "propiconazole", dbKey: "propiconazole" },
+    { key: "ಪ್ರೊಪಿಕೊನಾಜೋಲ್", dbKey: "propiconazole" },
+    { key: "tebuconazole", dbKey: "tebuconazole" },
+    { key: "ಟೆಬುಕೊನಜೋಲ್", dbKey: "tebuconazole" },
+    { key: "nitrogen", dbKey: "nitrogen" },
+    { key: "urea", dbKey: "urea" },
+    { key: "ಯೂರಿಯಾ", dbKey: "urea" },
+    { key: "potash", dbKey: "potash" },
+    { key: "ಪೊಟ್ಯಾಶ್", dbKey: "potash" },
+    { key: "sulfur", dbKey: "sulfur" },
+    { key: "ಗಂಧಕ", dbKey: "sulfur" }
+  ];
+
+  for (const item of keywords) {
+    if (normalized.includes(item.key)) {
+      return productPricesDb[item.dbKey];
+    }
+  }
+  return null;
+}
+
+// Renders dynamic store list
+function generateStoreSuggestions(detectedItem) {
+  if (!dom.storeSuggestionsContainer) return;
+  
+  const dict = translations[state.lang];
+  const userLat = state.userLocation.lat || 12.5218;
+  const userLon = state.userLocation.lon || 76.8973;
+  const isGPS = state.userLocation.isGPSActive;
+
+  // Set Location Source Pill Text
+  if (dom.lblLocationSource) {
+    if (isGPS) {
+      dom.lblLocationSource.textContent = dict.gpsActive || "GPS Active";
+      dom.lblLocationSource.style.background = "rgba(16, 185, 129, 0.15)";
+      dom.lblLocationSource.style.color = "#047857";
+    } else {
+      const displayCity = state.userLocation.city || "Mandya";
+      dom.lblLocationSource.textContent = `${dict.profileLocationFallback || "Profile fallback"}: ${displayCity}`;
+      dom.lblLocationSource.style.background = "rgba(245, 158, 11, 0.15)";
+      dom.lblLocationSource.style.color = "#d97706";
+    }
+  }
+
+  // Calculate distances for all stores in DB and sort
+  const scoredStores = agriStoresDb.map(store => {
+    const dist = calcDistanceKm(userLat, userLon, store.lat, store.lon);
+    return { ...store, distance: dist };
+  });
+
+  // Sort by distance
+  scoredStores.sort((a, b) => a.distance - b.distance);
+
+  // Take top 3 nearest stores
+  const nearestStores = scoredStores.slice(0, 3);
+
+  // Render stores
+  let containerHtml = "";
+  if (nearestStores.length === 0) {
+    containerHtml = `<p style="font-size: 13px; color: var(--text-muted); text-align: center; padding: 10px;">${dict.noStoresFound || "No stores found."}</p>`;
+  } else {
+    // Default fallback item if undetected
+    const activeItem = detectedItem || productPricesDb["copper oxychloride"];
+    const prodName = state.lang === "kn" ? activeItem.kn : activeItem.en;
+    const prodPrice = state.lang === "kn" ? activeItem.priceKn : activeItem.priceEn;
+
+    nearestStores.forEach(store => {
+      const storeName = state.lang === "kn" ? store.nameKn : store.nameEn;
+      const storeAddress = state.lang === "kn" ? store.addressKn : store.addressEn;
+      const distanceText = `${store.distance.toFixed(1)} km`;
+
+      containerHtml += `
+        <div class="store-item-card" style="background: rgba(255,255,255,0.45); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); display: flex; flex-direction: column; gap: 8px; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+          <div style="display: flex; justify-content: space-between; align-items: start; gap: 10px;">
+            <h5 style="margin: 0; font-size: 13px; font-weight: 800; color: var(--primary-dark); line-height: 1.4;">${storeName}</h5>
+            <span style="font-size: 10px; font-weight: 800; color: #0284c7; background: rgba(56,189,248,0.15); padding: 2px 6px; border-radius: 4px; white-space: nowrap;">${distanceText}</span>
+          </div>
+          <p style="margin: 0; font-size: 11px; color: var(--text-muted); line-height: 1.3;">
+            ${storeAddress}
+          </p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; font-size: 11px;">
+            <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.15); padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px;">
+              <strong style="color: var(--primary-dark);">${dict.itemLabel}:</strong> <span style="font-weight: 600;">${prodName}</span>
+            </div>
+            <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.15); padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px;">
+              <strong style="color: var(--accent-clay);">${dict.priceLabel}:</strong> <span style="font-weight: 700; color: var(--primary-dark);">${prodPrice}</span>
+            </div>
+          </div>
+          
+          <a href="https://www.google.com/maps/search/?api=1&query=${store.lat},${store.lon}" target="_blank" class="btn btn-accent w-full" style="padding: 6px 12px; font-size: 11px; font-weight:700; margin-top: 5px; text-decoration: none; text-align: center; display: flex; justify-content: center; align-items: center; gap: 5px; border-radius:6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+            ${dict.getDirections}
+          </a>
+        </div>
+      `;
+    });
+  }
+  dom.storeSuggestionsContainer.innerHTML = containerHtml;
+}
+
 function renderDiseaseResults(result) {
   state.currentDiseaseAnalysis = result;
   
@@ -894,6 +1235,20 @@ function renderDiseaseResults(result) {
   dom.resOrganic.innerHTML = formatMarkdownText(result.organic);
   dom.resChemical.innerHTML = formatMarkdownText(result.chemical);
   dom.resPrevention.innerHTML = formatMarkdownText(result.prevention);
+
+  // Generate nearest stores & prices based on crop remedies
+  const organicProduct = detectRemedyProduct(result.organic);
+  const chemicalProduct = detectRemedyProduct(result.chemical);
+  const fullText = `${result.organic} ${result.chemical} ${result.causes} ${result.prevention}`.toLowerCase();
+  
+  let detectedItem = null;
+  if (fullText.includes("nitrogen") || fullText.includes("urea") || fullText.includes("ಯೂರಿಯಾ") || fullText.includes("ಸಾರಜನಕ")) {
+    detectedItem = productPricesDb["urea"];
+  } else {
+    detectedItem = chemicalProduct || organicProduct || productPricesDb["copper oxychloride"];
+  }
+  
+  generateStoreSuggestions(detectedItem);
 
   dom.resultPlaceholder.style.display = "none";
   dom.resultBox.style.display = "block";
@@ -1040,7 +1395,7 @@ function drawTrendChart() {
   // Update summary badge
   const dict = translations[state.lang];
   dom.mandiAvgPriceVal.textContent = `₹${avg.toLocaleString()} / ${dict.rupeesPerQuintal}`;
-  document.getElementById("lbl-chart-header").textContent = `${state.lang === "kn" ? crop.kn : crop.en} - ${dict.priceHistoryHeader}`;
+  document.getElementById("lbl-priceHistoryHeader").textContent = `${state.lang === "kn" ? crop.kn : crop.en} - ${dict.priceHistoryHeader}`;
 
   // SVG dimensions: 400 width, 200 height.
   // Set bounds: padding-left = 40, padding-bottom = 30
@@ -1656,6 +2011,22 @@ function setupEventListeners() {
   dom.chatInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") handleChatbotSend();
   });
+
+  // Digital Twin Config inputs
+  if (dom.twinLandSizeInput) {
+    dom.twinLandSizeInput.addEventListener("input", (e) => {
+      const dict = translations[state.lang];
+      const unitAc = dict.unitAc || "ac";
+      dom.twinLandSizeDisplay.textContent = `${e.target.value} ${unitAc}`;
+    });
+  }
+
+  if (dom.twinConfigForm) {
+    dom.twinConfigForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      applyTwinConfigUpdates();
+    });
+  }
 }
 
 function toggleLanguage() {
@@ -1698,4 +2069,277 @@ function toggleLanguage() {
       }
     }
   }
+}
+
+// ==========================================
+// 9. DIGITAL TWIN SIMULATOR IMPLEMENTATION
+// ==========================================
+
+function initTwin() {
+  if (!dom.twinBoard3D) return;
+  syncTwinInputsFromState();
+  recalculateTwinStats();
+  render3DFarmReplica();
+}
+
+function syncTwinInputsFromState() {
+  if (dom.twinLandSizeInput) {
+    dom.twinLandSizeInput.value = state.twin.landSize;
+    const dict = translations[state.lang];
+    const unitAc = dict.unitAc || "ac";
+    dom.twinLandSizeDisplay.textContent = `${state.twin.landSize} ${unitAc}`;
+  }
+  if (dom.twinPrimaryCropSelect) dom.twinPrimaryCropSelect.value = state.twin.primaryCrop;
+  if (dom.twinIrrigationSelect) dom.twinIrrigationSelect.value = state.twin.irrigation;
+  if (dom.twinClimateSelect) dom.twinClimateSelect.value = state.twin.climate;
+}
+
+function applyTwinConfigUpdates() {
+  state.twin.landSize = parseFloat(dom.twinLandSizeInput.value);
+  state.twin.primaryCrop = dom.twinPrimaryCropSelect.value;
+  state.twin.irrigation = dom.twinIrrigationSelect.value;
+  state.twin.climate = dom.twinClimateSelect.value;
+
+  recalculateTwinStats();
+  render3DFarmReplica();
+}
+
+function recalculateTwinStats() {
+  const twin = state.twin;
+  
+  // Dynamic base factors
+  let baseYield = 70; // sugarcane
+  let basePrice = 160;
+  let baseCost = 650;
+  
+  if (twin.primaryCrop === "wheat") {
+    baseYield = 2.2;
+    basePrice = 260;
+    baseCost = 350;
+  } else if (twin.primaryCrop === "sweet_potato") {
+    baseYield = 7.0;
+    basePrice = 480;
+    baseCost = 500;
+  }
+  
+  let climateFactor = 1.0;
+  if (twin.climate === "humid") {
+    climateFactor = twin.primaryCrop === "sugarcane" ? 1.15 : (twin.primaryCrop === "wheat" ? 0.75 : 0.85);
+  } else if (twin.climate === "dry") {
+    climateFactor = twin.primaryCrop === "sugarcane" ? 0.7 : (twin.primaryCrop === "wheat" ? 0.8 : 0.6);
+  } else {
+    // temperate
+    climateFactor = twin.primaryCrop === "sugarcane" ? 0.9 : (twin.primaryCrop === "wheat" ? 1.25 : 1.1);
+  }
+
+  let irrigationFactor = 1.0;
+  if (twin.irrigation === "drip") irrigationFactor = 1.18;
+  else if (twin.irrigation === "canal") irrigationFactor = 1.0;
+  else if (twin.irrigation === "borewell") irrigationFactor = 0.96;
+  else if (twin.irrigation === "rainfed") irrigationFactor = 0.55;
+
+  const totalYield = (twin.landSize * baseYield * climateFactor * irrigationFactor).toFixed(1);
+  const revenue = Math.round(totalYield * basePrice);
+  
+  let costPerAcre = baseCost;
+  if (twin.irrigation === "drip") costPerAcre += 100;
+  else if (twin.irrigation === "borewell") costPerAcre += 120;
+  else if (twin.irrigation === "canal") costPerAcre += 60;
+  
+  const totalCosts = Math.round(twin.landSize * costPerAcre);
+  const netProfit = revenue - totalCosts;
+
+  // Update Overview Labels
+  const dict = translations[state.lang];
+  const unitAc = dict.unitAc || "ac";
+  const unitTons = dict.unitTons || "Tons";
+  const unitWater = dict.unitWater || "L/s";
+
+  dom.twinAcreageBadge.textContent = `${twin.landSize} ${unitAc}`;
+  dom.twinOverviewYield.textContent = `${totalYield} ${unitTons}`;
+  
+  const waterFlow = twin.irrigation === "rainfed" ? "0.0" : (twin.landSize * 0.4).toFixed(1);
+  dom.twinOverviewWater.textContent = `${waterFlow} ${unitWater}`;
+  
+  const profitSign = netProfit >= 0 ? `₹${netProfit.toLocaleString()}` : `-₹${Math.abs(netProfit).toLocaleString()}`;
+  dom.twinOverviewProfit.textContent = profitSign;
+}
+
+function render3DFarmReplica() {
+  const twin = state.twin;
+  dom.twinBoard3D.innerHTML = "";
+  
+  // Set board size layout - grid cells
+  const gridCells = [
+    { id: 1, type: twin.primaryCrop },
+    { id: 2, type: twin.primaryCrop },
+    { id: 3, type: "wheat" },
+    { id: 4, type: twin.primaryCrop },
+    { id: 5, type: "sweet_potato" },
+    { id: 6, type: "sweet_potato" },
+    { id: 7, type: "wheat" },
+    { id: 8, type: "sweet_potato" },
+    { id: 9, type: twin.primaryCrop }
+  ];
+
+  const stalksPerCell = twin.landSize > 20 ? 9 : (twin.landSize > 8 ? 6 : 4);
+
+  gridCells.forEach(cell => {
+    const cellEl = document.createElement("div");
+    cellEl.className = "farm-cell";
+    cellEl.setAttribute("data-cell-id", cell.id);
+    cellEl.setAttribute("data-crop-type", cell.type);
+    
+    const stalksContainer = document.createElement("div");
+    stalksContainer.className = "crop-stalks-field";
+    
+    let cropClass = "sugarcane-plant";
+    if (cell.type === "wheat") cropClass = "wheat-plant";
+    if (cell.type === "sweet_potato") cropClass = "potato-plant";
+    
+    for (let s = 0; s < stalksPerCell; s++) {
+      const plant = document.createElement("div");
+      plant.className = `crop-plant standup-3d ${cropClass}`;
+      stalksContainer.appendChild(plant);
+    }
+    
+    cellEl.appendChild(stalksContainer);
+    dom.twinBoard3D.appendChild(cellEl);
+  });
+
+  // Render canals
+  if (twin.irrigation !== "rainfed") {
+    const canalH = document.createElement("div");
+    canalH.className = "irrigation-canal-grid canal-horizontal";
+    const canalV = document.createElement("div");
+    canalV.className = "irrigation-canal-grid canal-vertical";
+    
+    dom.twinBoard3D.appendChild(canalH);
+    dom.twinBoard3D.appendChild(canalV);
+  }
+
+  // Render AI Shed
+  if (twin.irrigation !== "rainfed") {
+    const station = document.createElement("div");
+    station.className = "ai-control-station standup-3d";
+    station.innerHTML = `
+      <div class="shed-3d"></div>
+    `;
+    dom.twinBoard3D.appendChild(station);
+  }
+
+  // Render Tractor
+  const tractor = document.createElement("div");
+  tractor.className = "tractor-unit standup-3d";
+  tractor.innerHTML = `<div class="tractor-3d"></div>`;
+  dom.twinBoard3D.appendChild(tractor);
+
+  // Render central sensor node
+  const sensorTower = document.createElement("div");
+  sensorTower.className = "sensor-tower standup-3d";
+  sensorTower.innerHTML = `
+    <div class="tower-3d"></div>
+    <div class="pulse-wave-ring"></div>
+  `;
+  dom.twinBoard3D.appendChild(sensorTower);
+
+  setupTwinHoverListeners();
+}
+
+function setupTwinHoverListeners() {
+  const cells = dom.twinBoard3D.querySelectorAll(".farm-cell");
+  
+  cells.forEach(cell => {
+    cell.addEventListener("mouseenter", () => {
+      const cellId = cell.getAttribute("data-cell-id");
+      const cropType = cell.getAttribute("data-crop-type");
+      showTwinTooltip(cell, cellId, cropType);
+    });
+    
+    cell.addEventListener("mouseleave", () => {
+      hideTwinTooltip();
+    });
+  });
+}
+
+function showTwinTooltip(cellEl, cellId, cropType) {
+  const twin = state.twin;
+  
+  // Crop detailed metrics
+  let nameEn = "Sugarcane";
+  let nameKn = "ಕಬ್ಬು";
+  let statusEn = "Maturing";
+  let statusKn = "ಪಕ್ವವಾಗುತ್ತಿದೆ";
+  let baseYield = 70;
+  let price = 160;
+  let cost = 650;
+  
+  if (cropType === "wheat") {
+    nameEn = "Wheat";
+    nameKn = "ಗೋಧಿ";
+    statusEn = "Vegetative";
+    statusKn = "ಬೆಳವಣಿಗೆ ಹಂತ";
+    baseYield = 2.2;
+    price = 260;
+    cost = 350;
+  } else if (cropType === "sweet_potato") {
+    nameEn = "Sweet Potato";
+    nameKn = "ಗೆಣಸು";
+    statusEn = "Sprouting";
+    statusKn = "ಮೊಳಕೆಯೊಡೆಯುತ್ತಿದೆ";
+    baseYield = 7.0;
+    price = 480;
+    cost = 500;
+  }
+
+  const zoneAcreage = (twin.landSize / 9).toFixed(1);
+  
+  let climateFactor = 1.0;
+  if (twin.climate === "humid") {
+    climateFactor = cropType === "sugarcane" ? 1.15 : (cropType === "wheat" ? 0.75 : 0.85);
+  } else if (twin.climate === "dry") {
+    climateFactor = cropType === "sugarcane" ? 0.7 : (cropType === "wheat" ? 0.8 : 0.6);
+  } else {
+    climateFactor = cropType === "sugarcane" ? 0.9 : (cropType === "wheat" ? 1.25 : 1.1);
+  }
+
+  const dict = translations[state.lang];
+  const unitAc = dict.unitAc || "ac";
+  const unitTons = dict.unitTons || "Tons";
+  const unitWater = dict.unitWater || "L/s";
+
+  const zoneYield = (zoneAcreage * baseYield * climateFactor).toFixed(1);
+  const zoneWater = twin.irrigation === "rainfed" ? `0.0 ${unitWater}` : `${(twin.landSize * 0.4 / 9).toFixed(2)} ${unitWater}`;
+  const zoneProfit = Math.round((zoneYield * price) - (zoneAcreage * cost));
+  
+  dom.twinTTCropBadge.textContent = state.lang === "kn" ? nameKn : nameEn;
+  dom.twinTTStatusBadge.textContent = state.lang === "kn" ? statusKn : statusEn;
+  dom.twinTTCropVal.textContent = state.lang === "kn" ? nameKn : nameEn;
+  dom.twinTTAcreageVal.textContent = `${zoneAcreage} ${unitAc}`;
+  dom.twinTTYieldVal.textContent = `${zoneYield} ${unitTons}`;
+  dom.twinTTWaterVal.textContent = zoneWater;
+  
+  const profitSign = zoneProfit >= 0 ? `+₹${zoneProfit.toLocaleString()}` : `-₹${Math.abs(zoneProfit).toLocaleString()}`;
+  dom.twinTTProfitVal.textContent = profitSign;
+  if (zoneProfit >= 0) {
+    dom.twinTTProfitVal.className = "val text-green";
+  } else {
+    dom.twinTTProfitVal.className = "val text-red";
+  }
+
+  const viewportRect = dom.twinBoard3D.parentElement.getBoundingClientRect();
+  const cellRect = cellEl.getBoundingClientRect();
+  
+  const left = cellRect.left - viewportRect.left + (cellRect.width / 2) - 110;
+  const top = cellRect.top - viewportRect.top - 145; // float above cell
+  
+  dom.twinTooltip.style.left = `${left}px`;
+  dom.twinTooltip.style.top = `${top}px`;
+  dom.twinTooltip.style.opacity = "1";
+  dom.twinTooltip.style.transform = "translateY(0) scale(1)";
+}
+
+function hideTwinTooltip() {
+  dom.twinTooltip.style.opacity = "0";
+  dom.twinTooltip.style.transform = "translateY(20px) scale(0.9)";
 }

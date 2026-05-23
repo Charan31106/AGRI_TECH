@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { translations } from './data/translations.js';
+import { translations } from './translations.js';
 
 const htmlPath = './index.html';
 const htmlContent = fs.readFileSync(htmlPath, 'utf8');

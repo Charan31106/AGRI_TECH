@@ -205,6 +205,18 @@
           <p id="card-schemes-desc">Browse local subsidies and agricultural programs (e.g. PM-KISAN, Krishi Bhagya) with application paths.</p>
           <span class="card-link"><span id="card-schemes-link">Search Subsidies</span> &rarr;</span>
         </div>
+
+        <!-- Digital Twin Farm Simulator Card -->
+        <div class="dashboard-card" onclick="window.switchPanel('digital-twin')">
+          <div class="card-icon-container" style="background:#e0f2fe; color:#0284c7; display: flex; align-items: center; justify-content: center; border-radius: 50%; width: 48px; height: 48px; margin-bottom: 15px;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 id="card-twin-title">Digital Twin Farm</h3>
+          <p id="card-twin-desc">Simulate and visualize your crop fields, soil parameters, and water flow in interactive 3D.</p>
+          <span class="card-link"><span id="card-twin-link">Launch 3D Model</span> &rarr;</span>
+        </div>
       </div>
     </div>
 
@@ -329,6 +341,20 @@
               <div class="remedy-card-block">
                 <h4 id="lbl-preventiveMeasures">Future Prevention Advisory</h4>
                 <p id="res-prevention">Keep crop rows spaced nicely.</p>
+              </div>
+
+              <!-- Dynamic Store Suggestions and Pricing -->
+              <div class="remedy-card-block" id="store-locator-card" style="border-left: 4px solid var(--accent-blue); background: rgba(56, 189, 248, 0.03);">
+                <h4 style="color: var(--accent-blue-dark); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                  <span style="display: flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span id="lbl-storeLocatorHeader">Nearest Stores & Estimated Costs</span>
+                  </span>
+                  <span id="lbl-location-source" class="severity-gauge" style="font-size: 10px; padding: 4px 8px; border-radius: 12px; background: rgba(56,189,248,0.2); color: #0369a1; font-weight: 800; text-transform: uppercase; margin: 0;">GPS Active</span>
+                </h4>
+                <div id="store-suggestions-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 15px;">
+                  <!-- Dynamically generated shops will go here -->
+                </div>
               </div>
             </div>
           </div>
@@ -479,56 +505,87 @@
       </div>
 
       <div class="grid-cols-2">
-        <!-- Creative Weather Dashboard Widget -->
-        <div class="creative-weather-widget" id="weather-hero-bg">
-          <div class="weather-glass-layer">
-            
-             <div class="weather-header-row">
-                <div class="pulse-live"></div> 
-                <span id="weather-location-name">Fetching Location...</span>
-             </div>
+        <!-- Column 1: Live Weather & Weather Crop Advisory -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Creative Weather Dashboard Widget -->
+          <div class="creative-weather-widget" id="weather-hero-bg">
+            <div class="weather-glass-layer">
+              
+               <div class="weather-header-row">
+                  <div class="pulse-live"></div> 
+                  <span id="weather-location-name">Fetching Location...</span>
+               </div>
 
-             <div class="weather-main-row">
-                <div class="weather-icon-box" id="dynamic-weather-icon">
-                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotating"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                </div>
-                <div class="weather-temp-box">
-                   <h1 id="val-temperature">--°C</h1>
-                   <p id="val-condition-text">Loading Data...</p>
-                </div>
-             </div>
+               <div class="weather-main-row">
+                  <div class="weather-icon-box" id="dynamic-weather-icon">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rotating"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                  </div>
+                  <div class="weather-temp-box">
+                     <h1 id="val-temperature">--°C</h1>
+                     <p id="val-condition-text">Loading Data...</p>
+                  </div>
+               </div>
 
-             <!-- The smooth CSS alert ticker -->
-             <div class="weather-ticker-box">
-                <div class="ticker-label-badge" id="lbl-weatherAdvisoryAlert">Farming Alert</div>
-                <div class="weather-alert-text-container">
-                   <div class="weather-marquee-smooth" id="txt-weather-alert">Initializing live weather radar and gathering local advisories...</div>
-                </div>
-             </div>
+               <!-- The smooth CSS alert ticker -->
+               <div class="weather-ticker-box">
+                  <div class="ticker-label-badge" id="lbl-weatherAdvisoryAlert">Farming Alert</div>
+                  <div class="weather-alert-text-container">
+                     <div class="weather-marquee-smooth" id="txt-weather-alert">Initializing live weather radar and gathering local advisories...</div>
+                  </div>
+               </div>
 
-             <div class="weather-metrics-row">
-                <div class="weather-metric-item">
-                   <div class="w-icon">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-                   </div>
-                   <div class="w-details">
-                     <span class="w-label" id="lbl-rainfallProb">Temperature</span>
-                     <span class="w-val" id="val-humidity">--%</span>
-                   </div>
-                </div>
-                <div class="weather-metric-item">
-                   <div class="w-icon">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
-                   </div>
-                   <div class="w-details">
-                     <span class="w-label" id="lbl-windSpeed">Wind Speed</span>
-                     <span class="w-val" id="val-windSpeed">-- km/h</span>
-                   </div>
-                </div>
-             </div>
+               <div class="weather-metrics-row">
+                  <div class="weather-metric-item">
+                     <div class="w-icon">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                     </div>
+                     <div class="w-details">
+                       <span class="w-label" id="lbl-rainfallProb">Temperature</span>
+                       <span class="w-val" id="val-humidity">--%</span>
+                     </div>
+                  </div>
+                  <div class="weather-metric-item">
+                     <div class="w-icon">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+                     </div>
+                     <div class="w-details">
+                       <span class="w-label" id="lbl-windSpeed">Wind Speed</span>
+                       <span class="w-val" id="val-windSpeed">-- km/h</span>
+                     </div>
+                  </div>
+               </div>
 
+            </div>
+          </div>
+
+          <!-- Weather Crop Advisory Card -->
+          <div class="card-wrapper weather-advisory-card">
+            <div class="advisory-card-header">
+              <div class="advisory-warning-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke="#f59e0b" fill="none"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12" stroke="#f59e0b" stroke-linecap="round"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16" stroke="#f59e0b" stroke-linecap="round"></line>
+                </svg>
+              </div>
+              <h3 id="lbl-weatherCropAdvisoryHeader">Weather Crop Advisory</h3>
+            </div>
+            <div class="advisory-card-divider"></div>
+            <div class="advisory-card-body">
+              <p id="txt-weatherCropAdvisoryText">High rain probability. Please avoid applying chemical fertilizers or nitrogen today as they will wash off. Clean drain channels in sugarcane fields to avoid waterlogging.</p>
+            </div>
+            <div class="advisory-card-footer">
+              <div class="expert-badge-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10" stroke="#10b981" fill="none"></circle>
+                  <path d="M9 12l2 2 4-4" stroke="#10b981" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <span id="lbl-expertGuidelinesPill">EXPERT GUIDELINES RECOMMENDED</span>
+              </div>
+            </div>
           </div>
         </div>
+
 
         <!-- Crop Calendar Card -->
         <div class="card-wrapper">
@@ -719,6 +776,145 @@
 
           <button id="btn-apiSaveBtn" class="btn btn-primary w-full">Save Settings</button>
         </div>
+      </div>
+    </div>
+
+    <!-- PANEL 9: DIGITAL TWIN SIMULATOR -->
+    <div id="panel-digital-twin" class="nav-panel">
+      <div class="section-heading-box">
+        <h2 id="txt-twinHeader">Digital Twin Farm Simulator</h2>
+        <p id="txt-twinSubtitle">Bilingual interactive 3D farm model generated dynamically from your profile settings.</p>
+      </div>
+
+      <div class="twin-grid-layout">
+        <!-- Column 1: Interactive 3D Farm Visualizer -->
+        <div class="card-wrapper twin-visualizer-card">
+          <div class="visualizer-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div class="twin-badge" style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary-pale); padding: 6px 14px; border-radius: 30px; border: 1.5px solid var(--primary-glow);">
+              <span id="lbl-twinAcreageBadge" style="font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.5px;">Acreage Scale</span>: <span id="lbl-twin-acreage-badge" style="font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.5px;">12.5 Acres</span>
+            </div>
+          </div>
+          
+          <div class="farm-3d-viewport" style="position: relative; width: 100%; display: flex; align-items: center; justify-content: center; perspective: 1000px; min-height: 380px;">
+            <div class="farm-3d-board" id="farm-board-3d">
+              <!-- Rendered Dynamically -->
+            </div>
+
+            <!-- Hover Tooltip -->
+            <div class="farm-overlay-tooltip" id="farm-hover-tooltip" style="position: absolute; pointer-events: none; opacity: 0; transition: all 0.4s ease; z-index: 100; width: 220px;">
+              <div class="tooltip-glass-content" style="background: rgba(15, 23, 20, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px; border-radius: var(--radius-md); color: #fff; box-shadow: var(--shadow-lg);">
+                <div class="tooltip-header" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="crop-badge" id="tt-crop-badge" style="font-weight: 800; font-size: 14px; color: var(--primary-light);">Sugarcane</span>
+                  <span class="status-badge" id="tt-status-badge" style="background-color: var(--primary-pale); color: var(--primary-light); padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; border: 1px solid var(--primary-glow);">Maturing</span>
+                </div>
+                <div class="tooltip-divider" style="height: 1px; background-color: rgba(255, 255, 255, 0.1); margin: 10px 0;"></div>
+                <div class="tooltip-data-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                    <span class="label" id="lbl-ttCrop" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Crop</span>
+                    <span class="val" id="tt-crop" style="font-size: 12px; font-weight: 700; margin-top: 2px;">Sugarcane</span>
+                  </div>
+                  <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                    <span class="label" id="lbl-ttAcreage" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Acreage</span>
+                    <span class="val" id="tt-acreage" style="font-size: 12px; font-weight: 700; margin-top: 2px;">1.4 ac</span>
+                  </div>
+                  <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                    <span class="label" id="lbl-ttYield" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Exp. Yield</span>
+                    <span class="val" id="tt-yield" style="font-size: 12px; font-weight: 700; margin-top: 2px;">105 tons</span>
+                  </div>
+                  <div class="tooltip-data-item" style="display: flex; flex-direction: column;">
+                    <span class="label" id="lbl-ttWater" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Water Flow</span>
+                    <span class="val" id="tt-water" style="font-size: 12px; font-weight: 700; margin-top: 2px;">1.1 L/s</span>
+                  </div>
+                  <div class="tooltip-data-item" style="display: flex; flex-direction: column; grid-column: span 2;">
+                    <span class="label" id="lbl-ttProfit" style="font-size: 9px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Est. Profit</span>
+                    <span class="val text-green" id="tt-profit" style="font-size: 12px; font-weight: 700; margin-top: 2px; color: var(--primary-light);">+$16,800</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visualizer-footer" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px;">
+            <div class="legend-row" style="display: flex; gap: 12px;">
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot sugarcane-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #059669;"></span><span>Sugarcane</span></div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot wheat-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #d97706;"></span><span>Wheat</span></div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot potato-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: #22c55e;"></span><span>Sweet Potato</span></div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); font-weight: 600;"><span class="color-dot canal-dot" style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent-blue);"></span><span>Irrigation</span></div>
+            </div>
+            <div class="legend-hint" style="font-size: 10px; color: var(--text-muted); font-weight: 700;">Hover fields on desktop to examine metrics</div>
+          </div>
+        </div>
+
+        <!-- Column 2: Configuration & Statistics Overview -->
+        <div class="twin-sidebar-column" style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Configuration Form Card -->
+          <div class="card-wrapper config-card">
+            <h3 id="txt-configTitle" style="margin-bottom: 15px;">Farm Profile Configurator</h3>
+            <form id="farm-config-form">
+              
+              <!-- Land Size -->
+              <div class="form-group mb-4">
+                <label for="input-land-size" id="lbl-formQuantity">Farmland Acreage</label>
+                <div class="range-with-text-row" style="display: flex; align-items: center; gap: 15px;">
+                  <input type="range" id="input-land-size" min="1" max="100" step="0.5" value="12.5" class="drawer-slider" style="-webkit-appearance: none; flex-grow: 1; height: 6px; border-radius: 3px; background: var(--border-color); outline: none;">
+                  <span class="slider-display-badge" id="lbl-land-size-display" style="background-color: var(--primary-pale); color: var(--primary); padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; min-width: 60px; text-align: center;">12.5 ac</span>
+                </div>
+              </div>
+
+              <!-- Primary Crop -->
+              <div class="form-group mb-4">
+                <label for="select-primary-crop" id="lbl-formCropName" style="font-weight: 700;">Crop Name</label>
+                <select id="select-primary-crop" class="form-input" style="width: 100%;">
+                  <option value="sugarcane">Sugarcane (ಕಬ್ಬು)</option>
+                  <option value="wheat">Wheat (ಗೋಧಿ)</option>
+                  <option value="sweet_potato">Sweet Potato (ಗೆಣಸು)</option>
+                </select>
+              </div>
+
+              <!-- Irrigation Infrastructure -->
+              <div class="form-group mb-4">
+                <label for="select-irrigation" id="lbl-soilTypeLabel" style="font-weight: 700;">Irrigation Infrastructure</label>
+                <select id="select-irrigation" class="form-input" style="width: 100%;">
+                  <option value="canal">Canal Network (ಕಾಲುವೆ)</option>
+                  <option value="borewell">Deep Borewell Tank (ಕೊಳವೆ ಬಾವಿ)</option>
+                  <option value="drip">Automated Drip (ಹನಿ ನೀರಾವರಿ)</option>
+                  <option value="rainfed">Rain-fed Dry (ಮಳೆಯಾಧಾರಿತ)</option>
+                </select>
+              </div>
+
+              <!-- Climate Type -->
+              <div class="form-group mb-4">
+                <label for="select-climate" id="lbl-weatherLabel" style="font-weight: 700;">Local Climate Outlook</label>
+                <select id="select-climate" class="form-input" style="width: 100%;">
+                  <option value="humid">Humid & Hot (ಉಷ್ಣವಲಯದ)</option>
+                  <option value="dry">Dry Arid (ಒಣ ಹವಾಮಾನ)</option>
+                  <option value="temperate">Temperate Mild (ಸಮಶೀತೋಷ್ಣ)</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full" id="btn-btnUpdateTwin" style="margin-top: 15px; width: 100%;">Sync & Update 3D Twin</button>
+            </form>
+          </div>
+
+          <!-- Dynamic Statistics Card -->
+          <div class="card-wrapper overview-card">
+            <div class="farm-stats-grid" style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+              <div class="stat-box-tile" style="background: rgba(255,255,255,0.3); border: 1px solid var(--border-color); padding: 12px; border-radius: var(--radius-sm); display: flex; flex-direction: column;">
+                <span class="stat-lbl" id="txt-statYield" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">Estimated Yield</span>
+                <span class="stat-val" id="lbl-overview-yield" style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">-- Tons</span>
+              </div>
+              <div class="stat-box-tile" style="background: rgba(255,255,255,0.3); border: 1px solid var(--border-color); padding: 12px; border-radius: var(--radius-sm); display: flex; flex-direction: column;">
+                <span class="stat-lbl" id="txt-statWater" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">Estimated Water</span>
+                <span class="stat-val" id="lbl-overview-water" style="font-size: 20px; font-weight: 800; color: var(--primary-dark);">-- L/s</span>
+              </div>
+              <div class="stat-box-tile" style="background: rgba(255,255,255,0.3); border: 1px solid var(--border-color); padding: 12px; border-radius: var(--radius-sm); display: flex; flex-direction: column;">
+                <span class="stat-lbl" id="txt-statProfit" style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">Expected Profit</span>
+                <span class="stat-val text-green" id="lbl-overview-profit" style="font-size: 20px; font-weight: 800; color: var(--primary);">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
