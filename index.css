@@ -542,6 +542,12 @@ header:hover {
   backdrop-filter: blur(12px);
 }
 
+.scanner-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .upload-zone {
   border: 2.5px dashed var(--primary-light);
   border-radius: var(--radius-md);
@@ -720,6 +726,11 @@ header:hover {
 .severity-gauge.medium { background: #fff3e0; color: #ef6c00; }
 .severity-gauge.high { background: #ffebee; color: #c62828; }
 .severity-gauge.critical { background: #3e2723; color: #ffffff; }
+
+.voice-readout-row {
+  display: flex;
+  gap: 10px;
+}
 
 .remedy-grid {
   display: grid;
@@ -1736,13 +1747,26 @@ body.dark .crop-select-container {
 @media (max-width: 768px) {
   /* Header adjustments */
   header {
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start;
+    flex-direction: column !important;
+    gap: 15px !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 15px !important;
+  }
+  .brand {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .logo-container {
+    width: 48px !important;
+    height: 48px !important;
   }
   .header-controls {
-    width: 100%;
-    justify-content: flex-end;
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
   }
   .app-container {
     padding: 10px;
@@ -1799,11 +1823,81 @@ body.dark .crop-select-container {
     padding: 15px;
   }
   
+  /* Marketplace tabs stack vertically */
+  .tabs-navigation {
+    flex-direction: column !important;
+    border-bottom: none !important;
+    gap: 5px !important;
+  }
+  .tabs-navigation .tab-btn {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 12px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+  .tabs-navigation .tab-btn.active::after {
+    bottom: -1px !important;
+    height: 2px !important;
+  }
+  
   /* Marketplace */
   .marketplace-listing-grid {
     grid-template-columns: 1fr;
   }
   
+  .voice-readout-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  /* Labor Exchange & Rentals tab container */
+  .hub-tabs-container {
+    flex-direction: column !important;
+    border-bottom: none !important;
+    gap: 5px !important;
+    margin-bottom: 15px !important;
+  }
+  .hub-tabs-container .hub-tab-btn {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 10px !important;
+  }
+  .hub-tabs-container .hub-tab-btn.active::after {
+    bottom: 0px !important;
+    height: 2px !important;
+  }
+
+  /* Labor board toggle container */
+  .board-toggle-container {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 8px !important;
+    padding: 6px !important;
+  }
+  .toggle-board-btn {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: 13px !important;
+  }
+
+  /* Settings themes buttons stack */
+  .settings-theme-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  /* Scanner controls wrap and stack */
+  .scanner-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  .scanner-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
   /* Forms */
   .form-grid {
     grid-template-columns: 1fr;
@@ -2443,6 +2537,14 @@ body.dark .recycler-price-tag {
 /* ========================================= */
 /* Farm Labor & Equipment Hub Styling        */
 /* ========================================= */
+.hub-tabs-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
 .hub-tab-btn {
   background: none;
   border: none;
@@ -2476,7 +2578,23 @@ body.dark .recycler-price-tag {
   border-radius: 2px;
 }
 
+.board-toggle-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  background: var(--bg-card);
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .toggle-board-btn {
+  flex: 1;
+  text-align: center;
   transition: var(--transition-smooth);
 }
 
