@@ -1,4 +1,4 @@
-// Krishi-Sanjeevini High-Performance Unified Bundle
+﻿// Krishi-Sanjeevini High-Performance Unified Bundle
 // Generated automatically to support double-click (file:// protocol) and local servers.
 
 
@@ -1291,6 +1291,7 @@ function fileToBase64(file) {
  * @param {object} weatherContext - Optional object containing live weather data { main, temp, desc }
  */
 async function analyseCropDisease(base64Image, mimeType, lang = "en", apiKey = "", fileName = "", selectedCrop = "auto", weatherContext = null) {
+  let lastError = null;
   // If API Key is present, try invoking the real client-side Gemini 2.5 Flash API
   if (apiKey && apiKey.trim() !== "") {
     try {
@@ -1298,7 +1299,7 @@ async function analyseCropDisease(base64Image, mimeType, lang = "en", apiKey = "
       return response;
     } catch (error) {
       console.warn("Live Gemini API call failed. Falling back to Smart Mock Engine...", error);
-      // Let it fall through to the mock engine
+      lastError = error.message;
     }
   }
 
@@ -1308,7 +1309,9 @@ async function analyseCropDisease(base64Image, mimeType, lang = "en", apiKey = "
   let targetCrop = selectedCrop;
   if (!targetCrop || targetCrop === "auto") {
     const lowerName = fileName.toLowerCase();
-    if (lowerName.includes("rice") || lowerName.includes("paddy") || lowerName.includes("blast")) {
+    if (lowerName.includes("tomato") || lowerName.includes("blight") || lowerName.includes("early")) {
+      targetCrop = "tomato";
+    } else if (lowerName.includes("rice") || lowerName.includes("paddy") || lowerName.includes("blast")) {
       targetCrop = "rice";
     } else if (lowerName.includes("ragi") || lowerName.includes("millet") || lowerName.includes("finger")) {
       targetCrop = "ragi";
@@ -1349,7 +1352,8 @@ async function analyseCropDisease(base64Image, mimeType, lang = "en", apiKey = "
     organic: finalOrganic,
     chemical: finalChemical,
     prevention: result.prevention,
-    isMock: true
+    isMock: true,
+    error: lastError
   };
 }
 
@@ -1380,8 +1384,10 @@ async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selecte
     ${weatherHint}
     Provide the analysis results in a structured JSON format. 
     You MUST output ONLY a valid JSON object. Do NOT wrap it in markdown or backticks.
-    The response MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
+    The response values (diagnostics, descriptions, treatments, causes, preventions) MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
     
+    CRITICAL: The JSON keys ("crop", "disease", "severity", "causes", "organic", "chemical", "prevention") MUST remain in English exactly as specified below, even if the values are written in Kannada. Do NOT translate the key names.
+
     The JSON structure MUST contain the following keys exactly:
     {
       "crop": "Brief name of the crop",
@@ -1442,14 +1448,33 @@ async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selecte
   }
 
   const parsedResult = JSON.parse(cleanText);
+  
+  const forceString = (val) => {
+    if (val === null || val === undefined) return "N/A";
+    if (Array.isArray(val)) return val.join("\n");
+    if (typeof val === "object") return JSON.stringify(val);
+    return String(val);
+  };
+
+  const getProp = (obj, key) => {
+    if (!obj) return undefined;
+    const lowerKey = key.toLowerCase();
+    for (const k in obj) {
+      if (k.toLowerCase() === lowerKey) {
+        return obj[k];
+      }
+    }
+    return undefined;
+  };
+
   return {
-    crop: parsedResult.crop || "Unknown",
-    disease: parsedResult.disease || "Healthy / Undetermined",
-    severity: parsedResult.severity || "Low",
-    causes: parsedResult.causes || "N/A",
-    organic: parsedResult.organic || "N/A",
-    chemical: parsedResult.chemical || "N/A",
-    prevention: parsedResult.prevention || "N/A",
+    crop: forceString(getProp(parsedResult, "crop") || "Unknown"),
+    disease: forceString(getProp(parsedResult, "disease") || "Healthy / Undetermined"),
+    severity: forceString(getProp(parsedResult, "severity") || "Low"),
+    causes: forceString(getProp(parsedResult, "causes") || "N/A"),
+    organic: forceString(getProp(parsedResult, "organic") || "N/A"),
+    chemical: forceString(getProp(parsedResult, "chemical") || "N/A"),
+    prevention: forceString(getProp(parsedResult, "prevention") || "N/A"),
     isMock: false
   };
 }
@@ -2061,7 +2086,9 @@ const state = {
   lang: "en",
   theme: "light",
   activePanel: "home",
-  apiKey: "AIzaSyCSYbxWfjIodPdj2Gkmzh63BfEXXRMfvd8",
+  apiKey: "",
+  apiKeyValid: false,
+  apiKeyReason: "",
   activeMandiCrop: "ragi",
   selectedMandiMarketFilter: "",
   selectedMandiCropFilter: "",
@@ -2360,6 +2387,25 @@ const dom = {
 // ==========================================
 
 /**
+ * Dynamic validation of Gemini API key
+ */
+async function validateApiKey(key) {
+  if (!key || key.trim() === "") return { valid: false, reason: "empty" };
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+    if (response.ok) {
+      return { valid: true };
+    } else {
+      const errData = await response.json();
+      const msg = errData.error?.message || "Invalid Key";
+      return { valid: false, reason: msg.includes("leaked") ? "leaked" : "invalid", details: msg };
+    }
+  } catch (e) {
+    return { valid: false, reason: "network", details: e.message };
+  }
+}
+
+/**
  * Loads API key from local .env file dynamically if running on local server
  */
 async function loadEnvApiKey() {
@@ -2397,8 +2443,19 @@ async function initializeKrishiApp() {
   } else {
     // If no localStorage, fallback is already set by loadEnvApiKey() or default
     if (!state.apiKey) {
-      state.apiKey = "AIzaSyCSYbxWfjIodPdj2Gkmzh63BfEXXRMfvd8";
+      state.apiKey = "";
     }
+  }
+
+  // Validate the loaded key
+  if (state.apiKey) {
+    const valResult = await validateApiKey(state.apiKey);
+    state.apiKeyValid = valResult.valid;
+    state.apiKeyReason = valResult.reason;
+    console.log(`[Krishi App] API Key validation:`, valResult);
+  } else {
+    state.apiKeyValid = false;
+    state.apiKeyReason = "empty";
   }
   
   const savedLang = localStorage.getItem("krishi_lang");
@@ -2534,8 +2591,20 @@ function translateDOM() {
 
   // Localized Settings Subtitles
   if (state.apiKey) {
-    dom.settingsApiStatus.textContent = dict.apiKeyFound;
-    dom.settingsApiStatus.style.color = "var(--primary)";
+    if (state.apiKeyValid) {
+      dom.settingsApiStatus.textContent = dict.apiKeyFound || "Developer API Key Loaded";
+      dom.settingsApiStatus.style.color = "var(--primary)";
+    } else if (state.apiKeyReason === "leaked") {
+      dom.settingsApiStatus.textContent = state.lang === "kn" 
+        ? "⚠️ ಎಚ್ಚರಿಕೆ: API ಕೀಲಿ ಲೀಕ್ ಆಗಿದೆ! ಹೊಸ ಕೀಲಿಯನ್ನು ಬಳಸಿ." 
+        : "⚠️ API Key Leaked / Blocked! Please enter a new key.";
+      dom.settingsApiStatus.style.color = "var(--accent-clay)";
+    } else {
+      dom.settingsApiStatus.textContent = state.lang === "kn"
+        ? "⚠️ ಅಮಾನ್ಯವಾದ API ಕೀಲಿ!"
+        : "⚠️ Invalid API Key! Please check and try again.";
+      dom.settingsApiStatus.style.color = "var(--accent-clay)";
+    }
   } else {
     dom.settingsApiStatus.textContent = dict.demoModeActive;
     dom.settingsApiStatus.style.color = "var(--accent-clay)";
@@ -3102,6 +3171,15 @@ dom.analyseBtn.addEventListener("click", async () => {
 
     // Bind results to UI nodes
     renderDiseaseResults(result);
+    
+    // Check validation and mock fallback status to toast a warning
+    if (result.isMock && state.apiKey) {
+      const details = result.error ? ` (${result.error})` : "";
+      const warningText = state.lang === "kn"
+        ? `ಎಚ್ಚರಿಕೆ: ಲೈವ್ API ಕರೆ ವಿಫಲವಾಗಿದೆ${details}. ಡೆಮೊ ಫಲಿತಾಂಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ.`
+        : `Warning: Live Gemini API call failed${details}. Using offline mock diagnostics instead.`;
+      showToast(warningText);
+    }
   } catch (error) {
     console.error("Diagnosis error", error);
     dom.diagnosisHud.style.display = "none";
@@ -4183,11 +4261,40 @@ function setupEventListeners() {
   dom.schemeSearchInput.addEventListener("input", renderSchemes);
 
   // Settings saving parameters
-  dom.saveSettingsBtn.addEventListener("click", () => {
+  dom.saveSettingsBtn.addEventListener("click", async () => {
     const newKey = dom.settingsApiKey.value.trim();
     state.apiKey = newKey;
     localStorage.setItem("krishi_gemini_api_key", newKey);
-    alert(translations[state.lang].apiSavedMsg);
+    
+    if (newKey) {
+      const originalText = dom.saveSettingsBtn.textContent;
+      dom.saveSettingsBtn.textContent = state.lang === "kn" ? "ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ..." : "Validating key...";
+      dom.saveSettingsBtn.disabled = true;
+      const valResult = await validateApiKey(newKey);
+      state.apiKeyValid = valResult.valid;
+      state.apiKeyReason = valResult.reason;
+      dom.saveSettingsBtn.textContent = originalText;
+      dom.saveSettingsBtn.disabled = false;
+      
+      if (!valResult.valid) {
+        if (valResult.reason === "leaked") {
+          alert(state.lang === "kn" 
+            ? "ಎಚ್ಚರಿಕೆ: ಈ API ಕೀಲಿಯು ಲೀಕ್ ಆಗಿದೆ ಮತ್ತು ಗೂಗಲ್‌ನಿಂದ ಬ್ಲಾಕ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ! ಡೆಮೊ ಮೋಡ್ ಸಕ್ರಿಯವಾಗಿರುತ್ತದೆ." 
+            : "Warning: This API key is leaked and blocked by Google! The app will run in Demo Mode.");
+        } else {
+          alert(state.lang === "kn" 
+            ? "ಎಚ್ಚರಿಕೆ: API ಕೀಲಿ ಅಮಾನ್ಯವಾಗಿದೆ! ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ." 
+            : "Warning: Invalid API key! Please check and try again.");
+        }
+      } else {
+        alert(translations[state.lang].apiSavedMsg);
+      }
+    } else {
+      state.apiKeyValid = false;
+      state.apiKeyReason = "empty";
+      alert(translations[state.lang].apiSavedMsg);
+    }
+    
     translateDOM();
     window.switchPanel("home");
   });

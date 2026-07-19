@@ -181,6 +181,7 @@ export function fileToBase64(file) {
  * @param {object} weatherContext - Optional object containing live weather data { main, temp, desc }
  */
 export async function analyseCropDisease(base64Image, mimeType, lang = "en", apiKey = "", fileName = "", selectedCrop = "auto", weatherContext = null) {
+  let lastError = null;
   // If API Key is present, try invoking the real client-side Gemini 2.5 Flash API
   if (apiKey && apiKey.trim() !== "") {
     try {
@@ -188,7 +189,7 @@ export async function analyseCropDisease(base64Image, mimeType, lang = "en", api
       return response;
     } catch (error) {
       console.warn("Live Gemini API call failed. Falling back to Smart Mock Engine...", error);
-      // Let it fall through to the mock engine
+      lastError = error.message;
     }
   }
 
@@ -198,7 +199,9 @@ export async function analyseCropDisease(base64Image, mimeType, lang = "en", api
   let targetCrop = selectedCrop;
   if (!targetCrop || targetCrop === "auto") {
     const lowerName = fileName.toLowerCase();
-    if (lowerName.includes("rice") || lowerName.includes("paddy") || lowerName.includes("blast")) {
+    if (lowerName.includes("tomato") || lowerName.includes("blight") || lowerName.includes("early")) {
+      targetCrop = "tomato";
+    } else if (lowerName.includes("rice") || lowerName.includes("paddy") || lowerName.includes("blast")) {
       targetCrop = "rice";
     } else if (lowerName.includes("ragi") || lowerName.includes("millet") || lowerName.includes("finger")) {
       targetCrop = "ragi";
@@ -239,7 +242,8 @@ export async function analyseCropDisease(base64Image, mimeType, lang = "en", api
     organic: finalOrganic,
     chemical: finalChemical,
     prevention: result.prevention,
-    isMock: true
+    isMock: true,
+    error: lastError
   };
 }
 
@@ -270,8 +274,10 @@ async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selecte
     ${weatherHint}
     Provide the analysis results in a structured JSON format. 
     You MUST output ONLY a valid JSON object. Do NOT wrap it in markdown or backticks.
-    The response MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
+    The response values (diagnostics, descriptions, treatments, causes, preventions) MUST be written in the language specified: "${lang === "kn" ? "Kannada" : "English"}".
     
+    CRITICAL: The JSON keys ("crop", "disease", "severity", "causes", "organic", "chemical", "prevention") MUST remain in English exactly as specified below, even if the values are written in Kannada. Do NOT translate the key names.
+
     The JSON structure MUST contain the following keys exactly:
     {
       "crop": "Brief name of the crop",
@@ -332,14 +338,33 @@ async function callGeminiAPI(base64Image, mimeType, lang = "en", apiKey, selecte
   }
 
   const parsedResult = JSON.parse(cleanText);
+  
+  const forceString = (val) => {
+    if (val === null || val === undefined) return "N/A";
+    if (Array.isArray(val)) return val.join("\n");
+    if (typeof val === "object") return JSON.stringify(val);
+    return String(val);
+  };
+
+  const getProp = (obj, key) => {
+    if (!obj) return undefined;
+    const lowerKey = key.toLowerCase();
+    for (const k in obj) {
+      if (k.toLowerCase() === lowerKey) {
+        return obj[k];
+      }
+    }
+    return undefined;
+  };
+
   return {
-    crop: parsedResult.crop || "Unknown",
-    disease: parsedResult.disease || "Healthy / Undetermined",
-    severity: parsedResult.severity || "Low",
-    causes: parsedResult.causes || "N/A",
-    organic: parsedResult.organic || "N/A",
-    chemical: parsedResult.chemical || "N/A",
-    prevention: parsedResult.prevention || "N/A",
+    crop: forceString(getProp(parsedResult, "crop") || "Unknown"),
+    disease: forceString(getProp(parsedResult, "disease") || "Healthy / Undetermined"),
+    severity: forceString(getProp(parsedResult, "severity") || "Low"),
+    causes: forceString(getProp(parsedResult, "causes") || "N/A"),
+    organic: forceString(getProp(parsedResult, "organic") || "N/A"),
+    chemical: forceString(getProp(parsedResult, "chemical") || "N/A"),
+    prevention: forceString(getProp(parsedResult, "prevention") || "N/A"),
     isMock: false
   };
 }

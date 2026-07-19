@@ -11,7 +11,9 @@ const state = {
   lang: "en",
   theme: "light",
   activePanel: "home",
-  apiKey: "AIzaSyCSYbxWfjIodPdj2Gkmzh63BfEXXRMfvd8",
+  apiKey: "",
+  apiKeyValid: false,
+  apiKeyReason: "",
   activeMandiCrop: "ragi",
   selectedMandiMarketFilter: "",
   selectedMandiCropFilter: "",
@@ -310,6 +312,25 @@ const dom = {
 // ==========================================
 
 /**
+ * Dynamic validation of Gemini API key
+ */
+async function validateApiKey(key) {
+  if (!key || key.trim() === "") return { valid: false, reason: "empty" };
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+    if (response.ok) {
+      return { valid: true };
+    } else {
+      const errData = await response.json();
+      const msg = errData.error?.message || "Invalid Key";
+      return { valid: false, reason: msg.includes("leaked") ? "leaked" : "invalid", details: msg };
+    }
+  } catch (e) {
+    return { valid: false, reason: "network", details: e.message };
+  }
+}
+
+/**
  * Loads API key from local .env file dynamically if running on local server
  */
 async function loadEnvApiKey() {
@@ -347,8 +368,19 @@ async function initializeKrishiApp() {
   } else {
     // If no localStorage, fallback is already set by loadEnvApiKey() or default
     if (!state.apiKey) {
-      state.apiKey = "AIzaSyCSYbxWfjIodPdj2Gkmzh63BfEXXRMfvd8";
+      state.apiKey = "";
     }
+  }
+
+  // Validate the loaded key
+  if (state.apiKey) {
+    const valResult = await validateApiKey(state.apiKey);
+    state.apiKeyValid = valResult.valid;
+    state.apiKeyReason = valResult.reason;
+    console.log(`[Krishi App] API Key validation:`, valResult);
+  } else {
+    state.apiKeyValid = false;
+    state.apiKeyReason = "empty";
   }
   
   const savedLang = localStorage.getItem("krishi_lang");
@@ -484,8 +516,20 @@ function translateDOM() {
 
   // Localized Settings Subtitles
   if (state.apiKey) {
-    dom.settingsApiStatus.textContent = dict.apiKeyFound;
-    dom.settingsApiStatus.style.color = "var(--primary)";
+    if (state.apiKeyValid) {
+      dom.settingsApiStatus.textContent = dict.apiKeyFound || "Developer API Key Loaded";
+      dom.settingsApiStatus.style.color = "var(--primary)";
+    } else if (state.apiKeyReason === "leaked") {
+      dom.settingsApiStatus.textContent = state.lang === "kn" 
+        ? "⚠️ ಎಚ್ಚರಿಕೆ: API ಕೀಲಿ ಲೀಕ್ ಆಗಿದೆ! ಹೊಸ ಕೀಲಿಯನ್ನು ಬಳಸಿ." 
+        : "⚠️ API Key Leaked / Blocked! Please enter a new key.";
+      dom.settingsApiStatus.style.color = "var(--accent-clay)";
+    } else {
+      dom.settingsApiStatus.textContent = state.lang === "kn"
+        ? "⚠️ ಅಮಾನ್ಯವಾದ API ಕೀಲಿ!"
+        : "⚠️ Invalid API Key! Please check and try again.";
+      dom.settingsApiStatus.style.color = "var(--accent-clay)";
+    }
   } else {
     dom.settingsApiStatus.textContent = dict.demoModeActive;
     dom.settingsApiStatus.style.color = "var(--accent-clay)";
@@ -1052,6 +1096,15 @@ dom.analyseBtn.addEventListener("click", async () => {
 
     // Bind results to UI nodes
     renderDiseaseResults(result);
+    
+    // Check validation and mock fallback status to toast a warning
+    if (result.isMock && state.apiKey) {
+      const details = result.error ? ` (${result.error})` : "";
+      const warningText = state.lang === "kn"
+        ? `ಎಚ್ಚರಿಕೆ: ಲೈವ್ API ಕರೆ ವಿಫಲವಾಗಿದೆ${details}. ಡೆಮೊ ಫಲಿತಾಂಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ.`
+        : `Warning: Live Gemini API call failed${details}. Using offline mock diagnostics instead.`;
+      showToast(warningText);
+    }
   } catch (error) {
     console.error("Diagnosis error", error);
     dom.diagnosisHud.style.display = "none";
@@ -2133,11 +2186,40 @@ function setupEventListeners() {
   dom.schemeSearchInput.addEventListener("input", renderSchemes);
 
   // Settings saving parameters
-  dom.saveSettingsBtn.addEventListener("click", () => {
+  dom.saveSettingsBtn.addEventListener("click", async () => {
     const newKey = dom.settingsApiKey.value.trim();
     state.apiKey = newKey;
     localStorage.setItem("krishi_gemini_api_key", newKey);
-    alert(translations[state.lang].apiSavedMsg);
+    
+    if (newKey) {
+      const originalText = dom.saveSettingsBtn.textContent;
+      dom.saveSettingsBtn.textContent = state.lang === "kn" ? "ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ..." : "Validating key...";
+      dom.saveSettingsBtn.disabled = true;
+      const valResult = await validateApiKey(newKey);
+      state.apiKeyValid = valResult.valid;
+      state.apiKeyReason = valResult.reason;
+      dom.saveSettingsBtn.textContent = originalText;
+      dom.saveSettingsBtn.disabled = false;
+      
+      if (!valResult.valid) {
+        if (valResult.reason === "leaked") {
+          alert(state.lang === "kn" 
+            ? "ಎಚ್ಚರಿಕೆ: ಈ API ಕೀಲಿಯು ಲೀಕ್ ಆಗಿದೆ ಮತ್ತು ಗೂಗಲ್‌ನಿಂದ ಬ್ಲಾಕ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ! ಡೆಮೊ ಮೋಡ್ ಸಕ್ರಿಯವಾಗಿರುತ್ತದೆ." 
+            : "Warning: This API key is leaked and blocked by Google! The app will run in Demo Mode.");
+        } else {
+          alert(state.lang === "kn" 
+            ? "ಎಚ್ಚರಿಕೆ: API ಕೀಲಿ ಅಮಾನ್ಯವಾಗಿದೆ! ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ." 
+            : "Warning: Invalid API key! Please check and try again.");
+        }
+      } else {
+        alert(translations[state.lang].apiSavedMsg);
+      }
+    } else {
+      state.apiKeyValid = false;
+      state.apiKeyReason = "empty";
+      alert(translations[state.lang].apiSavedMsg);
+    }
+    
     translateDOM();
     window.switchPanel("home");
   });
